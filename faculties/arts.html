@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty of Arts | Anjuman Islam College, Varanasi</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Poppins', 'Arial', sans-serif; 
+            line-height: 1.6; color: #2c3e50; 
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        
+        /* HEADER */
+        .header { 
+            background: linear-gradient(135deg, #8B0000 0%, #A52A2A 50%, #B22222 100%); 
+            color: white; padding: 1rem 0; position: fixed; width: 100%; 
+            top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(139,0,0,0.3);
+        }
+        .nav-container { 
+            max-width: 1200px; margin: 0 auto; padding: 0 20px; 
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .logo { 
+            font-size: 2rem; font-weight: 700; 
+            background: linear-gradient(45deg, #DAA520, #FFD700); 
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+        .nav-menu ul { list-style: none; display: flex; gap: 2rem; }
+        .nav-menu a { 
+            color: white; text-decoration: none; font-weight: 500; 
+            padding: 0.5rem 1rem; border-radius: 25px; transition: all 0.3s; 
+        }
+        .nav-menu a:hover { 
+            background: rgba(218,165,32,0.2); transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(218,165,32,0.4);
+        }
+        .mobile-menu-btn { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
+
+        /* HERO */
+        .hero { 
+            background: linear-gradient(135deg, rgba(139,0,0,0.9), rgba(178,34,34,0.8)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500"><rect fill="%238B0000" width="1200" height="500"/><circle fill="%234A90E2" opacity="0.3" cx="400" cy="200" r="150"/></svg>'); 
+            height: 60vh; display: flex; align-items: center; color: white; margin-top: 0;
+        }
+        .hero-content { text-align: center; max-width: 900px; margin: 0 auto; padding: 0 20px; }
+        .hero h1 { 
+            font-size: 4rem; margin-bottom: 1rem; text-shadow: 3px 3px 10px rgba(0,0,0,0.7);
+            background: linear-gradient(45deg, #FFD700, #DAA520); -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .section { padding: 5rem 0; }
+        .section-title { 
+            text-align: center; font-size: 2.8rem; margin-bottom: 3rem; color: #8B0000; 
+            position: relative; font-weight: 600;
+        }
+        .section-title::after { 
+            content: ''; width: 100px; height: 5px; background: linear-gradient(90deg, #DAA520, #FFD700); 
+            position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%);
+        }
+
+        /* FACULTY SUBMENU */
+        .faculty-submenu { 
+            background: rgba(255,255,255,0.95); padding: 2rem; border-radius: 20px; margin: 3rem 0;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1); text-align: center;
+        }
+        .faculty-submenu ul { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; list-style: none; }
+        .faculty-submenu a { 
+            padding: 0.8rem 1.5rem; background: linear-gradient(135deg, #8B0000, #DC143C);
+            color: white; text-decoration: none; border-radius: 25px; font-weight: 500;
+            transition: all 0.3s;
+        }
+        .faculty-submenu a:hover { 
+            background: linear-gradient(135deg, #DAA520, #FFD700); transform: translateY(-3px);
+        }
+        .faculty-submenu .active { 
+            background: linear-gradient(135deg, #4A90E2, #357ABD); 
+        }
+
+        /* FACULTY STATS */
+        .stats-grid { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+            gap: 2rem; margin: 4rem 0; text-align: center;
+        }
+        .stat-card { 
+            background: rgba(255,255,255,0.9); padding: 2.5rem 1.5rem; border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(74,144,226,0.15);
+        }
+        .stat-number { 
+            font-size: 3rem; font-weight: 700; 
+            background: linear-gradient(45deg, #4A90E2, #357ABD); -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* COURSES GRID */
+        .courses-grid { 
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); 
+            gap: 2rem; margin: 3rem 0;
+        }
+        .course-card { 
+            background: rgba(255,255,255,0.95); padding: 2.5rem; border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(74,144,226,0.15); transition: all 0.4s;
+            border-top: 5px solid #4A90E2; position: relative;
+        }
+        .course-card:hover { 
+            transform: translateY(-15px); box-shadow: 0 35px 80px rgba(74,144,226,0.25);
+        }
+        .course-icon { font-size: 3.5rem; margin-bottom: 1.5rem; }
+        .course-title { 
+            font-size: 1.6rem; color: #8B0000; font-weight: 700; margin-bottom: 1rem;
+        }
+        .course-duration { 
+            color: #4A90E2; font-weight: 600; font-size: 1.1rem; margin-bottom: 1rem;
+        }
+
+        /* FACULTY GRID */
+        .faculty-grid { 
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+            gap: 2rem; margin: 3rem 0;
+        }
+        .faculty-card { 
+            background: rgba(255,255,255,0.95); padding: 2rem; border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(139,0,0,0.1); text-align: center;
+            transition: all 0.4s; border-left: 5px solid #4A90E2;
+        }
+        .faculty-card:hover { transform: translateY(-10px); }
+        .faculty-photo { 
+            width: 120px; height: 150px; border-radius: 15px; 
+            background: linear-gradient(135deg, #4A90E2, #357ABD); margin: 0 auto 1rem;
+            display: flex; align-items: center; justify-content: center; font-size: 0.9rem;
+        }
+        .faculty-photo::before { content: 'PHOTO'; color: rgba(255,255,255,0.9); }
+        .faculty-name { font-size: 1.4rem; color: #8B0000; font-weight: 700; margin-bottom: 0.5rem; }
+        .faculty-designation { color: #4A90E2; font-weight: 600; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.8rem; }
+            .faculty-grid, .courses-grid { grid-template-columns: 1fr; }
+            .nav-menu { position: fixed; top: 80px; left: -100%; width: 100%; height: calc(100vh - 80px); 
+                background: #8B0000; flex-direction: column; padding-top: 2rem; }
+            .nav-menu.active { left: 0; }
+            .mobile-menu-btn { display: block; }
+            .faculty-submenu ul { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">AIC Varanasi</a>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+            <nav class="nav-menu" id="navMenu">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../about/founder.html">About</a></li>
+                    <li><a href="../administration/governing-body.html">Administration</a></li>
+                    <li><a href="arts.html">Faculties</a></li>
+                    <li><a href="../courses/index.html">Courses</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Faculty of Arts</h1>
+            <p>Shaping minds through humanities, languages, and social sciences</p>
+        </div>
+    </section>
+
+    <!-- FACULTY SUBMENU -->
+    <section class="section">
+        <div class="container">
+            <div class="faculty-submenu">
+                <ul>
+                    <li><a href="arts.html" class="active">🎨 Arts</a></li>
+                    <li><a href="science.html">🔬 Science</a></li>
+                    <li><a href="commerce.html">💼 Commerce</a></li>
+                    <li><a href="bed.html">👩‍🏫 B.Ed</a></li>
+                    <li><a href="teaching-staff.html">👨‍🏫 Teaching Staff</a></li>
+                    <li><a href="non-teaching-staff.html">💼 Non-Teaching</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ARTS FACULTY STATS -->
+    <section class="section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">18</div>
+                    <div style="color: #8B0000; font-weight: 600;">Faculty Members</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">12</div>
+                    <div style="color: #8B0000; font-weight: 600;">PhD Holders</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">420</div>
+                    <div style="color: #8B0000; font-weight: 600;">Students</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">96%</div>
+                    <div style="color: #8B0000; font-weight: 600;">Pass Rate</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COURSES OFFERED -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Programs Offered</h2>
+            <div class="courses-grid">
+                <div class="course-card">
+                    <div class="course-icon">🎓</div>
+                    <h3 class="course-title">B.A. (Bachelor of Arts)</h3>
+                    <div class="course-duration">3 Years | 6 Semesters</div>
+                    <p>History, Political Science, Economics, Sociology, Psychology, English Literature</p>
+                    <div style="margin-top: 1.5rem;">
+                        <span style="background: rgba(74,144,226,0.2); padding: 0.5rem 1rem; border-radius: 20px; color: #4A90E2; font-weight: 600;">120 Seats</span>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-icon">📚</div>
+                    <h3 class="course-title">M.A. English</h3>
+                    <div class="course-duration">2 Years | 4 Semesters</div>
+                    <p>Advanced literature, linguistics, criticism, Shakespeare studies, Indian writing</p>
+                    <div style="margin-top: 1.5rem;">
+                        <span style="background: rgba(74,144,226,0.2); padding: 0.5rem 1rem; border-radius: 20px; color: #4A90E2; font-weight: 600;">40 Seats</span>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-icon">📜</div>
+                    <h3 class="course-title">M.A. History</h3>
+                    <div class="course-duration">2 Years | 4 Semesters</div>
+                    <p>Ancient, Medieval, Modern Indian history, World history, Historiography</p>
+                    <div style="margin-top: 1.5rem;">
+                        <span style="background: rgba(74,144,226,0.2); padding: 0.5rem 1rem; border-radius: 20px; color: #4A90E2; font-weight: 600;">50 Seats</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KEY FACULTY -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Distinguished Faculty</h2>
+            <div class="faculty-grid">
+                <div class="faculty-card">
+                    <div class="faculty-photo"></div>
+                    <h3 class="faculty-name">Prof. Saeed Ahmed</h3>
+                    <div class="faculty-designation">HOD & Professor of History (PhD)</div>
+                    <p>30+ years experience. Authored 5 history textbooks.</p>
+                </div>
+                <div class="faculty-card">
+                    <div class="faculty-photo"></div>
+                    <h3 class="faculty-name">Dr. Naseem Fatima</h3>
+                    <div class="faculty-designation">Associate Professor, English (PhD)</div>
+                    <p>Shakespeare expert. 25 literary festivals organized.</p>
+                </div>
+                <div class="faculty-card">
+                    <div class="faculty-photo"></div>
+                    <h3 class="faculty-name">Prof. Rahimuddin</h3>
+                    <div class="faculty-designation">Professor, Political Science (M.Phil)</div>
+                    <p>Debate coach. Mentored 50+ national debaters.</p>
+                </div>
+                <div class="faculty-card">
+                    <div class="faculty-photo"></div>
+                    <h3 class="faculty-name">Smt. Rukhsana Begum</h3>
+                    <div class="faculty-designation">Associate Professor, Hindi (MA)</div>
+                    <p>Sahitya Academy nominee. Poetry mentor.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer style="background: linear-gradient(135deg, #8B0000, #5C0000); color: white; padding: 3rem 0; text-align: center;">
+        <div class="container">
+            <p><strong>Anjuman Islam College</strong> | Est. 1985 | NAAC B++ Accredited</p>
+            <p>📍 Varanasi, UP | Faculties → Arts | Shaping Future Leaders</p>
+            <p style="margin-top: 1rem; opacity: 0.8;">&copy; 2026. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
