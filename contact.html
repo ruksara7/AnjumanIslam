@@ -6,6 +6,7 @@
     <title>Contact Us | Anjuman Islam College, Varanasi</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* SAME CSS AS INDEX - START */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
             font-family: 'Poppins', sans-serif; 
@@ -14,7 +15,6 @@
             overflow-x: hidden;
         }
 
-        /* HEADER - MOBILE PERFECT (SAME AS INDEX) */
         .header { 
             background: linear-gradient(135deg, #8B0000, #A52A2A, #B22222); 
             color: white; padding: 1rem 0; position: fixed; width: 100%; 
@@ -30,8 +30,6 @@
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             background-clip: text; text-decoration: none;
         }
-
-        /* ANIMATED HAMBURGER */
         .mobile-menu-btn {
             display: none; background: none; border: none; cursor: pointer;
             width: 45px; height: 45px; border-radius: 8px; position: relative;
@@ -55,8 +53,6 @@
         .mobile-menu-btn.active span::after { 
             transform: translateX(-50%) rotate(-45deg) translate(6px, -6px);
         }
-
-        /* NAV + DROPDOWN */
         .nav-menu { display: flex; }
         .nav-menu ul { list-style: none; display: flex; gap: 1.5rem; align-items: center; }
         .nav-menu a { 
@@ -71,22 +67,29 @@
         .dropdown { position: relative; }
         .dropdown-menu {
             position: absolute; top: 100%; left: 0; background: rgba(139,0,0,0.98);
-            min-width: 240px; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            min-width: 280px; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.3);
             opacity: 0; visibility: hidden; transform: translateY(-10px);
             transition: all 0.3s ease; padding: 1rem 0; margin: 0; z-index: 1001;
+            backdrop-filter: blur(10px);
         }
         .dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
-        .dropdown-menu li a { padding: 0.8rem 1.8rem !important; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .dropdown-menu li a { 
+            padding: 0.8rem 1.8rem !important; border-bottom: 1px solid rgba(255,255,255,0.1);
+            width: 100%; text-align: left; font-size: 0.9rem;
+        }
+        /* SAME CSS AS INDEX - END */
 
-        /* HERO */
+        /* CONTACT PAGE SPECIFIC */
         .hero { 
-            background: linear-gradient(135deg, rgba(139,0,0,0.9), rgba(178,34,34,0.8)); 
             height: 70vh; display: flex; align-items: center; justify-content: center;
-            text-align: center; color: white; margin-top: 80px; position: relative;
+            text-align: center; color: white; position: relative; overflow: hidden;
+            background: linear-gradient(rgba(139,0,0,0.9), rgba(165,42,42,0.8)), 
+                        url('assets/images/contact-bg.jpg') center/cover no-repeat;
+            margin-top: 80px; background-size: cover;
         }
         .hero::before {
             content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500"><rect fill="%238B0000" opacity="0.3" width="1200" height="500"/><circle fill="%23DAA520" opacity="0.4" cx="150" cy="150" r="120"/><circle fill="%23FFD700" opacity="0.3" cx="1050" cy="350" r="150"/></svg>');
+            background: rgba(0,0,0,0.5); z-index: 1;
         }
         .hero-content { max-width: 800px; padding: 0 20px; position: relative; z-index: 2; }
         .hero-content h1 { 
@@ -95,9 +98,7 @@
             background: linear-gradient(45deg, #FFD700, #DAA520); 
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
-        .hero-content p { font-size: clamp(1rem, 4vw, 1.4rem); opacity: 0.95; }
 
-        /* CONTENT */
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         .section { padding: 6rem 0 4rem; }
         .section-title { 
@@ -117,7 +118,7 @@
         .contact-card { 
             background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
             padding: 3rem 2.5rem; border-radius: 25px; text-align: center;
-            box-shadow: 0 20px 60px rgba(139,0,0,0.15); border: 1px solid rgba(218,165,32,0.2);
+            box-shadow: 0 20px 60px rgba(139,0,0,0.12); border: 1px solid rgba(218,165,32,0.15);
             transition: all 0.4s ease;
         }
         .contact-card:hover { transform: translateY(-15px); box-shadow: 0 30px 80px rgba(139,0,0,0.25); }
@@ -128,8 +129,7 @@
         }
         .contact-card h3 { color: #8B0000; font-size: 1.5rem; margin-bottom: 1.5rem; }
 
-        /* FORM */
-        .contact-form-section { background: linear-gradient(135deg, rgba(139,0,0,0.05), rgba(218,165,32,0.1)); }
+        .contact-form-section { background: rgba(248,250,252,0.8); }
         .form-container { max-width: 700px; margin: 0 auto; }
         .form-group { margin-bottom: 2rem; }
         .form-group label { display: block; margin-bottom: 0.8rem; color: #8B0000; font-weight: 600; }
@@ -152,7 +152,6 @@
         }
         .cta-button:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(218,165,32,0.6); }
 
-        /* MAP */
         .map-section { background: #f8f9fa; }
         .map-container { height: 450px; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.1); }
         .map-placeholder {
@@ -161,60 +160,105 @@
             color: white; text-align: center; font-size: 1.3rem; gap: 1rem;
         }
 
-        /* FOOTER */
-        footer { background: linear-gradient(135deg, #8B0000, #5C0000); color: white; padding: 4rem 0 2rem; }
-        .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 3rem; margin-bottom: 2rem; }
-        .footer-section h3 { color: #FFD700; margin-bottom: 1.5rem; font-size: 1.4rem; display: flex; align-items: center; gap: 0.5rem; }
+        footer { 
+            background: linear-gradient(135deg, #8B0000, #5C0000); 
+            color: white; padding: 4rem 0 2rem; 
+        }
+        .footer-content { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 3rem; margin-bottom: 2rem;
+        }
+        .footer-section h3 { 
+            color: #FFD700; margin-bottom: 1.5rem; font-size: 1.4rem;
+            display: flex; align-items: center; gap: 0.5rem;
+        }
         .footer-section ul { list-style: none; }
         .footer-section ul li { margin-bottom: 1rem; }
-        .footer-section a { color: rgba(255,255,255,0.85); text-decoration: none; display: block; }
+        .footer-section a { 
+            color: rgba(255,255,255,0.85); text-decoration: none; 
+            transition: color 0.3s; display: block;
+        }
         .footer-section a:hover { color: #FFD700; }
-        .footer-bottom { text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); }
+        .footer-bottom { 
+            text-align: center; margin-top: 3rem; padding-top: 2rem; 
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.7); font-size: 0.95rem;
+        }
 
-        /* MOBILE RESPONSIVE */
+        /* MOBILE RESPONSIVE - SAME AS INDEX */
         @media (max-width: 768px) {
             .mobile-menu-btn { display: block; }
             .nav-menu { 
-                position: fixed; top: 80px; left: -100%; width: 100%; height: calc(100vh - 80px);
-                background: rgba(139,0,0,0.98); flex-direction: column; padding: 2.5rem 0;
-                transition: left 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); z-index: 999;
+                position: fixed; top: 80px; left: -100%; width: 100%; 
+                height: calc(100vh - 80px); background: rgba(139,0,0,0.98);
+                flex-direction: column; justify-content: flex-start; align-items: center;
+                padding: 2.5rem 0; transition: left 0.4s ease;
+                box-shadow: -10px 0 50px rgba(0,0,0,0.5); z-index: 999;
             }
             .nav-menu.active { left: 0; }
-            .nav-menu ul { flex-direction: column; gap: 1.5rem; width: 90%; }
-            .nav-menu a { font-size: 1.4rem; padding: 1.2rem 2.5rem; text-align: center; border-radius: 20px; }
-            
-            .dropdown .dropdown-menu {
-                position: static; opacity: 1 !important; visibility: visible !important; 
-                max-height: 0; overflow: hidden; transition: max-height 0.4s ease;
-                background: rgba(218,165,32,0.2) !important; margin-top: 1rem;
+            .nav-menu ul { 
+                flex-direction: column; gap: 0; width: 90%; max-width: 400px;
+                padding: 0; margin: 0 auto;
             }
-            .dropdown.active .dropdown-menu { max-height: 500px; }
-            
+            .nav-menu a { 
+                font-size: 1.4rem; padding: 1.2rem 2.5rem; width: 100%; 
+                text-align: center; border-radius: 20px; backdrop-filter: blur(10px);
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+            .dropdown > a::after {
+                content: '▼'; float: right; font-size: 0.8rem; transition: transform 0.3s ease;
+            }
+            .dropdown.active > a::after { transform: rotate(180deg); }
+            .dropdown .dropdown-menu {
+                position: static !important; opacity: 1 !important; visibility: visible !important; 
+                transform: none !important; max-height: 0; overflow: hidden; 
+                transition: max-height 0.4s ease; background: rgba(50,0,0,0.9) !important;
+                margin-top: 0; box-shadow: none !important; width: 100%; border-radius: 0;
+            }
+            .dropdown.active .dropdown-menu { max-height: 800px; padding: 1.5rem 0; }
+            .dropdown-menu li a { 
+                padding: 1rem 3rem !important; font-size: 1.2rem !important;
+                border-bottom: 1px solid rgba(255,255,255,0.05) !important;
+                border-radius: 0 !important;
+            }
             .form-row { grid-template-columns: 1fr; }
-            .contact-grid { grid-template-columns: 1fr; }
+            .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
             .hero { height: 60vh; margin-top: 80px; }
             .section { padding: 4rem 0 3rem; }
         }
     </style>
 </head>
 <body>
-    <!-- FIXED HEADER -->
+    <!-- SAME HEADER AS INDEX - 45 PAGES -->
     <header class="header">
         <div class="nav-container">
             <a href="index.html" class="logo">AIC Varanasi</a>
-            <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle Menu">
+            <button class="mobile-menu-btn" aria-label="Toggle Menu">
                 <span></span>
             </button>
             <nav class="nav-menu" id="navMenu">
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="about/founder.html">About</a></li>
                     <li class="dropdown">
-                        <a href="#">Administration</a>
+                        <a href="about/founder.html">About</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="about/founder.html">Founder</a></li>
+                            <li><a href="about/history.html">History</a></li>
+                            <li><a href="about/vision-mission.html">Vision & Mission</a></li>
+                            <li><a href="about/past-president.html">Past Presidents</a></li>
+                            <li><a href="about/past-principal.html">Past Principals</a></li>
+                            <li><a href="about/retired-teachers.html">Retired Teachers</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="administration/governing-body.html">Administration</a>
                         <ul class="dropdown-menu">
                             <li><a href="administration/governing-body.html">Governing Body</a></li>
+                            <li><a href="administration/chairperson-message.html">Chairperson</a></li>
                             <li><a href="administration/principal-message.html">Principal</a></li>
                             <li><a href="administration/committees.html">Committees</a></li>
+                            <li><a href="administration/proctorial-board.html">Proctorial Board</a></li>
+                            <li><a href="administration/rules-and-regulations.html">Rules</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -223,13 +267,37 @@
                             <li><a href="faculties/arts.html">Arts</a></li>
                             <li><a href="faculties/science.html">Science</a></li>
                             <li><a href="faculties/commerce.html">Commerce</a></li>
+                            <li><a href="faculties/bed.html">B.Ed</a></li>
+                            <li><a href="faculties/teaching-staff.html">Teaching Staff</a></li>
+                            <li><a href="faculties/non-teaching-staff.html">Non-Teaching</a></li>
                         </ul>
                     </li>
                     <li><a href="courses/index.html">Courses</a></li>
-                    <li><a href="students/admission-procedure.html">Admissions</a></li>
-                    <li><a href="facilities/facilities/index.html">Facilities</a></li>
-                    <li><a href="gallery/gallery/photo-gallery.html">Gallery</a></li>
-                    <li><a href="iqac/index.html">IQAC</a></li>
+                    <li class="dropdown">
+                        <a href="students/admission-procedure.html">Students</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="students/admission-procedure.html">Admission Procedure</a></li>
+                            <li><a href="students/student-profile.html">Student Profile</a></li>
+                            <li><a href="students/student-achievements.html">Achievements</a></li>
+                            <li><a href="students/student-union.html">Student Union</a></li>
+                            <li><a href="students/student-strength.html">Student Strength</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="facilities/index.html">Facilities</a></li>
+                    <li><a href="gallery/photo-gallery.html">Gallery</a></li>
+                    <li><a href="feedback/index.html">Feedback</a></li>
+                    <li class="dropdown">
+                        <a href="iqac/index.html">IQAC</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="iqac/index.html">IQAC Home</a></li>
+                            <li><a href="iqac/members.html">Members</a></li>
+                            <li><a href="iqac/aqar.html">AQAR</a></li>
+                            <li><a href="iqac/minutes-of-meeting.html">Minutes</a></li>
+                            <li><a href="iqac/best-practices.html">Best Practices</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="naac/ssr.html">NAAC</a></li>
+                    <li><a href="notices/index.html">Notices</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
@@ -323,80 +391,102 @@
         </div>
     </section>
 
-    <!-- MAP -->
-    <section class="section map-section">
-        <div class="container">
-            <h2 class="section-title">Find Us</h2>
-            <div class="map-container">
-                <div class="map-placeholder">
-                    <div style="text-align: center;">
-                        <div style="font-size: 4rem; margin-bottom: 1rem;">📍</div>
-                        <div>Google Maps Coming Soon</div>
-                        <div>Varanasi, Uttar Pradesh</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
+    <!-- FOOTER - SAME AS INDEX -->
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>🏛️ Anjuman Islam College</h3>
                     <p>Established 1985 | NAAC Accredited | UGC Recognized</p>
+                    <p>Affiliated to Mahatma Gandhi Kashi Vidyapith, Varanasi</p>
                 </div>
                 <div class="footer-section">
                     <h3>🔗 Quick Links</h3>
                     <ul>
                         <li><a href="courses/index.html">Courses</a></li>
+                        <li><a href="facilities/index.html">Facilities</a></li>
+                        <li><a href="gallery/photo-gallery.html">Gallery</a></li>
                         <li><a href="iqac/index.html">IQAC</a></li>
                         <li><a href="administration/governing-body.html">Administration</a></li>
                     </ul>
                 </div>
+                <div class="footer-section">
+                    <h3>📞 Contact Info</h3>
+                    <p>📍 Varanasi, Uttar Pradesh</p>
+                    <p>📧 info@anjumanislam.edu</p>
+                    <p>📞 +91-XXXXXXXXX</p>
+                </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 Anjuman Islam College. All Rights Reserved.</p>
+                <p>© 2026 Anjuman Islam College, Varanasi. All Rights Reserved. | Designed with ❤️</p>
             </div>
         </div>
     </footer>
 
+    <!-- SAME JAVASCRIPT AS INDEX -->
     <script>
-        // SAME JS AS INDEX - MOBILE PERFECT
-        function toggleMobileMenu() {
+        document.addEventListener('DOMContentLoaded', function() {
             const navMenu = document.getElementById('navMenu');
-            const btn = document.querySelector('.mobile-menu-btn');
-            navMenu.classList.toggle('active');
-            btn.classList.toggle('active');
-            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
-        }
+            const mobileBtn = document.querySelector('.mobile-menu-btn');
 
-        function submitForm(event) {
-            event.preventDefault();
-            alert('Thank you! We will reply within 24 hours.');
-            event.target.reset();
-        }
-
-        // OUTSIDE CLICK CLOSE
-        document.addEventListener('click', (e) => {
-            const navMenu = document.getElementById('navMenu');
-            const btn = document.querySelector('.mobile-menu-btn');
-            if (!navMenu.contains(e.target) && !btn.contains(e.target) && navMenu.classList.contains('active')) {
-                navMenu.classList.remove('active');
-                btn.classList.remove('active');
-                document.body.style.overflow = '';
+            function toggleMainMenu() {
+                navMenu.classList.toggle('active');
+                mobileBtn.classList.toggle('active');
+                document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
             }
-        });
 
-        // MOBILE DROPDOWN
-        document.addEventListener('click', (e) => {
-            if (window.innerWidth <= 768) {
-                const dropdown = e.target.closest('.dropdown');
-                if (dropdown && !e.target.closest('.dropdown-menu')) {
-                    e.stopPropagation();
-                    dropdown.classList.toggle('active');
+            mobileBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                toggleMainMenu();
+            });
+
+            document.addEventListener('click', function(e) {
+                if (!navMenu.contains(e.target) && !mobileBtn.contains(e.target) && navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    mobileBtn.classList.remove('active');
+                    document.body.style.overflow = '';
+                    document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('active'));
                 }
+
+                if (window.innerWidth <= 768) {
+                    const dropdownLink = e.target.closest('.dropdown > a');
+                    if (dropdownLink) {
+                        e.stopPropagation();
+                        const dropdown = dropdownLink.parentElement;
+                        document.querySelectorAll('.dropdown').forEach(d => {
+                            if (d !== dropdown) d.classList.remove('active');
+                        });
+                        dropdown.classList.toggle('active');
+                        return false;
+                    }
+                }
+            });
+
+            document.querySelectorAll('.nav-menu a[href]').forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth <= 768) {
+                        navMenu.classList.remove('active');
+                        mobileBtn.classList.remove('active');
+                        document.body.style.overflow = '';
+                        document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('active'));
+                    }
+                });
+            });
+
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    navMenu.classList.remove('active');
+                    mobileBtn.classList.remove('active');
+                    document.body.style.overflow = '';
+                    document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('active'));
+                }
+            });
+
+            // Form handler
+            window.submitForm = function(event) {
+                event.preventDefault();
+                alert('Thank you! We will reply within 24 hours.');
+                event.target.reset();
             }
         });
     </script>
