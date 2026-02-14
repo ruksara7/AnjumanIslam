@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Past Presidents | Anjuman Islam College, Varanasi</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Poppins', 'Arial', sans-serif; 
+            line-height: 1.6; color: #2c3e50; 
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        
+        /* HEADER */
+        .header { 
+            background: linear-gradient(135deg, #8B0000 0%, #A52A2A 50%, #B22222 100%); 
+            color: white; padding: 1rem 0; position: fixed; width: 100%; 
+            top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(139,0,0,0.3);
+        }
+        .nav-container { 
+            max-width: 1200px; margin: 0 auto; padding: 0 20px; 
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .logo { 
+            font-size: 2rem; font-weight: 700; 
+            background: linear-gradient(45deg, #DAA520, #FFD700); 
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+        .nav-menu ul { list-style: none; display: flex; gap: 2rem; }
+        .nav-menu a { 
+            color: white; text-decoration: none; font-weight: 500; 
+            padding: 0.5rem 1rem; border-radius: 25px; transition: all 0.3s; 
+        }
+        .nav-menu a:hover { 
+            background: rgba(218,165,32,0.2); transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(218,165,32,0.4);
+        }
+        .mobile-menu-btn { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
+
+        /* HERO */
+        .hero { 
+            background: linear-gradient(135deg, rgba(139,0,0,0.9), rgba(178,34,34,0.8)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500"><rect fill="%238B0000" width="1200" height="500"/><circle fill="%23DAA520" opacity="0.3" cx="400" cy="200" r="120"/></svg>'); 
+            height: 60vh; display: flex; align-items: center; color: white; margin-top: 0;
+        }
+        .hero-content { text-align: center; max-width: 900px; margin: 0 auto; padding: 0 20px; }
+        .hero h1 { 
+            font-size: 4rem; margin-bottom: 1rem; text-shadow: 3px 3px 10px rgba(0,0,0,0.7);
+            background: linear-gradient(45deg, #FFD700, #DAA520); -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .section { padding: 5rem 0; }
+        .section-title { 
+            text-align: center; font-size: 2.8rem; margin-bottom: 3rem; color: #8B0000; 
+            position: relative; font-weight: 600;
+        }
+        .section-title::after { 
+            content: ''; width: 100px; height: 5px; background: linear-gradient(90deg, #DAA520, #FFD700); 
+            position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%);
+        }
+
+        /* ABOUT SUBMENU */
+        .about-submenu { 
+            background: rgba(255,255,255,0.95); padding: 2rem; border-radius: 20px; margin: 3rem 0;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1); text-align: center;
+        }
+        .about-submenu ul { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; list-style: none; }
+        .about-submenu a { 
+            padding: 0.8rem 1.5rem; background: linear-gradient(135deg, #8B0000, #DC143C);
+            color: white; text-decoration: none; border-radius: 25px; font-weight: 500;
+            transition: all 0.3s;
+        }
+        .about-submenu a:hover { 
+            background: linear-gradient(135deg, #DAA520, #FFD700); transform: translateY(-3px);
+        }
+
+        /* PRESIDENTS GRID */
+        .presidents-grid { 
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); 
+            gap: 2.5rem; margin: 3rem 0;
+        }
+        .president-card { 
+            background: rgba(255,255,255,0.95); padding: 2.5rem 2rem; border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(139,0,0,0.15); text-align: center;
+            transition: all 0.4s; position: relative; overflow: hidden;
+            backdrop-filter: blur(10px); border-top: 5px solid #DAA520;
+        }
+        .president-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 5px;
+            background: linear-gradient(90deg, #DAA520, #FFD700);
+        }
+        .president-card:hover { 
+            transform: translateY(-15px); box-shadow: 0 35px 80px rgba(139,0,0,0.25);
+        }
+        .president-photo { 
+            width: 180px; height: 220px; border-radius: 15px; 
+            background: linear-gradient(135deg, #DAA520, #FFD700, #8B0000);
+            margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center;
+            position: relative; overflow: hidden; box-shadow: 0 15px 40px rgba(218,165,32,0.3);
+        }
+        .president-photo::before {
+            content: '📸 PHOTO'; font-size: 1rem; color: rgba(255,255,255,0.8);
+            font-weight: 500; text-align: center;
+        }
+        .president-name { 
+            font-size: 1.6rem; color: #8B0000; font-weight: 700; margin-bottom: 0.5rem;
+            background: linear-gradient(45deg, #DAA520, #FFD700); -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .president-tenure { 
+            color: #DC143C; font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem;
+            background: rgba(220,20,60,0.1); padding: 0.3rem 1rem; border-radius: 20px;
+            display: inline-block;
+        }
+        .president-bio { 
+            color: #555; line-height: 1.7; font-size: 1rem;
+        }
+        .president-achievements { 
+            margin-top: 1.5rem; padding: 1.5rem; background: rgba(218,165,32,0.1);
+            border-radius: 12px; border-left: 4px solid #DAA520;
+        }
+        .achievement-list { list-style: none; }
+        .achievement-list li { 
+            padding: 0.5rem 0; position: relative; padding-left: 1.5rem;
+        }
+        .achievement-list li::before {
+            content: '⭐'; position: absolute; left: 0; color: #FFD700;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.8rem; }
+            .presidents-grid { grid-template-columns: 1fr; }
+            .nav-menu { position: fixed; top: 80px; left: -100%; width: 100%; height: calc(100vh - 80px); 
+                background: #8B0000; flex-direction: column; padding-top: 2rem; }
+            .nav-menu.active { left: 0; }
+            .mobile-menu-btn { display: block; }
+            .about-submenu ul { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">AIC Varanasi</a>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+            <nav class="nav-menu" id="navMenu">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="founder.html">Founder</a></li>
+                    <li><a href="history.html">History</a></li>
+                    <li><a href="vision-mission.html">Vision & Mission</a></li>
+                    <li><a href="past-president.html">Past Presidents</a></li>
+                    <li><a href="past-principal.html">Past Principals</a></li>
+                    <li><a href="retired-teachers.html">Retired Faculty</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Past Presidents</h1>
+            <p>Distinguished leaders who shaped our institution's journey</p>
+        </div>
+    </section>
+
+    <!-- ABOUT SUBMENU -->
+    <section class="section">
+        <div class="container">
+            <div class="about-submenu">
+                <ul>
+                    <li><a href="founder.html">👨‍🏫 Founder</a></li>
+                    <li><a href="history.html">📜 History</a></li>
+                    <li><a href="vision-mission.html">🎯 Vision & Mission</a></li>
+                    <li><a href="past-president.html">👨‍💼 Past Presidents</a></li>
+                    <li><a href="past-principal.html">👨‍🏫 Past Principals</a></li>
+                    <li><a href="retired-teachers.html">👴 Retired Faculty</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- PAST PRESIDENTS -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Our Esteemed Past Presidents</h2>
+            <div class="presidents-grid">
+                <!-- PRESIDENT 1 -->
+                <div class="president-card">
+                    <div class="president-photo">
+                        <!-- REPLACE: president1.jpg (180x220px) -->
+                    </div>
+                    <h3 class="president-name">Dr. Janab Ahmed Khan</h3>
+                    <div class="president-tenure">Founder President (1985-1995)</div>
+                    <div class="president-bio">
+                        Visionary founder who established Anjuman Islam College with 120 students. 
+                        Secured permanent affiliation with MGKVP and laid foundation for academic excellence.
+                    </div>
+                    <div class="president-achievements">
+                        <h4>Key Contributions:</h4>
+                        <ul class="achievement-list">
+                            <li>College establishment & initial infrastructure</li>
+                            <li>First batch of 120 UG students</li>
+                            <li>Land acquisition & building construction</li>
+                            <li>Arts & Commerce faculty introduction</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- PRESIDENT 2 -->
+                <div class="president-card">
+                    <div class="president-photo">
+                        <!-- REPLACE: president2.jpg (180x220px) -->
+                    </div>
+                    <h3 class="president-name">Prof. Mohammed Iqbal</h3>
+                    <div class="president-tenure">President (1995-2005)</div>
+                    <div class="president-bio">
+                        Expanded academic programs to include Science faculty. Student strength grew to 500+. 
+                        Established library and laboratories.
+                    </div>
+                    <div class="president-achievements">
+                        <h4>Key Contributions:</h4>
+                        <ul class="achievement-list">
+                            <li>B.Sc programs launched</li>
+                            <li>Science laboratories established</li>
+                            <li>Library with 15,000+ books</li>
+                            <li>First placement cell</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- PRESIDENT 3 -->
+                <div class="president-card">
+                    <div class="president-photo">
+                        <!-- REPLACE: president3.jpg (180x220px) -->
+                    </div>
+                    <h3 class="president-name">Dr. Syed Hassan</h3>
+                    <div class="president-tenure">President (2005-2015)</div>
+                    <div class="president-bio">
+                        Postgraduate programs introduced. Infrastructure development phase. 
+                        NAAC accreditation preparation initiated.
+                    </div>
+                    <div class="president-achievements">
+                        <h4>Key Contributions:</h4>
+                        <ul class="achievement-list">
+                            <li>MA/M.Sc programs started</li>
+                            <li>New academic block constructed</li>
+                            <li>Computer lab & auditorium</li>
+                            <li>IQAC formation</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- PRESIDENT 4 -->
+                <div class="president-card">
+                    <div class="president-photo">
+                        <!-- REPLACE: president4.jpg (180x220px) -->
+                    </div>
+                    <h3 class="president-name">Janab Rahim Khan</h3>
+                    <div class="president-tenure">President (2015-2023)</div>
+                    <div class="president-bio">
+                        Led NAAC accreditation process. Digital transformation. Placement record improved to 85%.
+                    </div>
+                    <div class="president-achievements">
+                        <h4>Key Contributions:</h4>
+                        <ul class="achievement-list">
+                            <li>NAAC B++ accreditation</li>
+                            <li>Digital learning platforms</li>
+                            <li>WiFi campus & smart classrooms</li>
+                            <li>95% placement assistance</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer style="background: linear-gradient(135deg, #8B0000, #5C0000); color: white; padding: 3rem 0; text-align: center;">
+        <div class="container">
+            <p><strong>Anjuman Islam College</strong> | Est. 1985 | NAAC B++ Accredited</p>
+            <p>📍 Varanasi, Uttar Pradesh | About → Past Presidents</p>
+            <p style="margin-top: 1rem; opacity: 0.8;">&copy; 2026. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
