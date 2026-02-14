@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rules & Regulations | Anjuman Islam College, Varanasi</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Poppins', 'Arial', sans-serif; 
+            line-height: 1.6; color: #2c3e50; 
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        
+        /* HEADER */
+        .header { 
+            background: linear-gradient(135deg, #8B0000 0%, #A52A2A 50%, #B22222 100%); 
+            color: white; padding: 1rem 0; position: fixed; width: 100%; 
+            top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(139,0,0,0.3);
+        }
+        .nav-container { 
+            max-width: 1200px; margin: 0 auto; padding: 0 20px; 
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .logo { 
+            font-size: 2rem; font-weight: 700; 
+            background: linear-gradient(45deg, #DAA520, #FFD700); 
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+        .nav-menu ul { list-style: none; display: flex; gap: 2rem; }
+        .nav-menu a { 
+            color: white; text-decoration: none; font-weight: 500; 
+            padding: 0.5rem 1rem; border-radius: 25px; transition: all 0.3s; 
+        }
+        .nav-menu a:hover { 
+            background: rgba(218,165,32,0.2); transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(218,165,32,0.4);
+        }
+        .mobile-menu-btn { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
+
+        /* HERO */
+        .hero { 
+            background: linear-gradient(135deg, rgba(139,0,0,0.9), rgba(178,34,34,0.8)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500"><rect fill="%238B0000" width="1200" height="500"/><circle fill="%23DAA520" opacity="0.4" cx="900" cy="200" r="120"/></svg>'); 
+            height: 60vh; display: flex; align-items: center; color: white; margin-top: 0;
+        }
+        .hero-content { text-align: center; max-width: 900px; margin: 0 auto; padding: 0 20px; }
+        .hero h1 { 
+            font-size: 4rem; margin-bottom: 1rem; text-shadow: 3px 3px 10px rgba(0,0,0,0.7);
+            background: linear-gradient(45deg, #FFD700, #DAA520); -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .section { padding: 5rem 0; }
+        .section-title { 
+            text-align: center; font-size: 2.8rem; margin-bottom: 3rem; color: #8B0000; 
+            position: relative; font-weight: 600;
+        }
+        .section-title::after { 
+            content: ''; width: 100px; height: 5px; background: linear-gradient(90deg, #DAA520, #FFD700); 
+            position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%);
+        }
+
+        /* ADMIN SUBMENU */
+        .admin-submenu { 
+            background: rgba(255,255,255,0.95); padding: 2rem; border-radius: 20px; margin: 3rem 0;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1); text-align: center;
+        }
+        .admin-submenu ul { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; list-style: none; }
+        .admin-submenu a { 
+            padding: 0.8rem 1.5rem; background: linear-gradient(135deg, #8B0000, #DC143C);
+            color: white; text-decoration: none; border-radius: 25px; font-weight: 500;
+            transition: all 0.3s;
+        }
+        .admin-submenu a:hover { 
+            background: linear-gradient(135deg, #DAA520, #FFD700); transform: translateY(-3px);
+        }
+
+        /* RULES ACCORDION */
+        .rules-accordion { 
+            background: rgba(255,255,255,0.95); padding: 3rem; border-radius: 25px; 
+            margin: 3rem 0; box-shadow: 0 20px 60px rgba(139,0,0,0.15);
+        }
+        .accordion-item { 
+            border: 2px solid rgba(139,0,0,0.1); border-radius: 15px; margin-bottom: 1.5rem;
+            overflow: hidden; background: rgba(255,255,255,0.9);
+        }
+        .accordion-header { 
+            background: linear-gradient(135deg, #8B0000, #DC143C); color: white; 
+            padding: 1.5rem 2rem; cursor: pointer; font-weight: 600; font-size: 1.2rem;
+            display: flex; justify-content: space-between; align-items: center;
+            transition: all 0.3s;
+        }
+        .accordion-header:hover { background: linear-gradient(135deg, #A52A2A, #B22222); }
+        .accordion-header.active { background: linear-gradient(135deg, #DAA520, #FFD700); color: #8B0000; }
+        .accordion-icon { font-size: 1.4rem; transition: transform 0.3s; }
+        .accordion-icon.active { transform: rotate(45deg); }
+        .accordion-content { 
+            max-height: 0; overflow: hidden; transition: all 0.4s; 
+            background: rgba(218,165,32,0.05); padding: 0 2rem;
+        }
+        .accordion-content.active { 
+            max-height: 500px; padding: 2rem; 
+        }
+        .rule-list { 
+            list-style: none; padding-left: 0; 
+        }
+        .rule-item { 
+            padding: 1rem; margin-bottom: 0.8rem; background: rgba(255,255,255,0.7);
+            border-radius: 10px; border-left: 4px solid #DAA520; position: relative;
+            padding-left: 2.5rem;
+        }
+        .rule-item::before { 
+            content: '✅'; position: absolute; left: 1rem; font-size: 1.1rem; 
+            color: #DAA520; font-weight: bold;
+        }
+
+        /* PENALTY GRID */
+        .penalty-grid { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 2rem; margin: 4rem 0;
+        }
+        .penalty-card { 
+            background: linear-gradient(135deg, rgba(139,0,0,0.1), rgba(220,20,60,0.05));
+            padding: 2.5rem; border-radius: 20px; border-left: 5px solid #DC143C;
+            text-align: center; transition: all 0.3s;
+        }
+        .penalty-card:hover { transform: translateY(-5px); }
+        .penalty-level { 
+            font-size: 2.5rem; font-weight: 700; color: #DC143C; margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.8rem; }
+            .penalty-grid { grid-template-columns: 1fr; }
+            .nav-menu { position: fixed; top: 80px; left: -100%; width: 100%; height: calc(100vh - 80px); 
+                background: #8B0000; flex-direction: column; padding-top: 2rem; }
+            .nav-menu.active { left: 0; }
+            .mobile-menu-btn { display: block; }
+            .admin-submenu ul { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">AIC Varanasi</a>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+            <nav class="nav-menu" id="navMenu">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../about/founder.html">About</a></li>
+                    <li><a href="governing-body.html">Administration</a></li>
+                    <li><a href="../faculties/arts.html">Faculties</a></li>
+                    <li><a href="../courses/index.html">Courses</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Rules & Regulations</h1>
+            <p>Standards for Academic Discipline and Campus Harmony</p>
+        </div>
+    </section>
+
+    <!-- ADMIN SUBMENU -->
+    <section class="section">
+        <div class="container">
+            <div class="admin-submenu">
+                <ul>
+                    <li><a href="governing-body.html">🏛️ Governing Body</a></li>
+                    <li><a href="chairperson-message.html">📜 Chairperson Message</a></li>
+                    <li><a href="principal-message.html">👨‍🏫 Principal Message</a></li>
+                    <li><a href="committees.html">📋 Committees</a></li>
+                    <li><a href="proctorial-board.html">🛡️ Proctorial Board</a></li>
+                    <li><a href="rules-and-regulations.html">📚 Rules & Regulations</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- RULES ACCORDION -->
+    <section class="section">
+        <div class="container">
+            <div class="rules-accordion">
+                <h2 style="color: #8B0000; font-size: 2.5rem; text-align: center; margin-bottom: 2.5rem;">Campus Discipline Guidelines</h2>
+                
+                <!-- ATTENDANCE -->
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>📊 Attendance & Academic Requirements</span>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <ul class="rule-list">
+                            <li class="rule-item">75% minimum attendance compulsory for all exams</li>
+                            <li class="rule-item">Medical certificate required for extended leaves</li>
+                            <li class="rule-item">3 consecutive absences = Parent notification</li>
+                            <li class="rule-item">Below 60% attendance = Exam disqualification</li>
+                            <li class="rule-item">Proxy attendance strictly prohibited</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- DRESS CODE -->
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>👔 Dress Code & Uniform Policy</span>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <ul class="rule-list">
+                            <li class="rule-item">Modest formal attire compulsory (Shirt + Trouser/Saree/Salwar)</li>
+                            <li class="rule-item">No shorts, sleeveless, or revealing clothing</li>
+                            <li class="rule-item">ID cards must be worn visibly at all times</li>
+                            <li class="rule-item">No fancy accessories or excessive jewelry</li>
+                            <li class="rule-item">Sports uniform only during PE classes</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- DISCIPLINE -->
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>🚫 Prohibited Activities (Zero Tolerance)</span>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <ul class="rule-list">
+                            <li class="rule-item">Ragging in any form (physical/verbal/cyber)</li>
+                            <li class="rule-item">Smoking, tobacco, alcohol, drugs on campus</li>
+                            <li class="rule-item">Cheating/copying during examinations</li>
+                            <li class="rule-item">Mobile phone usage during class hours</li>
+                            <li class="rule-item">Damaging college property or graffiti</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- MOBILE POLICY -->
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>📱 Mobile & Electronic Devices</span>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <ul class="rule-list">
+                            <li class="rule-item">Silent mode compulsory during college hours</li>
+                            <li class="rule-item">No usage during lectures/practicals</li>
+                            <li class="rule-item">Confiscation for 15 days on violation</li>
+                            <li class="rule-item">No smartwatches or recording devices</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PENALTY SYSTEM -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Penalty Structure</h2>
+            <div class="penalty-grid">
+                <div class="penalty-card">
+                    <div class="penalty-level">Level 1</div>
+                    <h3>Minor Violations</h3>
+                    <p>Warning Letter + 3 days community service<br>Late arrival, incomplete uniform</p>
+                </div>
+                <div class="penalty-card">
+                    <div class="penalty-level">Level 2</div>
+                    <h3>Major Violations</h3>
+                    <p>7 days suspension + Fine ₹1000<br>Mobile usage, unauthorized absence</p>
+                </div>
+                <div class="penalty-card">
+                    <div class="penalty-level">Level 3</div>
+                    <h3>Serious Violations</h3>
+                    <p>1 month suspension + ₹5000 fine<br>Cheating, property damage</p>
+                </div>
+                <div class="penalty-card">
+                    <div class="penalty-level">Level 4</div>
+                    <h3>Expulsion</h3>
+                    <p>Permanent expulsion + Legal action<br>Ragging, substance abuse</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer style="background: linear-gradient(135deg, #8B0000, #5C0000); color: white; padding: 3rem 0; text-align: center;">
+        <div class="container">
+            <p><strong>Anjuman Islam College</strong> | Est. 1985 | NAAC B++ Accredited</p>
+            <p>📍 Varanasi, UP | Administration → Rules & Regulations | Zero Ragging Campus</p>
+            <p style="margin-top: 1rem; opacity: 0.8;">&copy; 2026. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+
+        function toggleAccordion(header) {
+            const content = header.nextElementSibling;
+            const icon = header.querySelector('.accordion-icon');
+            
+            // Toggle current accordion
+            content.classList.toggle('active');
+            icon.classList.toggle('active');
+            header.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
