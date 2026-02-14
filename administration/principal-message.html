@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Principal's Message | Anjuman Islam College, Varanasi</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Poppins', 'Arial', sans-serif; 
+            line-height: 1.6; color: #2c3e50; 
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        
+        /* HEADER */
+        .header { 
+            background: linear-gradient(135deg, #8B0000 0%, #A52A2A 50%, #B22222 100%); 
+            color: white; padding: 1rem 0; position: fixed; width: 100%; 
+            top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(139,0,0,0.3);
+        }
+        .nav-container { 
+            max-width: 1200px; margin: 0 auto; padding: 0 20px; 
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .logo { 
+            font-size: 2rem; font-weight: 700; 
+            background: linear-gradient(45deg, #DAA520, #FFD700); 
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+        .nav-menu ul { list-style: none; display: flex; gap: 2rem; }
+        .nav-menu a { 
+            color: white; text-decoration: none; font-weight: 500; 
+            padding: 0.5rem 1rem; border-radius: 25px; transition: all 0.3s; 
+        }
+        .nav-menu a:hover { 
+            background: rgba(218,165,32,0.2); transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(218,165,32,0.4);
+        }
+        .mobile-menu-btn { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
+
+        /* HERO */
+        .hero { 
+            background: linear-gradient(135deg, rgba(139,0,0,0.9), rgba(178,34,34,0.8)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500"><rect fill="%238B0000" width="1200" height="500"/><circle fill="%23DAA520" opacity="0.4" cx="600" cy="200" r="120"/></svg>'); 
+            height: 70vh; display: flex; align-items: center; color: white; margin-top: 0;
+        }
+        .hero-content { text-align: center; max-width: 900px; margin: 0 auto; padding: 0 20px; }
+        .hero h1 { 
+            font-size: 4rem; margin-bottom: 1rem; text-shadow: 3px 3px 10px rgba(0,0,0,0.7);
+            background: linear-gradient(45deg, #FFD700, #DAA520); -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .section { padding: 5rem 0; }
+        .section-title { 
+            text-align: center; font-size: 2.8rem; margin-bottom: 3rem; color: #8B0000; 
+            position: relative; font-weight: 600;
+        }
+        .section-title::after { 
+            content: ''; width: 100px; height: 5px; background: linear-gradient(90deg, #DAA520, #FFD700); 
+            position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%);
+        }
+
+        /* ADMIN SUBMENU */
+        .admin-submenu { 
+            background: rgba(255,255,255,0.95); padding: 2rem; border-radius: 20px; margin: 3rem 0;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1); text-align: center;
+        }
+        .admin-submenu ul { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; list-style: none; }
+        .admin-submenu a { 
+            padding: 0.8rem 1.5rem; background: linear-gradient(135deg, #8B0000, #DC143C);
+            color: white; text-decoration: none; border-radius: 25px; font-weight: 500;
+            transition: all 0.3s;
+        }
+        .admin-submenu a:hover { 
+            background: linear-gradient(135deg, #DAA520, #FFD700); transform: translateY(-3px);
+        }
+
+        /* PRINCIPAL PROFILE */
+        .principal-profile { 
+            display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; align-items: center; 
+            background: rgba(255,255,255,0.95); padding: 4rem; border-radius: 25px;
+            box-shadow: 0 25px 70px rgba(139,0,0,0.15); margin: 3rem 0;
+        }
+        .principal-photo { 
+            text-align: center;
+        }
+        .photo-container { 
+            width: 300px; height: 380px; border-radius: 25px; 
+            background: linear-gradient(135deg, #DC143C, #DAA520, #8B0000);
+            margin: 0 auto; display: flex; flex-direction: column; align-items: center; 
+            justify-content: center; box-shadow: 0 25px 70px rgba(220,20,60,0.4);
+            position: relative; overflow: hidden;
+        }
+        .photo-container::before {
+            content: '📸 PRINCIPAL PHOTO'; font-size: 1.2rem; color: rgba(255,255,255,0.9); 
+            font-weight: 600; text-align: center; z-index: 2;
+        }
+        .photo-name { 
+            font-size: 1.8rem; color: #8B0000; font-weight: 700; margin-top: 1.5rem;
+            background: linear-gradient(45deg, #DC143C, #DAA520); -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .photo-title { color: #8B0000; font-size: 1.1rem; font-weight: 600; margin-top: 0.5rem; }
+
+        .principal-bio h2 { color: #8B0000; font-size: 2.2rem; margin-bottom: 1.5rem; }
+        .message-content { 
+            font-size: 1.1rem; line-height: 1.8; color: #444; text-align: justify;
+            background: rgba(255,255,255,0.8); padding: 2rem; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        /* ACHIEVEMENTS */
+        .achievements-grid { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 2rem; margin: 4rem 0;
+        }
+        .achievement-card { 
+            background: linear-gradient(135deg, rgba(220,20,60,0.15), rgba(218,165,32,0.1));
+            padding: 2.5rem; border-radius: 20px; text-align: center; border-left: 5px solid #DC143C;
+            transition: all 0.4s;
+        }
+        .achievement-card:hover { 
+            transform: translateY(-10px); box-shadow: 0 20px 50px rgba(220,20,60,0.25);
+        }
+        .achievement-icon { font-size: 3.5rem; margin-bottom: 1.5rem; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.8rem; }
+            .principal-profile { grid-template-columns: 1fr; text-align: center; }
+            .photo-container { width: 250px; height: 320px; }
+            .achievements-grid { grid-template-columns: 1fr; }
+            .nav-menu { position: fixed; top: 80px; left: -100%; width: 100%; height: calc(100vh - 80px); 
+                background: #8B0000; flex-direction: column; padding-top: 2rem; }
+            .nav-menu.active { left: 0; }
+            .mobile-menu-btn { display: block; }
+            .admin-submenu ul { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">AIC Varanasi</a>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+            <nav class="nav-menu" id="navMenu">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../about/founder.html">About</a></li>
+                    <li><a href="governing-body.html">Administration</a></li>
+                    <li><a href="../faculties/arts.html">Faculties</a></li>
+                    <li><a href="../courses/index.html">Courses</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Principal's Message</h1>
+            <p>Academic Leadership and Student-Centric Excellence</p>
+        </div>
+    </section>
+
+    <!-- ADMIN SUBMENU -->
+    <section class="section">
+        <div class="container">
+            <div class="admin-submenu">
+                <ul>
+                    <li><a href="governing-body.html">🏛️ Governing Body</a></li>
+                    <li><a href="chairperson-message.html">📜 Chairperson Message</a></li>
+                    <li><a href="principal-message.html">👨‍🏫 Principal Message</a></li>
+                    <li><a href="committees.html">📋 Committees</a></li>
+                    <li><a href="proctorial-board.html">🛡️ Proctorial Board</a></li>
+                    <li><a href="rules-and-regulations.html">📚 Rules & Regulations</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRINCIPAL PROFILE -->
+    <section class="section">
+        <div class="container">
+            <div class="principal-profile">
+                <div class="principal-photo">
+                    <div class="photo-container">
+                        <!-- REPLACE: principal.jpg (300x380px) -->
+                    </div>
+                    <div class="photo-name">Dr. Naseem Raza</div>
+                    <div class="photo-title">Principal & Member Secretary<br>Governing Body</div>
+                </div>
+                
+                <div class="principal-bio">
+                    <h2>Message to Students & Parents</h2>
+                    <div class="message-content">
+                        <p>
+                            Dear Students and Parents, Welcome to Anjuman Islam College - where academic 
+                            excellence meets holistic development. With 41 years of legacy, we have nurtured 
+                            thousands of successful alumni who excel in diverse fields globally.
+                        </p>
+                        <p>
+                            Our faculty of 50+ dedicated educators ensures personalized attention and 
+                            modern teaching methodologies. From smart classrooms to industry collaborations, 
+                            we prepare students not just for exams, but for life. Our 95% placement record 
+                            speaks volumes about our commitment to student success.
+                        </p>
+                        <p style="margin-top: 1.5rem; font-style: italic; color: #8B0000; font-weight: 600;">
+                            "Your success is our mission. AIC provides wings to your dreams."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ACHIEVEMENTS */
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Academic Leadership Priorities</h2>
+            <div class="achievements-grid">
+                <div class="achievement-card">
+                    <div class="achievement-icon">📚</div>
+                    <h3>Teaching Excellence</h3>
+                    <p>Regular faculty training, workshops, and PhD programs. 25+ doctorates on faculty.</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">🎯</div>
+                    <h3>Student Development</h3>
+                    <p>Skill enhancement programs, career counseling, and personality development.</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">💻</div>
+                    <h3>Digital Transformation</h3>
+                    <p>Smart classrooms, e-learning platforms, and computer labs with 200+ systems.</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">🏆</div>
+                    <h3>NAAC Compliance</h3>
+                    <p>Maintaining B++ grade through continuous quality improvement initiatives.</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">🤝</div>
+                    <h3>Industry Linkages</h3>
+                    <p>MoUs with 15+ companies for internships, training, and campus placements.</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">🌟</div>
+                    <h3>Student Welfare</h3>
+                    <p>Scholarships, counseling, medical facilities, and anti-ragging measures.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer style="background: linear-gradient(135deg, #8B0000, #5C0000); color: white; padding: 3rem 0; text-align: center;">
+        <div class="container">
+            <p><strong>Anjuman Islam College</strong> | Est. 1985 | NAAC B++ Accredited</p>
+            <p>📍 Varanasi, Uttar Pradesh | Administration → Principal Message</p>
+            <p style="margin-top: 1rem; opacity: 0.8;">&copy; 2026. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
