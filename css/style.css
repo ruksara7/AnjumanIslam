@@ -1,0 +1,72 @@
+/* ANJUMAN ISLAMIA ADARA TRUST - ENTERPRISE GRADE */
+:root {
+    --primary: #1e3a8a; --secondary: #0f172a; --accent: #10b981; --gold: #d97706;
+    --light: #f8fafc; --white: #ffffff; --dark: #1e293b; --gray: #64748b;
+}
+
+* {margin:0;padding:0;box-sizing:border-box;}
+body {font-family:'Poppins',sans-serif;line-height:1.7;color:var(--dark);font-size:16px;overflow-x:hidden;}
+.container {max-width:1200px;margin:0 auto;padding:0 1.5rem;}
+html {scroll-behavior:smooth;}
+
+/* HEADER */
+.trust-banner {background:linear-gradient(135deg,var(--primary),var(--secondary));color:var(--white);padding:0.8rem 0;font-weight:500;text-align:center;}
+.site-header {background:var(--white);box-shadow:0 2px 15px rgba(0,0,0,0.1);position:sticky;top:0;z-index:100;}
+.main-nav .container {display:flex;justify-content:space-between;align-items:center;padding:1rem 0;}
+.logo-text {font-size:1.8rem;font-weight:700;color:var(--primary);}
+.tagline {font-size:0.85rem;color:var(--gray);margin-top:-4px;}
+.nav-menu {display:flex;list-style:none;gap:2rem;align-items:center;}
+.nav-link {color:var(--dark);text-decoration:none;font-weight:500;padding:0.5rem 0;transition:all 0.3s;}
+.nav-link:hover,.nav-link.active {color:var(--primary);}
+
+/* DROPDOWN */
+.dropdown{position:relative;}
+.dropdown-menu{position:absolute;top:100%;left:0;background:var(--white);min-width:220px;box-shadow:0 15px 35px rgba(0,0,0,0.15);opacity:0;visibility:hidden;transform:translateY(-10px);transition:all 0.3s;border-radius:10px;border:1px solid #eee;padding:1rem 0;}
+.dropdown:hover .dropdown-menu{opacity:1;visibility:visible;transform:translateY(0);}
+.dropdown-menu a{display:block;padding:0.75rem 1.5rem;font-weight:400;border-bottom:1px solid #f0f0f0;}
+.dropdown-menu a:hover{background:var(--light);color:var(--primary);}
+
+/* HERO */
+.hero-section{min-height:70vh;display:flex;align-items:center;background:linear-gradient(135deg,var(--primary),var(--secondary));color:var(--white);position:relative;}
+.hero-content{text-align:center;padding:3rem 2rem;max-width:800px;margin:0 auto;}
+.hero-title{font-size:clamp(2.5rem,5vw,4rem);font-weight:700;margin-bottom:1rem;}
+.highlight{color:var(--gold);}
+.hero-stats{display:flex;gap:3rem;justify-content:center;flex-wrap:wrap;margin-top:2rem;}
+.stat-number{font-size:2.5rem;font-weight:700;display:block;color:var(--gold);}
+
+/* SECTIONS */
+.section-title{font-size:2.2rem;font-weight:600;text-align:center;margin:4rem 0 2.5rem;color:var(--primary);position:relative;}
+.section-title::after{content:'';position:absolute;bottom:-10px;left:50%;transform:translateX(-50%);width:60px;height:4px;background:var(--accent);border-radius:2px;}
+.content-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:2.5rem;margin-top:3rem;}
+.card{background:var(--white);padding:2.5rem;border-radius:15px;box-shadow:0 10px 30px rgba(0,0,0,0.1);transition:all 0.3s;}
+.card:hover{transform:translateY(-8px);box-shadow:0 20px 40px rgba(0,0,0,0.15);}
+
+/* FACULTY CARDS */
+.faculty-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:2rem;}
+.faculty-card{text-align:center;padding:2rem;border-radius:15px;box-shadow:0 10px 30px rgba(0,0,0,0.1);transition:all 0.3s;}
+.faculty-photo{width:140px;height:140px;border-radius:50%;object-fit:cover;margin:0 auto 1.5rem;border:4px solid var(--light);}
+.faculty-name{font-size:1.3rem;font-weight:600;color:var(--primary);margin-bottom:0.5rem;}
+.faculty-details{font-size:0.95rem;color:var(--gray);line-height:1.6;}
+
+/* FOOTER */
+.site-footer{background:var(--secondary);color:var(--white);padding:4rem 0 1.5rem;}
+.footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:3rem;margin-bottom:2rem;}
+.footer-title{font-size:1.2rem;font-weight:600;color:var(--gold);margin-bottom:1.5rem;}
+.footer-link{color:rgba(255,255,255,0.85);text-decoration:none;display:block;margin-bottom:0.8rem;transition:color 0.3s;}
+.footer-link:hover{color:var(--gold);}
+
+/* UTILITY BAR */
+.utility-bar{position:fixed;top:20px;right:20px;background:var(--white);padding:0.75rem;border-radius:50px;box-shadow:0 10px 30px rgba(0,0,0,0.15);display:flex;gap:0.5rem;z-index:999;}
+.btn-util{width:42px;height:42px;border:none;border-radius:50%;background:var(--light);cursor:pointer;font-size:1rem;transition:all 0.2s;}
+.btn-util:hover{background:var(--primary);color:var(--white);transform:scale(1.05);}
+
+/* MOBILE */
+.mobile-menu-toggle{display:none;flex-direction:column;cursor:pointer;padding:0.5rem;}
+.mobile-menu-toggle span{width:25px;height:3px;background:var(--dark);margin:3px 0;border-radius:2px;transition:0.3s;}
+@media (max-width:768px){
+    .mobile-menu-toggle{display:flex;}
+    .nav-menu{position:fixed;top:100%;left:0;width:100%;background:var(--white);flex-direction:column;padding:2rem;box-shadow:0 10px 30px rgba(0,0,0,0.1);transform:translateY(-100%);transition:0.4s;}
+    .nav-menu.active{transform:translateY(0);}
+    .hero-stats{gap:1.5rem;}
+    .stat-number{font-size:2rem;}
+}
