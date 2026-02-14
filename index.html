@@ -13,7 +13,7 @@
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
         }
         
-        /* HEADER - MAROON-GOLD COLLEGE STYLE */
+        /* HEADER - FIXED MOBILE */
         .header { 
             background: linear-gradient(135deg, #8B0000 0%, #A52A2A 50%, #B22222 100%); 
             color: white; 
@@ -41,218 +41,153 @@
             background-clip: text;
             text-decoration: none;
         }
-        .nav-menu { display: flex; }
-        .nav-menu ul { 
-            list-style: none; 
-            display: flex; 
-            gap: 2rem;
-        }
-        .nav-menu a { 
-            color: white; 
-            text-decoration: none; 
-            font-weight: 500; 
-            padding: 0.5rem 1rem; 
-            border-radius: 25px; 
+        
+        /* ANIMATED HAMBURGER */
+        .mobile-menu-btn {
+            display: none; background: none; border: none; cursor: pointer;
+            width: 40px; height: 40px; border-radius: 5px; position: relative;
             transition: all 0.3s ease;
-            position: relative;
+        }
+        .mobile-menu-btn span {
+            display: block; height: 3px; width: 25px; background: white;
+            border-radius: 2px; position: absolute; left: 50%; top: 50%;
+            transform: translate(-50%, -50%); transition: all 0.3s ease;
+        }
+        .mobile-menu-btn span::before,
+        .mobile-menu-btn span::after {
+            content: ''; position: absolute; width: 25px; height: 3px;
+            background: white; border-radius: 2px; left: 50%; transform: translateX(-50%);
+            transition: all 0.3s ease;
+        }
+        .mobile-menu-btn span::before { top: -8px; }
+        .mobile-menu-btn span::after { top: 8px; }
+        .mobile-menu-btn.active span { background: transparent; }
+        .mobile-menu-btn.active span::before {
+            transform: translateX(-50%) rotate(45deg) translateY(8px);
+        }
+        .mobile-menu-btn.active span::after {
+            transform: translateX(-50%) rotate(-45deg) translateY(-8px);
+        }
+        .mobile-menu-btn:hover { background: rgba(255,255,255,0.2); }
+
+        /* DESKTOP MENU + DROPDOWN */
+        .nav-menu { display: flex; }
+        .nav-menu ul { list-style: none; display: flex; gap: 2rem; align-items: center; }
+        .nav-menu a { 
+            color: white; text-decoration: none; font-weight: 500; 
+            padding: 0.5rem 1rem; border-radius: 25px; transition: all 0.3s ease;
+            position: relative; display: block;
         }
         .nav-menu a:hover { 
-            background: rgba(218,165,32,0.2); 
-            transform: translateY(-2px);
+            background: rgba(218,165,32,0.2); transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(218,165,32,0.4);
         }
 
-        /* HERO - Full Width Banner (MAROON-GOLD) */
+        /* DROPDOWN */
+        .dropdown { position: relative; }
+        .dropdown-menu {
+            position: absolute; top: 100%; left: 0; background: rgba(139,0,0,0.95);
+            min-width: 220px; border-radius: 10px; box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            opacity: 0; visibility: hidden; transform: translateY(-10px);
+            transition: all 0.3s ease; list-style: none; padding: 1rem 0; margin: 0;
+            backdrop-filter: blur(10px);
+        }
+        .dropdown:hover .dropdown-menu {
+            opacity: 1; visibility: visible; transform: translateY(0);
+        }
+        .dropdown-menu li a {
+            padding: 0.75rem 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1);
+            width: 100%; text-align: left;
+        }
+        .dropdown-menu li a:hover { background: rgba(218,165,32,0.3) !important; }
+
+        /* HERO WITH YOUR PNG */
         .hero { 
-            background: linear-gradient(135deg, rgba(139,0,0,0.9), rgba(178,34,34,0.8)), 
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700"><rect fill="%238B0000" width="1200" height="700"/><circle fill="%23DAA520" opacity="0.3" cx="200" cy="200" r="150"/><circle fill="%23FFD700" opacity="0.2" cx="1000" cy="500" r="200"/><path fill="%23DC143C" opacity="0.1" d="M0 600 Q600 400 1200 600 L1200 700 L0 700 Z"/></svg>') center/cover; 
-            height: 100vh; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            text-align: center; 
-            color: white; 
-            margin-top: 0;
-            position: relative;
+            height: 100vh; display: flex; align-items: center; justify-content: center;
+            text-align: center; color: white; position: relative; overflow: hidden;
+            background: linear-gradient(rgba(139,0,0,0.8), rgba(165,42,42,0.7)), 
+                        url('images/index.png') center/cover;
+            background-size: cover; background-position: center;
+            margin-top: 80px;
         }
         .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23FFD700" opacity="0.1"/><circle cx="75" cy="75" r="1.5" fill="%23DAA520" opacity="0.1"/><circle cx="50" cy="20" r="0.8" fill="%23fff" opacity="0.2"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
-            pointer-events: none;
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.4); backdrop-filter: blur(2px); z-index: 1;
         }
         .hero-content { 
-            max-width: 800px; 
-            padding: 0 20px;
+            max-width: 900px; padding: 0 20px; position: relative; z-index: 2;
             animation: fadeInUp 1s ease;
         }
         .hero-content h1 { 
-            font-size: 4.5rem; 
-            margin-bottom: 1.5rem; 
-            text-shadow: 3px 3px 10px rgba(0,0,0,0.7);
+            font-size: 4.5rem; margin-bottom: 1.5rem; text-shadow: 3px 3px 10px rgba(0,0,0,0.7);
             background: linear-gradient(45deg, #FFD700, #DAA520, white); 
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-weight: 700;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text; font-weight: 700;
         }
-        .hero-content p { 
-            font-size: 1.4rem; 
-            margin-bottom: 2.5rem; 
-            opacity: 0.95;
-            font-weight: 300;
-        }
+        .hero-content p { font-size: 1.4rem; margin-bottom: 2.5rem; opacity: 0.95; }
         .hero-buttons { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
 
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        .section { 
-            padding: 6rem 0; 
-            position: relative;
-        }
+        .section { padding: 6rem 0; position: relative; }
         .section-title { 
-            text-align: center; 
-            font-size: 3rem; 
-            margin-bottom: 4rem; 
-            color: #8B0000; 
-            position: relative;
-            font-weight: 600;
+            text-align: center; font-size: 3rem; margin-bottom: 4rem; 
+            color: #8B0000; position: relative; font-weight: 600;
         }
         .section-title::after { 
-            content: ''; 
-            width: 100px; 
-            height: 5px; 
+            content: ''; width: 100px; height: 5px; 
             background: linear-gradient(90deg, #DAA520, #FFD700); 
-            position: absolute; 
-            bottom: -15px; 
-            left: 50%; 
-            transform: translateX(-50%);
-            border-radius: 3px;
+            position: absolute; bottom: -15px; left: 50%; 
+            transform: translateX(-50%); border-radius: 3px;
         }
-
         .features-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
-            gap: 2.5rem; 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; 
         }
         .feature-card { 
-            text-align: center; 
-            padding: 3rem 2rem; 
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 25px; 
-            box-shadow: 0 20px 60px rgba(139,0,0,0.15); 
-            transition: all 0.4s ease;
-            border: 1px solid rgba(218,165,32,0.2);
-            position: relative;
-            overflow: hidden;
+            text-align: center; padding: 3rem 2rem; background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px); border-radius: 25px; box-shadow: 0 20px 60px rgba(139,0,0,0.15);
+            transition: all 0.4s ease; border: 1px solid rgba(218,165,32,0.2); position: relative; overflow: hidden;
         }
         .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
             background: linear-gradient(90deg, #DAA520, #FFD700);
         }
         .feature-card:hover { 
-            transform: translateY(-15px) scale(1.02); 
-            box-shadow: 0 30px 80px rgba(139,0,0,0.25);
+            transform: translateY(-15px) scale(1.02); box-shadow: 0 30px 80px rgba(139,0,0,0.25);
             background: white;
         }
         .feature-icon { 
-            font-size: 4rem; 
-            margin-bottom: 1.5rem; 
+            font-size: 4rem; margin-bottom: 1.5rem; 
             background: linear-gradient(135deg, #8B0000, #DC143C);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        .feature-card h3 {
-            color: #8B0000;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-
         .cta-button { 
             background: linear-gradient(135deg, #DAA520, #FFD700, #FFB347); 
-            color: #8B0000; 
-            padding: 1.2rem 3rem; 
-            border: none; 
-            border-radius: 50px; 
-            font-size: 1.1rem; 
-            text-decoration: none; 
-            display: inline-block; 
-            transition: all 0.4s ease; 
-            font-weight: 600;
-            box-shadow: 0 10px 30px rgba(218,165,32,0.4);
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            color: #8B0000; padding: 1.2rem 3rem; border: none; border-radius: 50px; 
+            font-size: 1.1rem; text-decoration: none; display: inline-block; 
+            transition: all 0.4s ease; font-weight: 600; box-shadow: 0 10px 30px rgba(218,165,32,0.4);
+            text-transform: uppercase; letter-spacing: 1px;
         }
         .cta-button:hover { 
-            transform: translateY(-3px) scale(1.05); 
-            box-shadow: 0 20px 40px rgba(218,165,32,0.6);
-            color: #8B0000;
-        }
-
-        /* QUICK LINKS SECTION */
-        .quick-links-section {
-            background: linear-gradient(135deg, rgba(139,0,0,0.05), rgba(218,165,32,0.1));
-        }
-        .quick-links-section .feature-card {
-            background: linear-gradient(145deg, rgba(255,255,255,0.9), rgba(248,250,252,0.8));
+            transform: translateY(-3px) scale(1.05); box-shadow: 0 20px 40px rgba(218,165,32,0.6);
         }
 
         /* FOOTER */
         footer { 
-            background: linear-gradient(135deg, #8B0000, #5C0000); 
-            color: white; 
-            padding: 4rem 0 2rem; 
-            position: relative;
-            overflow: hidden;
-        }
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, transparent, #DAA520, #FFD700, transparent);
+            background: linear-gradient(135deg, #8B0000, #5C0000); color: white; 
+            padding: 4rem 0 2rem; position: relative; overflow: hidden;
         }
         .footer-content { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-            gap: 3rem; 
-            margin-bottom: 2rem;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 3rem; margin-bottom: 2rem;
         }
-        .footer-section h3 { 
-            color: #FFD700; 
-            margin-bottom: 1.5rem; 
-            font-size: 1.3rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
+        .footer-section h3 { color: #FFD700; margin-bottom: 1.5rem; font-size: 1.3rem; }
         .footer-section ul { list-style: none; }
         .footer-section ul li { margin-bottom: 0.8rem; }
-        .footer-section a { 
-            color: rgba(255,255,255,0.8); 
-            text-decoration: none; 
-            transition: color 0.3s;
-        }
+        .footer-section a { color: rgba(255,255,255,0.8); text-decoration: none; }
         .footer-section a:hover { color: #FFD700; }
-        .footer-bottom {
-            text-align: center; 
-            margin-top: 3rem; 
-            padding-top: 2rem; 
-            border-top: 1px solid rgba(255,255,255,0.1);
-            color: rgba(255,255,255,0.7);
+        .footer-bottom { text-align: center; margin-top: 3rem; padding-top: 2rem; 
+            border-top: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.7);
         }
 
         /* ANIMATIONS */
@@ -260,60 +195,71 @@
             from { opacity: 0; transform: translateY(50px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .fade-in-up { animation: fadeInUp 0.8s ease forwards; }
+        .fade-in-up { animation: fadeInUp 0.8s ease forwards; opacity: 0; transform: translateY(50px); }
 
-        /* RESPONSIVE */
+        /* MOBILE RESPONSIVE */
         @media (max-width: 768px) {
             .hero-content h1 { font-size: 3rem; line-height: 1.2; }
             .hero-content p { font-size: 1.2rem; }
+            .mobile-menu-btn { display: block; }
             .nav-menu { 
-                position: fixed; 
-                top: 80px; 
-                left: -100%; 
-                width: 100%; 
-                height: calc(100vh - 80px); 
-                background: #8B0000; 
-                flex-direction: column; 
-                justify-content: flex-start; 
-                align-items: center; 
-                padding-top: 2rem;
-                transition: left 0.3s ease;
+                position: fixed; top: 80px; left: -100%; width: 100%; height: calc(100vh - 80px);
+                background: rgba(139,0,0,0.98); backdrop-filter: blur(10px);
+                flex-direction: column; justify-content: flex-start; align-items: center;
+                padding-top: 2rem; transition: left 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+                box-shadow: -5px 0 25px rgba(0,0,0,0.5); z-index: 999;
             }
             .nav-menu.active { left: 0; }
-            .nav-menu ul { flex-direction: column; gap: 1rem; }
+            .nav-menu ul { 
+                flex-direction: column; gap: 1.5rem; width: 90%; max-width: 400px; 
+                padding: 0; margin: 0;
+            }
+            .nav-menu a { 
+                font-size: 1.3rem; padding: 1rem 2rem; width: 100%; text-align: center;
+                border-radius: 15px; backdrop-filter: blur(10px); opacity: 1 !important;
+            }
+            /* MOBILE DROPDOWN */
+            .dropdown .dropdown-menu {
+                position: static; opacity: 1; visibility: visible; transform: none;
+                box-shadow: none; background: rgba(218,165,32,0.1); margin-top: 1rem;
+                max-height: 0; overflow: hidden; transition: max-height 0.3s ease;
+            }
+            .dropdown.active .dropdown-menu { max-height: 500px; }
             .hero-buttons { flex-direction: column; align-items: center; }
             .section-title { font-size: 2.2rem; }
             .features-grid { grid-template-columns: 1fr; }
-        }
-
-        /* MOBILE MENU BUTTON */
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-        @media (max-width: 768px) {
-            .mobile-menu-btn { display: block; }
+            .hero { margin-top: 80px; }
         }
     </style>
 </head>
 <body>
-    <!-- HEADER -->
+    <!-- HEADER WITH DROPDOWN -->
     <header class="header">
         <div class="nav-container">
             <a href="index.html" class="logo">AIC Varanasi</a>
             <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
-                <i style="font-size: 1.8rem;">☰</i>
+                <span></span>
             </button>
             <nav class="nav-menu" id="navMenu">
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about/founder.html">About</a></li>
-                    <li><a href="administration/governing-body.html">Administration</a></li>
-                    <li><a href="faculties/arts.html">Faculties</a></li>
+                    <li class="dropdown">
+                        <a href="administration/governing-body.html">Administration</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="administration/governing-body.html">Governing Body</a></li>
+                            <li><a href="administration/principal.html">Principal</a></li>
+                            <li><a href="administration/staff.html">Staff List</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="faculties/arts.html">Faculties</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="faculties/arts.html">Arts</a></li>
+                            <li><a href="faculties/science.html">Science</a></li>
+                            <li><a href="faculties/commerce.html">Commerce</a></li>
+                        </ul>
+                    </li>
                     <li><a href="courses/index.html">Courses</a></li>
                     <li><a href="facilities/facilities/index.html">Facilities</a></li>
                     <li><a href="gallery/gallery/photo-gallery.html">Gallery</a></li>
@@ -325,7 +271,7 @@
         </div>
     </header>
 
-    <!-- HERO SECTION -->
+    <!-- HERO WITH YOUR PNG IMAGE -->
     <section class="hero">
         <div class="hero-content fade-in-up">
             <h1>Anjuman Islam College</h1>
@@ -367,7 +313,7 @@
     </section>
 
     <!-- QUICK LINKS -->
-    <section class="section quick-links-section">
+    <section class="section" style="background: linear-gradient(135deg, rgba(139,0,0,0.05), rgba(218,165,32,0.1));">
         <div class="container">
             <h2 class="section-title fade-in-up">Important Links</h2>
             <div class="features-grid">
@@ -389,12 +335,6 @@
                     <p>Meet our experienced teaching and non-teaching staff</p>
                     <a href="faculties/teaching-staff.html" class="cta-button">View Faculty</a>
                 </div>
-                <div class="feature-card fade-in-up">
-                    <div class="feature-icon" style="font-size: 3.5rem;">📋</div>
-                    <h3>Latest Notices</h3>
-                    <p>Admission notices, exam schedules & events</p>
-                    <a href="notices/index.html" class="cta-button">View Notices</a>
-                </div>
             </div>
         </div>
     </section>
@@ -404,26 +344,24 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3><i>🏛️</i> Anjuman Islam College</h3>
+                    <h3>🏛️ Anjuman Islam College</h3>
                     <p>Established 1985 | NAAC Accredited | UGC Recognized</p>
                     <p>Affiliated to Mahatma Gandhi Kashi Vidyapith</p>
                 </div>
                 <div class="footer-section">
-                    <h3><i>🔗</i> Quick Links</h3>
+                    <h3>🔗 Quick Links</h3>
                     <ul>
                         <li><a href="courses/index.html">Courses</a></li>
                         <li><a href="facilities/facilities/index.html">Facilities</a></li>
                         <li><a href="gallery/gallery/photo-gallery.html">Gallery</a></li>
                         <li><a href="iqac/index.html">IQAC</a></li>
-                        <li><a href="naac/ssr.html">NAAC SSR</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h3><i>📞</i> Contact Info</h3>
+                    <h3>📞 Contact Info</h3>
                     <p>📞 +91-XXXXXXXXX</p>
                     <p>✉️ info@anjumanislam.edu</p>
                     <p>📍 Varanasi, Uttar Pradesh</p>
-                    <p>🌐 www.anjumanislamcollege.in</p>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -435,7 +373,22 @@
     <script>
         function toggleMobileMenu() {
             const navMenu = document.getElementById('navMenu');
+            const btn = document.querySelector('.mobile-menu-btn');
             navMenu.classList.toggle('active');
+            btn.classList.toggle('active');
+            
+            // Close on outside click
+            if (navMenu.classList.contains('active')) {
+                setTimeout(() => {
+                    document.addEventListener('click', function closeMenu(e) {
+                        if (!navMenu.contains(e.target) && !btn.contains(e.target)) {
+                            navMenu.classList.remove('active');
+                            btn.classList.remove('active');
+                            document.removeEventListener('click', closeMenu);
+                        }
+                    });
+                }, 100);
+            }
         }
 
         // Smooth scrolling
@@ -443,11 +396,11 @@
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
-                target.scrollIntoView({ behavior: 'smooth' });
+                if (target) target.scrollIntoView({ behavior: 'smooth' });
             });
         });
 
-        // Fade in animation on scroll
+        // Fade in animation
         window.addEventListener('scroll', () => {
             const cards = document.querySelectorAll('.fade-in-up');
             cards.forEach(card => {
