@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admission Procedure | Anjuman Islam College, Varanasi</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Poppins', 'Arial', sans-serif; 
+            line-height: 1.6; color: #2c3e50; 
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        
+        /* HEADER */
+        .header { 
+            background: linear-gradient(135deg, #8B0000 0%, #A52A2A 50%, #B22222 100%); 
+            color: white; padding: 1rem 0; position: fixed; width: 100%; 
+            top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(139,0,0,0.3);
+        }
+        .nav-container { 
+            max-width: 1200px; margin: 0 auto; padding: 0 20px; 
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .logo { 
+            font-size: 2rem; font-weight: 700; 
+            background: linear-gradient(45deg, #DAA520, #FFD700); 
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+        .nav-menu ul { list-style: none; display: flex; gap: 2rem; }
+        .nav-menu a { 
+            color: white; text-decoration: none; font-weight: 500; 
+            padding: 0.5rem 1rem; border-radius: 25px; transition: all 0.3s; 
+        }
+        .nav-menu a:hover { 
+            background: rgba(218,165,32,0.2); transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(218,165,32,0.4);
+        }
+        .mobile-menu-btn { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
+
+        /* HERO */
+        .hero { 
+            background: linear-gradient(135deg, rgba(139,0,0,0.9), rgba(178,34,34,0.8)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500"><rect fill="%238B0000" width="1200" height="500"/><circle fill="%234197ED" opacity="0.3" cx="400" cy="200" r="150"/></svg>'); 
+            height: 60vh; display: flex; align-items: center; color: white; margin-top: 0;
+        }
+        .hero-content { text-align: center; max-width: 900px; margin: 0 auto; padding: 0 20px; }
+        .hero h1 { 
+            font-size: 4rem; margin-bottom: 1rem; text-shadow: 3px 3px 10px rgba(0,0,0,0.7);
+            background: linear-gradient(45deg, #FFD700, #DAA520); -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .section { padding: 5rem 0; }
+        .section-title { 
+            text-align: center; font-size: 2.8rem; margin-bottom: 3rem; color: #8B0000; 
+            position: relative; font-weight: 600;
+        }
+        .section-title::after { 
+            content: ''; width: 100px; height: 5px; background: linear-gradient(90deg, #DAA520, #FFD700); 
+            position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%);
+        }
+
+        /* STUDENT SUBMENU */
+        .student-submenu { 
+            background: rgba(255,255,255,0.95); padding: 2rem; border-radius: 20px; margin: 3rem 0;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1); text-align: center;
+        }
+        .student-submenu ul { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; list-style: none; }
+        .student-submenu a { 
+            padding: 0.8rem 1.5rem; background: linear-gradient(135deg, #8B0000, #DC143C);
+            color: white; text-decoration: none; border-radius: 25px; font-weight: 500;
+            transition: all 0.3s;
+        }
+        .student-submenu a:hover, .student-submenu .active { 
+            background: linear-gradient(135deg, #4197ED, #2E6DA4); transform: translateY(-3px);
+        }
+
+        /* ADMISSION TIMELINE */
+        .timeline { 
+            position: relative; max-width: 800px; margin: 4rem auto; padding: 2rem 0;
+        }
+        .timeline::before { 
+            content: ''; position: absolute; left: 50%; transform: translateX(-50%);
+            width: 4px; height: 100%; background: linear-gradient(#4197ED, #2E6DA4);
+        }
+        .timeline-item { 
+            display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-bottom: 4rem;
+            position: relative;
+        }
+        .timeline-item:nth-child(even) { 
+            transform: translateX(50%);
+        }
+        .timeline-content { 
+            background: rgba(255,255,255,0.95); padding: 2rem; border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(65,151,237,0.15); position: relative;
+        }
+        .timeline-date { 
+            font-size: 1.2rem; color: #4197ED; font-weight: 700; margin-bottom: 1rem;
+            background: rgba(65,151,237,0.1); padding: 0.5rem 1rem; border-radius: 20px;
+            display: inline-block;
+        }
+        .timeline-icon { 
+            width: 60px; height: 60px; background: linear-gradient(135deg, #4197ED, #2E6DA4);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; color: white; position: absolute; left: 50%; transform: translateX(-50%);
+            box-shadow: 0 10px 30px rgba(65,151,237,0.4);
+        }
+
+        /* STEPS GRID */
+        .steps-grid { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 2rem; margin: 4rem 0;
+        }
+        .step-card { 
+            background: rgba(255,255,255,0.95); padding: 2.5rem; border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(65,151,237,0.15); text-align: center;
+            transition: all 0.4s; border-top: 5px solid #4197ED; position: relative;
+        }
+        .step-card:hover { 
+            transform: translateY(-10px); box-shadow: 0 30px 80px rgba(65,151,237,0.25);
+        }
+        .step-number { 
+            width: 70px; height: 70px; background: linear-gradient(135deg, #4197ED, #2E6DA4);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 1.8rem; font-weight: 700; color: white; margin: 0 auto 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.8rem; }
+            .timeline::before { left: 20px; }
+            .timeline-item { grid-template-columns: 1fr; gap: 2rem; }
+            .timeline-item:nth-child(even) { transform: none; }
+            .timeline-icon { left: 20px; }
+            .steps-grid { grid-template-columns: 1fr; }
+            .nav-menu { position: fixed; top: 80px; left: -100%; width: 100%; height: calc(100vh - 80px); 
+                background: #8B0000; flex-direction: column; padding-top: 2rem; }
+            .nav-menu.active { left: 0; }
+            .mobile-menu-btn { display: block; }
+            .student-submenu ul { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">AIC Varanasi</a>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+            <nav class="nav-menu" id="navMenu">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../about/founder.html">About</a></li>
+                    <li><a href="../administration/governing-body.html">Administration</a></li>
+                    <li><a href="../faculties/arts.html">Faculties</a></li>
+                    <li><a href="../courses/index.html">Courses</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Admission Procedure 2026</h1>
+            <p>Step-by-step process for UG & PG admissions | 1000+ Seats Available</p>
+        </div>
+    </section>
+
+    <!-- STUDENT SUBMENU -->
+    <section class="section">
+        <div class="container">
+            <div class="student-submenu">
+                <ul>
+                    <li><a href="admission-procedure.html" class="active">📋 Admission Procedure</a></li>
+                    <li><a href="student-profile.html">👤 Student Profile</a></li>
+                    <li><a href="student-achievements.html">🏆 Achievements</a></li>
+                    <li><a href="student-union.html">👥 Student Union</a></li>
+                    <li><a href="student-strength.html">📊 Student Strength</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ADMISSION TIMELINE 2026 -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Admission Timeline 2026</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Feb 1 - Mar 15</div>
+                        <h3>📣 Online Application</h3>
+                        <p>Apply through college website or UP Higher Education Portal</p>
+                        <div class="timeline-icon">1</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Mar 20 - Apr 5</div>
+                        <h3>📋 Document Verification</h3>
+                        <p>Submit original documents at college admission cell</p>
+                        <div class="timeline-icon">2</div>
+                    </div>
+                    <div></div>
+                </div>
+                <div class="timeline-item">
+                    <div></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Apr 10 - 20</div>
+                        <h3>🎯 Merit List Release</h3>
+                        <p>3 Merit lists based on 12th marks + entrance (if applicable)</p>
+                        <div class="timeline-icon">3</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Apr 25 - May 10</div>
+                        <h3>💰 Fee Payment</h3>
+                        <p>Online/Offline payment. Spot admission for vacant seats</p>
+                        <div class="timeline-icon">4</div>
+                    </div>
+                    <div></div>
+                </div>
+                <div class="timeline-item">
+                    <div></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">May 15</div>
+                        <h3>✅ Classes Commence</h3>
+                        <p>Orientation program & ID cards distribution</p>
+                        <div class="timeline-icon">5</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ADMISSION STEPS -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">6 Simple Steps to Apply</h2>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Register Online</h3>
+                    <p>Visit aicvaranasi.ac.in → Click "Apply Now" → Fill basic details</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>Fill Application</h3>
+                    <p>Complete academic details, upload photo & signature (50KB max)</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Pay Application Fee</h3>
+                    <p>₹300 Online (UPI/Card/Net Banking). No cash accepted</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <h3>Document Upload</h3>
+                    <p>10th/12th marksheets, caste certificate, domicile (if applicable)</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">5</div>
+                    <h3>Merit Selection</h3>
+                    <p>Automatic merit calculation. SMS alerts for selection</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">6</div>
+                    <h3>Get Admitted</h3>
+                    <p>Pay fees → Get admission letter → Attend orientation</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer style="background: linear-gradient(135deg, #8B0000, #5C0000); color: white; padding: 3rem 0; text-align: center;">
+        <div class="container">
+            <p><strong>Anjuman Islam College</strong> | Est. 1985 | NAAC B++ Accredited</p>
+            <p>📍 Varanasi, UP | Students → Admission Procedure 2026 | Apply Now!</p>
+            <p style="margin-top: 1rem; opacity: 0.8;">&copy; 2026. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
