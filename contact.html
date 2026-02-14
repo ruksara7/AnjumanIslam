@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Anjuman Islam College, Varanasi</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Poppins', 'Arial', sans-serif; 
+            line-height: 1.6; 
+            color: #2c3e50; 
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        
+        /* HEADER - SAME MAROON-GOLD STYLE */
+        .header { 
+            background: linear-gradient(135deg, #8B0000 0%, #A52A2A 50%, #B22222 100%); 
+            color: white; 
+            padding: 1rem 0; 
+            position: fixed; 
+            width: 100%; 
+            top: 0; 
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(139,0,0,0.3);
+        }
+        .nav-container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 0 20px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+        }
+        .logo { 
+            font-size: 2rem; 
+            font-weight: 700; 
+            background: linear-gradient(45deg, #DAA520, #FFD700); 
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+        .nav-menu { display: flex; }
+        .nav-menu ul { list-style: none; display: flex; gap: 2rem; }
+        .nav-menu a { 
+            color: white; text-decoration: none; font-weight: 500; 
+            padding: 0.5rem 1rem; border-radius: 25px; transition: all 0.3s ease;
+        }
+        .nav-menu a:hover { 
+            background: rgba(218,165,32,0.2); transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(218,165,32,0.4);
+        }
+        .mobile-menu-btn { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
+
+        /* CONTACT HERO */
+        .hero { 
+            background: linear-gradient(135deg, rgba(139,0,0,0.9), rgba(178,34,34,0.8)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500"><rect fill="%238B0000" width="1200" height="500"/><circle fill="%23DAA520" opacity="0.4" cx="150" cy="150" r="120"/><circle fill="%23FFD700" opacity="0.3" cx="1050" cy="350" r="150"/><path fill="%23DC143C" opacity="0.2" d="M0 400 Q600 300 1200 400 L1200 500 L0 500 Z"/></svg>') center/cover; 
+            height: 60vh; display: flex; align-items: center; justify-content: center; 
+            text-align: center; color: white; margin-top: 0;
+        }
+        .hero-content h1 { 
+            font-size: 4rem; margin-bottom: 1rem; text-shadow: 3px 3px 10px rgba(0,0,0,0.7);
+            background: linear-gradient(45deg, #FFD700, #DAA520, white); 
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .hero-content p { font-size: 1.3rem; opacity: 0.95; font-weight: 300; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .section { padding: 5rem 0; }
+        .section-title { 
+            text-align: center; font-size: 2.8rem; margin-bottom: 3.5rem; 
+            color: #8B0000; position: relative; font-weight: 600;
+        }
+        .section-title::after { 
+            content: ''; width: 100px; height: 5px; 
+            background: linear-gradient(90deg, #DAA520, #FFD700); 
+            position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%);
+        }
+
+        /* CONTACT INFO CARDS */
+        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2.5rem; }
+        .contact-card { 
+            background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
+            padding: 3rem 2.5rem; border-radius: 25px; text-align: center;
+            box-shadow: 0 20px 60px rgba(139,0,0,0.15); border: 1px solid rgba(218,165,32,0.2);
+            transition: all 0.4s ease; position: relative; overflow: hidden;
+        }
+        .contact-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+            background: linear-gradient(90deg, #DAA520, #FFD700);
+        }
+        .contact-card:hover { 
+            transform: translateY(-10px); box-shadow: 0 30px 80px rgba(139,0,0,0.25);
+        }
+        .contact-icon { 
+            font-size: 4rem; background: linear-gradient(135deg, #8B0000, #DC143C);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+        }
+        .contact-card h3 { color: #8B0000; font-size: 1.5rem; margin-bottom: 1rem; }
+
+        /* CONTACT FORM */
+        .contact-form-section { background: linear-gradient(135deg, rgba(139,0,0,0.05), rgba(218,165,32,0.1)); }
+        .form-container { max-width: 700px; margin: 0 auto; }
+        .form-group { margin-bottom: 2rem; }
+        .form-group label { 
+            display: block; margin-bottom: 0.8rem; color: #8B0000; 
+            font-weight: 600; font-size: 1.1rem;
+        }
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%; padding: 1.2rem; border: 2px solid rgba(139,0,0,0.1);
+            border-radius: 15px; font-size: 1rem; font-family: inherit;
+            transition: all 0.3s ease; background: rgba(255,255,255,0.9);
+        }
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            outline: none; border-color: #DAA520; box-shadow: 0 0 0 4px rgba(218,165,32,0.1);
+            transform: translateY(-2px);
+        }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+        @media (max-width: 768px) { .form-row { grid-template-columns: 1fr; } }
+
+        .cta-button { 
+            background: linear-gradient(135deg, #DAA520, #FFD700); 
+            color: #8B0000; padding: 1.2rem 3rem; border: none; 
+            border-radius: 50px; font-size: 1.1rem; text-decoration: none; 
+            display: block; margin: 0 auto; transition: all 0.4s ease; 
+            font-weight: 600; cursor: pointer; text-transform: uppercase;
+            box-shadow: 0 10px 30px rgba(218,165,32,0.4);
+        }
+        .cta-button:hover { 
+            transform: translateY(-3px); box-shadow: 0 20px 40px rgba(218,165,32,0.6);
+        }
+
+        /* MAP SECTION */
+        .map-section { background: #f8f9fa; }
+        .map-container { 
+            height: 400px; border-radius: 20px; overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1); margin-top: 3rem;
+        }
+        .map-placeholder {
+            width: 100%; height: 100%; background: linear-gradient(45deg, #8B0000, #DAA520);
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 1.3rem; text-align: center;
+        }
+
+        /* FOOTER */
+        footer { 
+            background: linear-gradient(135deg, #8B0000, #5C0000); 
+            color: white; padding: 4rem 0 2rem; position: relative;
+        }
+        .footer-content { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 3rem; margin-bottom: 2rem;
+        }
+        .footer-section h3 { 
+            color: #FFD700; margin-bottom: 1.5rem; font-size: 1.3rem;
+            display: flex; align-items: center; gap: 0.5rem;
+        }
+        .footer-section a { color: rgba(255,255,255,0.8); text-decoration: none; }
+        .footer-section a:hover { color: #FFD700; }
+        .footer-bottom { 
+            text-align: center; margin-top: 3rem; padding-top: 2rem; 
+            border-top: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.7);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.8rem; }
+            .nav-menu { 
+                position: fixed; top: 80px; left: -100%; width: 100%; 
+                height: calc(100vh - 80px); background: #8B0000; flex-direction: column;
+                justify-content: flex-start; align-items: center; padding-top: 2rem;
+            }
+            .nav-menu.active { left: 0; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .section-title { font-size: 2.2rem; }
+        }
+        @media (max-width: 768px) { .mobile-menu-btn { display: block; } }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="index.html" class="logo">AIC Varanasi</a>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <i style="font-size: 1.8rem;">☰</i>
+            </button>
+            <nav class="nav-menu" id="navMenu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about/founder.html">About</a></li>
+                    <li><a href="administration/governing-body.html">Administration</a></li>
+                    <li><a href="faculties/arts.html">Faculties</a></li>
+                    <li><a href="courses/index.html">Courses</a></li>
+                    <li><a href="facilities/facilities/index.html">Facilities</a></li>
+                    <li><a href="gallery/gallery/photo-gallery.html">Gallery</a></li>
+                    <li><a href="students/admission-procedure.html">Students</a></li>
+                    <li><a href="iqac/index.html">IQAC</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- CONTACT HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Get In Touch</h1>
+            <p>We'd love to hear from you. Send us a message using the form below.</p>
+        </div>
+    </section>
+
+    <!-- CONTACT INFO -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Contact Information</h2>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">📞</div>
+                    <h3>Phone Numbers</h3>
+                    <p><strong>Office:</strong> +91-54XXXXXXXX</p>
+                    <p><strong>Admission:</strong> +91-XXXXXXXXXX</p>
+                    <p><strong>Principal:</strong> +91-XXXXXXXXXX</p>
+                    <p><em>10 AM - 5 PM (Mon-Sat)</em></p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">✉️</div>
+                    <h3>Email Address</h3>
+                    <p><strong>General:</strong> info@anjumanislam.edu</p>
+                    <p><strong>Admission:</strong> admission@anjumanislam.edu</p>
+                    <p><strong>IQAC:</strong> iqac@anjumanislam.edu</p>
+                    <p>Reply within 24 hours</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">📍</div>
+                    <h3>College Address</h3>
+                    <p><strong>Anjuman Islam College</strong></p>
+                    <p>Varanasi, Uttar Pradesh - 221XXX</p>
+                    <p><strong>Distance:</strong></p>
+                    <p>✈️ 25 km from Lal Bahadur Shastri Airport<br>
+                    🚂 8 km from Varanasi Junction</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">🕒</div>
+                    <h3>Visiting Hours</h3>
+                    <p><strong>Mon-Sat:</strong> 9:00 AM - 5:00 PM</p>
+                    <p><strong>Lunch Break:</strong> 1:00 PM - 2:00 PM</p>
+                    <p>Closed on Sundays & Public Holidays</p>
+                    <p><em>Appointment preferred</em></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT FORM -->
+    <section class="section contact-form-section">
+        <div class="container">
+            <h2 class="section-title">Send us a Message</h2>
+            <form class="form-container" onsubmit="submitForm(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Full Name *</label>
+                        <input type="text" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" name="phone">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Email Address *</label>
+                        <input type="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Subject *</label>
+                        <select name="subject" required>
+                            <option value="">Select Subject</option>
+                            <option value="admission">Admission Query</option>
+                            <option value="courses">Course Information</option>
+                            <option value="faculty">Faculty Details</option>
+                            <option value="facilities">Facilities</option>
+                            <option value="general">General Query</option>
+                            <option value="iqac">IQAC/NAAC</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Message *</label>
+                    <textarea rows="6" name="message" placeholder="Tell us about your query..." required></textarea>
+                </div>
+                <button type="submit" class="cta-button">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- GOOGLE MAPS PLACEHOLDER -->
+    <section class="section map-section">
+        <div class="container">
+            <h2 class="section-title">Find Us</h2>
+            <div class="map-container">
+                <div class="map-placeholder">
+                    <div>
+                        <i style="font-size: 3rem; margin-bottom: 1rem; display: block;">📍</i>
+                        <div>Google Maps Integration</div>
+                        <div>Replace with actual map embed code</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i>🏛️</i> Anjuman Islam College</h3>
+                    <p>Established 1985 | NAAC Accredited | UGC Recognized</p>
+                    <p>Affiliated to Mahatma Gandhi Kashi Vidyapith</p>
+                </div>
+                <div class="footer-section">
+                    <h3><i>🔗</i> Quick Links</h3>
+                    <ul>
+                        <li><a href="courses/index.html">Courses</a></li>
+                        <li><a href="facilities/facilities/index.html">Facilities</a></li>
+                        <li><a href="gallery/gallery/photo-gallery.html">Gallery</a></li>
+                        <li><a href="iqac/index.html">IQAC</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3><i>📞</i> Contact Hours</h3>
+                    <p>Mon-Sat: 9 AM - 5 PM</p>
+                    <p>📧 Reply within 24 hours</p>
+                    <p>📍 Varanasi, UP</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Anjuman Islam College. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+
+        function submitForm(event) {
+            event.preventDefault();
+            alert('Thank you for your message! We will get back to you within 24 hours.');
+            event.target.reset();
+        }
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
