@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Committees | Anjuman Islam College, Varanasi</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Poppins', 'Arial', sans-serif; 
+            line-height: 1.6; color: #2c3e50; 
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        
+        /* HEADER */
+        .header { 
+            background: linear-gradient(135deg, #8B0000 0%, #A52A2A 50%, #B22222 100%); 
+            color: white; padding: 1rem 0; position: fixed; width: 100%; 
+            top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(139,0,0,0.3);
+        }
+        .nav-container { 
+            max-width: 1200px; margin: 0 auto; padding: 0 20px; 
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .logo { 
+            font-size: 2rem; font-weight: 700; 
+            background: linear-gradient(45deg, #DAA520, #FFD700); 
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+        .nav-menu ul { list-style: none; display: flex; gap: 2rem; }
+        .nav-menu a { 
+            color: white; text-decoration: none; font-weight: 500; 
+            padding: 0.5rem 1rem; border-radius: 25px; transition: all 0.3s; 
+        }
+        .nav-menu a:hover { 
+            background: rgba(218,165,32,0.2); transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(218,165,32,0.4);
+        }
+        .mobile-menu-btn { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
+
+        /* HERO */
+        .hero { 
+            background: linear-gradient(135deg, rgba(139,0,0,0.9), rgba(178,34,34,0.8)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500"><rect fill="%238B0000" width="1200" height="500"/><circle fill="%23DAA520" opacity="0.4" cx="400" cy="250" r="120"/></svg>'); 
+            height: 60vh; display: flex; align-items: center; color: white; margin-top: 0;
+        }
+        .hero-content { text-align: center; max-width: 900px; margin: 0 auto; padding: 0 20px; }
+        .hero h1 { 
+            font-size: 4rem; margin-bottom: 1rem; text-shadow: 3px 3px 10px rgba(0,0,0,0.7);
+            background: linear-gradient(45deg, #FFD700, #DAA520); -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .section { padding: 5rem 0; }
+        .section-title { 
+            text-align: center; font-size: 2.8rem; margin-bottom: 3rem; color: #8B0000; 
+            position: relative; font-weight: 600;
+        }
+        .section-title::after { 
+            content: ''; width: 100px; height: 5px; background: linear-gradient(90deg, #DAA520, #FFD700); 
+            position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%);
+        }
+
+        /* ADMIN SUBMENU */
+        .admin-submenu { 
+            background: rgba(255,255,255,0.95); padding: 2rem; border-radius: 20px; margin: 3rem 0;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1); text-align: center;
+        }
+        .admin-submenu ul { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; list-style: none; }
+        .admin-submenu a { 
+            padding: 0.8rem 1.5rem; background: linear-gradient(135deg, #8B0000, #DC143C);
+            color: white; text-decoration: none; border-radius: 25px; font-weight: 500;
+            transition: all 0.3s;
+        }
+        .admin-submenu a:hover { 
+            background: linear-gradient(135deg, #DAA520, #FFD700); transform: translateY(-3px);
+        }
+
+        /* COMMITTEES TABS */
+        .tabs-container { 
+            background: rgba(255,255,255,0.95); padding: 2rem; border-radius: 25px; 
+            margin: 3rem 0; box-shadow: 0 20px 60px rgba(139,0,0,0.15);
+        }
+        .tab-buttons { 
+            display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem; justify-content: center;
+        }
+        .tab-btn { 
+            padding: 1rem 2rem; background: rgba(139,0,0,0.1); color: #8B0000; 
+            border: 2px solid #DAA520; border-radius: 25px; cursor: pointer; 
+            font-weight: 600; transition: all 0.3s; white-space: nowrap;
+        }
+        .tab-btn.active { 
+            background: linear-gradient(135deg, #DAA520, #FFD700); color: #8B0000;
+            box-shadow: 0 10px 30px rgba(218,165,32,0.4); transform: translateY(-2px);
+        }
+        .tab-content { display: none; padding: 2rem; background: rgba(255,255,255,0.8); border-radius: 20px; }
+        .tab-content.active { display: block; }
+
+        /* COMMITTEE MEMBERS */
+        .committee-grid { 
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+            gap: 1.5rem; margin-top: 2rem;
+        }
+        .committee-member { 
+            background: rgba(255,255,255,0.9); padding: 1.5rem; border-radius: 15px;
+            border-left: 4px solid #DAA520; display: flex; gap: 1rem; align-items: center;
+            transition: all 0.3s; box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+        .committee-member:hover { 
+            transform: translateX(10px); box-shadow: 0 15px 40px rgba(139,0,0,0.15);
+        }
+        .member-photo { 
+            width: 60px; height: 60px; border-radius: 50%; 
+            background: linear-gradient(135deg, #DAA520, #8B0000); display: flex;
+            align-items: center; justify-content: center; font-size: 1.2rem;
+        }
+        .member-info h4 { color: #8B0000; font-weight: 700; margin-bottom: 0.2rem; }
+        .member-role { color: #DC143C; font-weight: 600; font-size: 0.9rem; }
+
+        /* STATISTICS */
+        .stats-grid { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+            gap: 2rem; margin: 4rem 0; text-align: center;
+        }
+        .stat-card { 
+            background: rgba(255,255,255,0.9); padding: 2.5rem 1.5rem; border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(139,0,0,0.1); border-top: 4px solid #DAA520;
+        }
+        .stat-number { 
+            font-size: 3rem; font-weight: 700; background: linear-gradient(45deg, #DAA520, #FFD700);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.8rem; }
+            .tab-buttons { flex-direction: column; align-items: center; }
+            .committee-grid { grid-template-columns: 1fr; }
+            .committee-member { flex-direction: column; text-align: center; }
+            .nav-menu { position: fixed; top: 80px; left: -100%; width: 100%; height: calc(100vh - 80px); 
+                background: #8B0000; flex-direction: column; padding-top: 2rem; }
+            .nav-menu.active { left: 0; }
+            .mobile-menu-btn { display: block; }
+            .admin-submenu ul { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">AIC Varanasi</a>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+            <nav class="nav-menu" id="navMenu">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../about/founder.html">About</a></li>
+                    <li><a href="governing-body.html">Administration</a></li>
+                    <li><a href="../faculties/arts.html">Faculties</a></li>
+                    <li><a href="../courses/index.html">Courses</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>College Committees</h1>
+            <p>Decentralized governance for efficient administration and quality enhancement</p>
+        </div>
+    </section>
+
+    <!-- ADMIN SUBMENU -->
+    <section class="section">
+        <div class="container">
+            <div class="admin-submenu">
+                <ul>
+                    <li><a href="governing-body.html">🏛️ Governing Body</a></li>
+                    <li><a href="chairperson-message.html">📜 Chairperson Message</a></li>
+                    <li><a href="principal-message.html">👨‍🏫 Principal Message</a></li>
+                    <li><a href="committees.html">📋 Committees</a></li>
+                    <li><a href="proctorial-board.html">🛡️ Proctorial Board</a></li>
+                    <li><a href="rules-and-regulations.html">📚 Rules & Regulations</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMMITTEE STATS -->
+    <section class="section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">18</div>
+                    <div style="color: #8B0000; font-weight: 600;">Active Committees</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">120+</div>
+                    <div style="color: #8B0000; font-weight: 600;">Faculty Members</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">4</div>
+                    <div style="color: #8B0000; font-weight: 600;">Statutory Committees</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">24</div>
+                    <div style="color: #8B0000; font-weight: 600;">Meetings/Year</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TABS CONTAINER -->
+    <section class="section">
+        <div class="container">
+            <div class="tabs-container">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" onclick="showTab('academic')">🎓 Academic Council</button>
+                    <button class="tab-btn" onclick="showTab('iqac')">📊 IQAC</button>
+                    <button class="tab-btn" onclick="showTab('examination')">📋 Examination</button>
+                    <button class="tab-btn" onclick="showTab('library')">📚 Library</button>
+                    <button class="tab-btn" onclick="showTab('placement')">💼 Placement Cell</button>
+                    <button class="tab-btn" onclick="showTab('anti-ragging')">🛡️ Anti-Ragging</button>
+                </div>
+
+                <!-- ACADEMIC COUNCIL -->
+                <div id="academic" class="tab-content active">
+                    <h3 style="color: #8B0000; font-size: 2rem; margin-bottom: 1.5rem;">Academic Council</h3>
+                    <div class="committee-grid">
+                        <div class="committee-member">
+                            <div class="member-photo">👨‍🏫</div>
+                            <div class="member-info">
+                                <h4>Dr. Naseem Raza</h4>
+                                <div class="member-role">Chairperson (Principal)</div>
+                            </div>
+                        </div>
+                        <div class="committee-member">
+                            <div class="member-photo">📚</div>
+                            <div class="member-info">
+                                <h4>Prof. Syed Hassan</h4>
+                                <div class="member-role">Member Secretary</div>
+                            </div>
+                        </div>
+                        <div class="committee-member">
+                            <div class="member-photo">🔬</div>
+                            <div class="member-info">
+                                <h4>Dr. Fatima Begum</h4>
+                                <div class="member-role">Science Coordinator</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- IQAC -->
+                <div id="iqac" class="tab-content">
+                    <h3 style="color: #8B0000; font-size: 2rem; margin-bottom: 1.5rem;">IQAC (Internal Quality Assurance Cell)</h3>
+                    <div class="committee-grid">
+                        <div class="committee-member">
+                            <div class="member-photo">📈</div>
+                            <div class="member-info">
+                                <h4>Dr. Naseem Raza</h4>
+                                <div class="member-role">Chairperson</div>
+                            </div>
+                        </div>
+                        <div class="committee-member">
+                            <div class="member-photo">👨‍💼</div>
+                            <div class="member-info">
+                                <h4>Prof. Rahim Khan</h4>
+                                <div class="member-role">Coordinator</div>
+                            </div>
+                        </div>
+                        <div class="committee-member">
+                            <div class="member-photo">📊</div>
+                            <div class="member-info">
+                                <h4>Dr. Ayesha Khan</h4>
+                                <div class="member-role">Member</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EXAMINATION -->
+                <div id="examination" class="tab-content">
+                    <h3 style="color: #8B0000; font-size: 2rem; margin-bottom: 1.5rem;">Examination Committee</h3>
+                    <div class="committee-grid">
+                        <div class="committee-member">
+                            <div class="member-photo">📋</div>
+                            <div class="member-info">
+                                <h4>Prof. Khalid Ahmed</h4>
+                                <div class="member-role">Controller of Examinations</div>
+                            </div>
+                        </div>
+                        <div class="committee-member">
+                            <div class="member-photo">✏️</div>
+                            <div class="member-info">
+                                <h4>Dr. Masood Ali</h4>
+                                <div class="member-role">Deputy Controller</div>
+                            </div>
+                        </div>
+                        <div class="committee-member">
+                            <div class="member-photo">📝</div>
+                            <div class="member-info">
+                                <h4>Smt. Rukhsana Begum</h4>
+                                <div class="member-role">Assistant Controller</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LIBRARY -->
+                <div id="library" class="tab-content">
+                    <h3 style="color: #8B0000; font-size: 2rem; margin-bottom: 1.5rem;">Library Committee</h3>
+                    <div class="committee-grid">
+                        <div class="committee-member">
+                            <div class="member-photo">📚</div>
+                            <div class="member-info">
+                                <h4>Prof. Saeed Ahmed</h4>
+                                <div class="member-role">Librarian (Convener)</div>
+                            </div>
+                        </div>
+                        <div class="committee-member">
+                            <div class="member-photo">👨‍🎓</div>
+                            <div class="member-info">
+                                <h4>Student Representative</h4>
+                                <div class="member-role">UG Student</div>
+                            </div>
+                        </div>
+                        <div class="committee-member">
+                            <div class="member-photo">👩‍🎓</div>
+                            <div class="member-info">
+                                <h4>Student Representative</h4>
+                                <div class="member-role">PG Student</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PLACEMENT -->
+                <div id="placement" class="tab-content">
+                    <h3 style="color: #8B0000; font-size: 2rem; margin-bottom: 1.5rem;">Placement Cell</h3>
+                    <div class="committee-grid">
+                        <div class="committee-member">
+                            <div class="member-photo">💼</div>
+                            <div class="member-info">
+                                <h4>Prof. Rahimuddin</h4>
+                                <div class="member-role">Placement Officer</div>
+                            </div>
+                        </div>
+                        <div class="committee-member">
+                            <div class="member-photo">📈</div>
+                            <div class="member-info">
+                                <h4>Dr. Naseem Fatima</h4>
+                                <div class="member-role">Training Coordinator</div>
+                            </div>
+                        </div>
+                        <div class="committee-member">
+                            <div class="member-photo">👩‍💼</div>
+                            <div class="member-info">
+                                <h4>Ms. Amina Khan</h4>
+                                <div class="member-role">Placement Assistant</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ANTI-RAGGING -->
+                <div id="anti-ragging" class="tab-content">
+                    <h3 style="color: #8B0000; font-size: 2rem; margin-bottom: 1.5rem;">Anti-Ragging Committee</h3>
+                    <div class="committee-grid">
+                        <div class="committee-member">
+                            <div class="member-photo">🛡️</div>
+                            <div class="member-info">
+                                <h4>Dr. Naseem Raza</h4>
+                                <div class="member-role">Chairperson</div>
+                            </div>
+                        </div>
+                        <div class="committee-member">
+                            <div class="member-photo">👮</div>
+                            <div class="member-info">
+                                <h4>Prof. Syed Hassan</h4>
+                                <div class="member-role">Member</div>
+                            </div>
+                        </div>
+                        <div class="committee-member">
+                            <div class="member-photo">👩‍⚖️</div>
+                            <div class="member-info">
+                                <h4>Dr. Fatima Begum</h4>
+                                <div class="member-role">Member</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer style="background: linear-gradient(135deg, #8B0000, #5C0000); color: white; padding: 3rem 0; text-align: center;">
+        <div class="container">
+            <p><strong>Anjuman Islam College</strong> | Est. 1985 | NAAC B++ Accredited</p>
+            <p>📍 Varanasi, UP | Administration → Committees | 18 Active Committees</p>
+            <p style="margin-top: 1rem; opacity: 0.8;">&copy; 2026. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+
+        function showTab(tabName) {
+            // Hide all tab contents
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => content.classList.remove('active'));
+            
+            // Remove active class from all buttons
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            tabBtns.forEach(btn => btn.classList.remove('active'));
+            
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
