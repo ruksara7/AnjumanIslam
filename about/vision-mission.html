@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vision & Mission | Anjuman Islam College, Varanasi</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Poppins', 'Arial', sans-serif; 
+            line-height: 1.6; color: #2c3e50; 
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        
+        /* HEADER */
+        .header { 
+            background: linear-gradient(135deg, #8B0000 0%, #A52A2A 50%, #B22222 100%); 
+            color: white; padding: 1rem 0; position: fixed; width: 100%; 
+            top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(139,0,0,0.3);
+        }
+        .nav-container { 
+            max-width: 1200px; margin: 0 auto; padding: 0 20px; 
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .logo { 
+            font-size: 2rem; font-weight: 700; 
+            background: linear-gradient(45deg, #DAA520, #FFD700); 
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+        .nav-menu ul { list-style: none; display: flex; gap: 2rem; }
+        .nav-menu a { 
+            color: white; text-decoration: none; font-weight: 500; 
+            padding: 0.5rem 1rem; border-radius: 25px; transition: all 0.3s; 
+        }
+        .nav-menu a:hover { 
+            background: rgba(218,165,32,0.2); transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(218,165,32,0.4);
+        }
+        .mobile-menu-btn { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
+
+        /* HERO */
+        .hero { 
+            background: linear-gradient(135deg, rgba(139,0,0,0.9), rgba(178,34,34,0.8)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500"><rect fill="%238B0000" width="1200" height="500"/><circle fill="%23DAA520" opacity="0.4" cx="300" cy="200" r="100"/><circle fill="%23FFD700" opacity="0.3" cx="900" cy="300" r="80"/></svg>'); 
+            height: 60vh; display: flex; align-items: center; color: white; margin-top: 0;
+        }
+        .hero-content { text-align: center; max-width: 900px; margin: 0 auto; padding: 0 20px; }
+        .hero h1 { 
+            font-size: 4rem; margin-bottom: 1rem; text-shadow: 3px 3px 10px rgba(0,0,0,0.7);
+            background: linear-gradient(45deg, #FFD700, #DAA520); -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .section { padding: 5rem 0; }
+        .section-title { 
+            text-align: center; font-size: 2.8rem; margin-bottom: 3rem; color: #8B0000; 
+            position: relative; font-weight: 600;
+        }
+        .section-title::after { 
+            content: ''; width: 100px; height: 5px; background: linear-gradient(90deg, #DAA520, #FFD700); 
+            position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%);
+        }
+
+        /* ABOUT SUBMENU */
+        .about-submenu { 
+            background: rgba(255,255,255,0.95); padding: 2rem; border-radius: 20px; margin: 3rem 0;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1); text-align: center;
+        }
+        .about-submenu ul { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; list-style: none; }
+        .about-submenu a { 
+            padding: 0.8rem 1.5rem; background: linear-gradient(135deg, #8B0000, #DC143C);
+            color: white; text-decoration: none; border-radius: 25px; font-weight: 500;
+            transition: all 0.3s;
+        }
+        .about-submenu a:hover { 
+            background: linear-gradient(135deg, #DAA520, #FFD700); transform: translateY(-3px);
+        }
+
+        /* VISION MISSION CARDS */
+        .vision-mission-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+        .vision-card, .mission-card { 
+            background: rgba(255,255,255,0.95); padding: 4rem 3rem; border-radius: 25px;
+            box-shadow: 0 20px 60px rgba(139,0,0,0.15); position: relative; overflow: hidden;
+            backdrop-filter: blur(10px); height: 100%; transition: all 0.4s;
+        }
+        .vision-card { border-top: 6px solid #DAA520; }
+        .mission-card { border-top: 6px solid #DC143C; }
+        .vision-card::before, .mission-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 6px;
+            background: linear-gradient(90deg, #DAA520, #FFD700);
+        }
+        .vision-card:hover, .mission-card:hover { 
+            transform: translateY(-15px); box-shadow: 0 35px 80px rgba(139,0,0,0.25);
+        }
+        .vm-icon { 
+            font-size: 5rem; margin-bottom: 2rem;
+            background: linear-gradient(135deg, #8B0000, #DC143C); -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent; opacity: 0.9;
+        }
+        .vm-title { 
+            font-size: 2.2rem; color: #8B0000; font-weight: 700; margin-bottom: 2rem;
+            text-align: center;
+        }
+        .vm-content { 
+            font-size: 1.1rem; line-height: 1.8; color: #444; text-align: justify;
+        }
+
+        /* CORE VALUES */
+        .core-values-grid { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 2rem; margin: 4rem 0;
+        }
+        .value-card { 
+            background: linear-gradient(145deg, rgba(255,255,255,0.9), rgba(248,250,252,0.8));
+            padding: 2.5rem 2rem; border-radius: 20px; text-align: center;
+            border: 2px solid rgba(218,165,32,0.2); transition: all 0.4s;
+            position: relative;
+        }
+        .value-card:hover { 
+            transform: translateY(-10px) scale(1.02); border-color: #DAA520;
+            box-shadow: 0 25px 60px rgba(218,165,32,0.2);
+        }
+        .value-icon { font-size: 3.5rem; margin-bottom: 1.5rem; }
+        .value-title { color: #8B0000; font-size: 1.4rem; font-weight: 600; margin-bottom: 1rem; }
+
+        @media (max-width: 768px) {
+            .vision-mission-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .hero h1 { font-size: 2.8rem; }
+            .nav-menu { position: fixed; top: 80px; left: -100%; width: 100%; height: calc(100vh - 80px); 
+                background: #8B0000; flex-direction: column; padding-top: 2rem; }
+            .nav-menu.active { left: 0; }
+            .mobile-menu-btn { display: block; }
+            .about-submenu ul { flex-direction: column; }
+            .core-values-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">AIC Varanasi</a>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+            <nav class="nav-menu" id="navMenu">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="founder.html">Founder</a></li>
+                    <li><a href="history.html">History</a></li>
+                    <li><a href="vision-mission.html">Vision & Mission</a></li>
+                    <li><a href="past-president.html">Past Presidents</a></li>
+                    <li><a href="past-principal.html">Past Principals</a></li>
+                    <li><a href="../administration/governing-body.html">Administration</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Vision & Mission</h1>
+            <p>Guiding Principles That Shape Our Legacy of Excellence</p>
+        </div>
+    </section>
+
+    <!-- ABOUT SUBMENU -->
+    <section class="section">
+        <div class="container">
+            <div class="about-submenu">
+                <ul>
+                    <li><a href="founder.html">👨‍🏫 Founder</a></li>
+                    <li><a href="history.html">📜 History</a></li>
+                    <li><a href="vision-mission.html">🎯 Vision & Mission</a></li>
+                    <li><a href="past-president.html">👨‍💼 Past Presidents</a></li>
+                    <li><a href="past-principal.html">👨‍🏫 Past Principals</a></li>
+                    <li><a href="retired-teachers.html">👴 Retired Faculty</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- VISION & MISSION -->
+    <section class="section">
+        <div class="container">
+            <div class="vision-mission-grid">
+                <!-- VISION -->
+                <div class="vision-card">
+                    <div class="vm-icon">👁️</div>
+                    <h2 class="vm-title">Our Vision</h2>
+                    <div class="vm-content">
+                        To be a premier institution of higher education recognized nationally for academic excellence, 
+                        innovative research, and holistic development while preserving cultural values and serving 
+                        the educational needs of Varanasi and surrounding regions.
+                    </div>
+                </div>
+
+                <!-- MISSION -->
+                <div class="mission-card">
+                    <div class="vm-icon">🎯</div>
+                    <h2 class="vm-title">Our Mission</h2>
+                    <div class="vm-content">
+                        <ul style="margin: 1.5rem 0; padding-left: 1.5rem;">
+                            <li>Provide quality education in Arts, Science, Commerce at UG & PG levels</li>
+                            <li>Foster research aptitude and critical thinking among students</li>
+                            <li>Develop employable skills through practical training and industry exposure</li>
+                            <li>Preserve cultural heritage while embracing modern educational practices</li>
+                            <li>Ensure inclusive education for students from diverse backgrounds</li>
+                            <li>Maintain NAAC quality standards and continuous improvement</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CORE VALUES -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Core Values</h2>
+            <div class="core-values-grid">
+                <div class="value-card">
+                    <div class="value-icon">🎓</div>
+                    <h3 class="value-title">Academic Excellence</h3>
+                    <p>Commitment to highest standards of teaching and learning</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🤝</div>
+                    <h3 class="value-title">Integrity</h3>
+                    <p>Honesty, transparency and ethical practices</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🌱</div>
+                    <h3 class="value-title">Inclusivity</h3>
+                    <p>Equal opportunities for all students</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">💡</div>
+                    <h3 class="value-title">Innovation</h3>
+                    <p>Embracing new ideas and technologies</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">👥</div>
+                    <h3 class="value-title">Community Service</h3>
+                    <p>Contributing to societal development</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🇮🇳</div>
+                    <h3 class="value-title">Cultural Preservation</h3>
+                    <p>Respecting our rich heritage</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer style="background: linear-gradient(135deg, #8B0000, #5C0000); color: white; padding: 3rem 0; text-align: center;">
+        <div class="container">
+            <p><strong>Anjuman Islam College</strong> | Est. 1985 | NAAC B++ | UGC Recognized</p>
+            <p>📍 Varanasi, Uttar Pradesh | About → Vision & Mission</p>
+            <p style="margin-top: 1rem; opacity: 0.8;">&copy; 2026. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
