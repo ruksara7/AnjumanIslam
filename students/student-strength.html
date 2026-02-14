@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Strength | Anjuman Islam College, Varanasi</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Poppins', 'Arial', sans-serif; 
+            line-height: 1.6; color: #2c3e50; 
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        
+        /* HEADER */
+        .header { 
+            background: linear-gradient(135deg, #8B0000 0%, #A52A2A 50%, #B22222 100%); 
+            color: white; padding: 1rem 0; position: fixed; width: 100%; 
+            top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(139,0,0,0.3);
+        }
+        .nav-container { 
+            max-width: 1200px; margin: 0 auto; padding: 0 20px; 
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .logo { 
+            font-size: 2rem; font-weight: 700; 
+            background: linear-gradient(45deg, #DAA520, #FFD700); 
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+        .nav-menu ul { list-style: none; display: flex; gap: 2rem; }
+        .nav-menu a { 
+            color: white; text-decoration: none; font-weight: 500; 
+            padding: 0.5rem 1rem; border-radius: 25px; transition: all 0.3s; 
+        }
+        .nav-menu a:hover { 
+            background: rgba(218,165,32,0.2); transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(218,165,32,0.4);
+        }
+        .mobile-menu-btn { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
+
+        /* HERO */
+        .hero { 
+            background: linear-gradient(135deg, rgba(139,0,0,0.9), rgba(178,34,34,0.8)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500"><rect fill="%238B0000" width="1200" height="500"/><circle fill="%239E9D9D" opacity="0.4" cx="600" cy="250" r="150"/></svg>'); 
+            height: 60vh; display: flex; align-items: center; color: white; margin-top: 0;
+        }
+        .hero-content { text-align: center; max-width: 900px; margin: 0 auto; padding: 0 20px; }
+        .hero h1 { 
+            font-size: 4rem; margin-bottom: 1rem; text-shadow: 3px 3px 10px rgba(0,0,0,0.7);
+            background: linear-gradient(45deg, #FFD700, #DAA520); -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .section { padding: 5rem 0; }
+        .section-title { 
+            text-align: center; font-size: 2.8rem; margin-bottom: 3rem; color: #8B0000; 
+            position: relative; font-weight: 600;
+        }
+        .section-title::after { 
+            content: ''; width: 100px; height: 5px; background: linear-gradient(90deg, #DAA520, #FFD700); 
+            position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%);
+        }
+
+        /* STUDENT SUBMENU */
+        .student-submenu { 
+            background: rgba(255,255,255,0.95); padding: 2rem; border-radius: 20px; margin: 3rem 0;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1); text-align: center;
+        }
+        .student-submenu ul { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; list-style: none; }
+        .student-submenu a { 
+            padding: 0.8rem 1.5rem; background: linear-gradient(135deg, #8B0000, #DC143C);
+            color: white; text-decoration: none; border-radius: 25px; font-weight: 500;
+            transition: all 0.3s;
+        }
+        .student-submenu a:hover, .student-submenu .active { 
+            background: linear-gradient(135deg, #9E9D9D, #757575); transform: translateY(-3px);
+        }
+
+        /* OVERVIEW STATS */
+        .overview-stats { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            gap: 2rem; margin: 4rem 0; text-align: center;
+        }
+        .stat-card { 
+            background: rgba(255,255,255,0.95); padding: 3rem 2rem; border-radius: 25px;
+            box-shadow: 0 20px 60px rgba(158,157,157,0.15);
+        }
+        .stat-number { 
+            font-size: 4rem; font-weight: 700; 
+            background: linear-gradient(45deg, #9E9D9D, #757575); -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent; margin-bottom: 1rem;
+        }
+        .stat-label { color: #8B0000; font-weight: 600; font-size: 1.2rem; }
+
+        /* COURSE-WISE TABLE */
+        .course-table-container { 
+            background: rgba(255,255,255,0.95); padding: 3rem; border-radius: 25px; 
+            margin: 4rem 0; box-shadow: 0 20px 60px rgba(158,157,157,0.15);
+            overflow-x: auto;
+        }
+        table { 
+            width: 100%; border-collapse: collapse; font-size: 1rem;
+            background: white; border-radius: 15px; overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        th { 
+            background: linear-gradient(135deg, #9E9D9D, #757575); color: white; 
+            padding: 1.5rem 1rem; text-align: left; font-weight: 600;
+        }
+        td { 
+            padding: 1.2rem 1rem; border-bottom: 1px solid #eee;
+        }
+        tr:nth-child(even) { background: #f8f9fa; }
+        tr:hover { background: rgba(158,157,157,0.1); }
+        .total-row { 
+            font-weight: 700; font-size: 1.1rem; 
+            background: linear-gradient(135deg, #9E9D9D, #757575) !important;
+            color: white !important;
+        }
+
+        /* GENDER & CATEGORY CHARTS */
+        .charts-grid { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
+            gap: 2rem; margin: 4rem 0;
+        }
+        .chart-card { 
+            background: rgba(255,255,255,0.95); padding: 2.5rem; border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(158,157,157,0.15); text-align: center;
+        }
+        .chart-placeholder { 
+            width: 100%; height: 250px; 
+            background: linear-gradient(135deg, #9E9D9D, #757575); 
+            border-radius: 15px; margin: 1.5rem 0; display: flex;
+            align-items: center; justify-content: center; color: white; font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.8rem; }
+            .overview-stats, .charts-grid { grid-template-columns: 1fr; }
+            .nav-menu { position: fixed; top: 80px; left: -100%; width: 100%; height: calc(100vh - 80px); 
+                background: #8B0000; flex-direction: column; padding-top: 2rem; }
+            .nav-menu.active { left: 0; }
+            .mobile-menu-btn { display: block; }
+            .student-submenu ul { flex-direction: column; }
+            table { font-size: 0.9rem; }
+            th, td { padding: 0.8rem 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">AIC Varanasi</a>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+            <nav class="nav-menu" id="navMenu">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../about/founder.html">About</a></li>
+                    <li><a href="../administration/governing-body.html">Administration</a></li>
+                    <li><a href="../faculties/arts.html">Faculties</a></li>
+                    <li><a href="../courses/index.html">Courses</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Student Strength 2025-26</h1>
+            <p>1250+ Students | 48% Girls | Multi-disciplinary Programs</p>
+        </div>
+    </section>
+
+    <!-- STUDENT SUBMENU -->
+    <section class="section">
+        <div class="container">
+            <div class="student-submenu">
+                <ul>
+                    <li><a href="admission-procedure.html">📋 Admission Procedure</a></li>
+                    <li><a href="student-profile.html">👤 Student Profile</a></li>
+                    <li><a href="student-achievements.html">🏆 Achievements</a></li>
+                    <li><a href="student-union.html">👥 Student Union</a></li>
+                    <li><a href="student-strength.html" class="active">📊 Student Strength</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- OVERVIEW STATISTICS -->
+    <section class="section">
+        <div class="container">
+            <div class="overview-stats">
+                <div class="stat-card">
+                    <div class="stat-number">1250</div>
+                    <div class="stat-label">Total Students</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">48%</div>
+                    <div class="stat-label">Girl Students</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">92%</div>
+                    <div class="stat-label">Avg Attendance</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">32%</div>
+                    <div class="stat-label">PG Students</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COURSE-WISE ENROLLMENT -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Course-wise Enrollment (2025-26)</h2>
+            <div class="course-table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Course</th>
+                            <th>Year/Sem</th>
+                            <th>Boys</th>
+                            <th>Girls</th>
+                            <th>Total</th>
+                            <th>Capacity</th>
+                            <th>Occupancy</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>B.A. Arts</td>
+                            <td>3 Years</td>
+                            <td>185</td>
+                            <td>142</td>
+                            <td>327</td>
+                            <td>360</td>
+                            <td>91%</td>
+                        </tr>
+                        <tr>
+                            <td>B.Sc Science</td>
+                            <td>3 Years</td>
+                            <td>142</td>
+                            <td>98</td>
+                            <td>240</td>
+                            <td>270</td>
+                            <td>89%</td>
+                        </tr>
+                        <tr>
+                            <td>B.Com</td>
+                            <td>3 Years</td>
+                            <td>168</td>
+                            <td>112</td>
+                            <td>280</td>
+                            <td>300</td>
+                            <td>93%</td>
+                        </tr>
+                        <tr>
+                            <td>B.Ed</td>
+                            <td>2 Years</td>
+                            <td>28</td>
+                            <td>72</td>
+                            <td>100</td>
+                            <td>100</td>
+                            <td>100%</td>
+                        </tr>
+                        <tr>
+                            <td>M.A. Arts</td>
+                            <td>2 Years</td>
+                            <td>45</td>
+                            <td>38</td>
+                            <td>83</td>
+                            <td>100</td>
+                            <td>83%</td>
+                        </tr>
+                        <tr>
+                            <td>M.Sc Science</td>
+                            <td>2 Years</td>
+                            <td>52</td>
+                            <td>33</td>
+                            <td>85</td>
+                            <td>100</td>
+                            <td>85%</td>
+                        </tr>
+                        <tr class="total-row">
+                            <td><strong>GRAND TOTAL</strong></td>
+                            <td></td>
+                            <td><strong>620</strong></td>
+                            <td><strong>495</strong></td>
+                            <td><strong>1115</strong></td>
+                            <td><strong>1230</strong></td>
+                            <td><strong>91%</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- GENDER & CATEGORY DISTRIBUTION -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Demographic Distribution</h2>
+            <div class="charts-grid">
+                <div class="chart-card">
+                    <h3>Gender Distribution</h3>
+                    <div class="chart-placeholder">
+                        🧑‍🤝‍🧑 Boys: 620 (52%)<br>
+                        👩‍🤝‍👧 Girls: 495 (48%)
+                    </div>
+                </div>
+                <div class="chart-card">
+                    <h3>Category-wise</h3>
+                    <div class="chart-placeholder">
+                        🟢 General: 385 (31%)<br>
+                        🟡 OBC: 520 (42%)<br>
+                        🔴 SC/ST: 210 (17%)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer style="background: linear-gradient(135deg, #8B0000, #5C0000); color: white; padding: 3rem 0; text-align: center;">
+        <div class="container">
+            <p><strong>Anjuman Islam College</strong> | Est. 1985 | NAAC B++ Accredited</p>
+            <p>📍 Varanasi, UP | Students → Strength Analysis | 1250+ Bright Minds</p>
+            <p style="margin-top: 1rem; opacity: 0.8;">&copy; 2026. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
