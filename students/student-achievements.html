@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Achievements | Anjuman Islam College, Varanasi</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Poppins', 'Arial', sans-serif; 
+            line-height: 1.6; color: #2c3e50; 
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        
+        /* HEADER */
+        .header { 
+            background: linear-gradient(135deg, #8B0000 0%, #A52A2A 50%, #B22222 100%); 
+            color: white; padding: 1rem 0; position: fixed; width: 100%; 
+            top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(139,0,0,0.3);
+        }
+        .nav-container { 
+            max-width: 1200px; margin: 0 auto; padding: 0 20px; 
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .logo { 
+            font-size: 2rem; font-weight: 700; 
+            background: linear-gradient(45deg, #DAA520, #FFD700); 
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+        .nav-menu ul { list-style: none; display: flex; gap: 2rem; }
+        .nav-menu a { 
+            color: white; text-decoration: none; font-weight: 500; 
+            padding: 0.5rem 1rem; border-radius: 25px; transition: all 0.3s; 
+        }
+        .nav-menu a:hover { 
+            background: rgba(218,165,32,0.2); transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(218,165,32,0.4);
+        }
+        .mobile-menu-btn { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
+
+        /* HERO */
+        .hero { 
+            background: linear-gradient(135deg, rgba(139,0,0,0.9), rgba(178,34,34,0.8)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500"><rect fill="%238B0000" width="1200" height="500"/><circle fill="%23FFD700" opacity="0.4" cx="600" cy="250" r="150"/></svg>'); 
+            height: 60vh; display: flex; align-items: center; color: white; margin-top: 0;
+        }
+        .hero-content { text-align: center; max-width: 900px; margin: 0 auto; padding: 0 20px; }
+        .hero h1 { 
+            font-size: 4rem; margin-bottom: 1rem; text-shadow: 3px 3px 10px rgba(0,0,0,0.7);
+            background: linear-gradient(45deg, #FFD700, #DAA520); -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .section { padding: 5rem 0; }
+        .section-title { 
+            text-align: center; font-size: 2.8rem; margin-bottom: 3rem; color: #8B0000; 
+            position: relative; font-weight: 600;
+        }
+        .section-title::after { 
+            content: ''; width: 100px; height: 5px; background: linear-gradient(90deg, #DAA520, #FFD700); 
+            position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%);
+        }
+
+        /* STUDENT SUBMENU */
+        .student-submenu { 
+            background: rgba(255,255,255,0.95); padding: 2rem; border-radius: 20px; margin: 3rem 0;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1); text-align: center;
+        }
+        .student-submenu ul { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; list-style: none; }
+        .student-submenu a { 
+            padding: 0.8rem 1.5rem; background: linear-gradient(135deg, #8B0000, #DC143C);
+            color: white; text-decoration: none; border-radius: 25px; font-weight: 500;
+            transition: all 0.3s;
+        }
+        .student-submenu a:hover, .student-submenu .active { 
+            background: linear-gradient(135deg, #FFD700, #FF9800); transform: translateY(-3px);
+        }
+
+        /* ACHIEVEMENT STATS */
+        .stats-grid { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+            gap: 2rem; margin: 4rem 0; text-align: center;
+        }
+        .stat-card { 
+            background: rgba(255,255,255,0.95); padding: 2.5rem 1.5rem; border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(255,215,0,0.15);
+        }
+        .stat-number { 
+            font-size: 3.5rem; font-weight: 700; 
+            background: linear-gradient(45deg, #FFD700, #FF9800); -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent; margin-bottom: 0.5rem;
+        }
+
+        /* ACHIEVEMENT TABS */
+        .tabs-container { 
+            background: rgba(255,255,255,0.95); padding: 3rem; border-radius: 25px; 
+            margin: 3rem 0; box-shadow: 0 20px 60px rgba(255,215,0,0.15);
+        }
+        .tab-buttons { 
+            display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem; justify-content: center;
+        }
+        .tab-btn { 
+            padding: 1rem 2rem; background: rgba(139,0,0,0.1); color: #8B0000; 
+            border: 2px solid #FFD700; border-radius: 25px; cursor: pointer; 
+            font-weight: 600; transition: all 0.3s; white-space: nowrap;
+        }
+        .tab-btn.active { 
+            background: linear-gradient(135deg, #FFD700, #FF9800); color: #8B0000;
+            box-shadow: 0 10px 30px rgba(255,215,0,0.4); transform: translateY(-2px);
+        }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
+        /* ACHIEVEMENT GRID */
+        .achievements-grid { 
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); 
+            gap: 2rem; margin-top: 2rem;
+        }
+        .achievement-card { 
+            background: rgba(255,255,255,0.95); padding: 2rem; border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(139,0,0,0.1); transition: all 0.4s;
+            border-left: 5px solid #FFD700; position: relative; overflow: hidden;
+        }
+        .achievement-card::before { 
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+            background: linear-gradient(90deg, #FFD700, #FF9800);
+        }
+        .achievement-card:hover { 
+            transform: translateY(-10px); box-shadow: 0 25px 60px rgba(255,215,0,0.25);
+        }
+        .achievement-icon { 
+            width: 70px; height: 70px; border-radius: 50%; 
+            background: linear-gradient(135deg, #FFD700, #FF9800); margin: 0 auto 1.5rem;
+            display: flex; align-items: center; justify-content: center; font-size: 1.8rem;
+            color: #8B0000;
+        }
+        .achievement-title { 
+            font-size: 1.4rem; color: #8B0000; font-weight: 700; margin-bottom: 1rem;
+            text-align: center;
+        }
+        .achievement-student { 
+            color: #FF9800; font-weight: 600; font-size: 1.1rem; margin-bottom: 0.8rem;
+            text-align: center;
+        }
+        .achievement-details { 
+            color: #666; font-size: 0.95rem; line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.8rem; }
+            .achievements-grid { grid-template-columns: 1fr; }
+            .tab-buttons { flex-direction: column; align-items: center; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .nav-menu { position: fixed; top: 80px; left: -100%; width: 100%; height: calc(100vh - 80px); 
+                background: #8B0000; flex-direction: column; padding-top: 2rem; }
+            .nav-menu.active { left: 0; }
+            .mobile-menu-btn { display: block; }
+            .student-submenu ul { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">AIC Varanasi</a>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+            <nav class="nav-menu" id="navMenu">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../about/founder.html">About</a></li>
+                    <li><a href="../administration/governing-body.html">Administration</a></li>
+                    <li><a href="../faculties/arts.html">Faculties</a></li>
+                    <li><a href="../courses/index.html">Courses</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Student Achievements 2025</h1>
+            <p>150+ Awards | 75 University Ranks | 85% Placement Success</p>
+        </div>
+    </section>
+
+    <!-- STUDENT SUBMENU -->
+    <section class="section">
+        <div class="container">
+            <div class="student-submenu">
+                <ul>
+                    <li><a href="admission-procedure.html">📋 Admission Procedure</a></li>
+                    <li><a href="student-profile.html">👤 Student Profile</a></li>
+                    <li><a href="student-achievements.html" class="active">🏆 Achievements</a></li>
+                    <li><a href="student-union.html">👥 Student Union</a></li>
+                    <li><a href="student-strength.html">📊 Student Strength</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ACHIEVEMENT STATISTICS -->
+    <section class="section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">150+</div>
+                    <div style="color: #8B0000; font-weight: 600;">Awards Won</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">75</div>
+                    <div style="color: #8B0000; font-weight: 600;">University Ranks</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">85%</div>
+                    <div style="color: #8B0000; font-weight: 600;">Placement Rate</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">25</div>
+                    <div style="color: #8B0000; font-weight: 600;">NET/GATE Qualifiers</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ACHIEVEMENT TABS -->
+    <section class="section">
+        <div class="container">
+            <div class="tabs-container">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" onclick="showTab('academic')">🎓 Academic</button>
+                    <button class="tab-btn" onclick="showTab('sports')">🏅 Sports</button>
+                    <button class="tab-btn" onclick="showTab('cultural')">🎭 Cultural</button>
+                    <button class="tab-btn" onclick="showTab('research')">🔬 Research</button>
+                </div>
+
+                <!-- ACADEMIC ACHIEVEMENTS -->
+                <div id="academic" class="tab-content active">
+                    <div class="achievements-grid">
+                        <div class="achievement-card">
+                            <div class="achievement-icon">🥇</div>
+                            <h3 class="achievement-title">University Gold Medal</h3>
+                            <div class="achievement-student">Ayesha Rahman (M.Sc Physics)</div>
+                            <div class="achievement-details">
+                                Secured 1st position in BHU affiliated universities with 98.6% marks
+                            </div>
+                        </div>
+                        <div class="achievement-card">
+                            <div class="achievement-icon">🥈</div>
+                            <h3 class="achievement-title">2nd Rank B.Com</h3>
+                            <div class="achievement-student">Arham Khan (B.Com Hons)</div>
+                            <div class="achievement-details">
+                                2nd position across 15 affiliated colleges, 96.2% aggregate
+                            </div>
+                        </div>
+                        <div class="achievement-card">
+                            <div class="achievement-icon">🥉</div>
+                            <h3 class="achievement-title">3rd Rank B.Ed</h3>
+                            <div class="achievement-student">Zainab Fatima (B.Ed)</div>
+                            <div class="achievement-details">
+                                Excellence in teaching practice & pedagogy, 97.8% marks
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SPORTS ACHIEVEMENTS -->
+                <div id="sports" class="tab-content">
+                    <div class="achievements-grid">
+                        <div class="achievement-card">
+                            <div class="achievement-icon">🏆</div>
+                            <h3 class="achievement-title">Inter-College Cricket Champions</h3>
+                            <div class="achievement-student">Team Captain: Faizan Ahmed</div>
+                            <div class="achievement-details">
+                                Won VBU Cricket Tournament 2025, defeated 16 teams
+                            </div>
+                        </div>
+                        <div class="achievement-card">
+                            <div class="achievement-icon">🥋</div>
+                            <h3 class="achievement-title">State Taekwondo Silver</h3>
+                            <div class="achievement-student">Sana Parveen (M.A History)</div>
+                            <div class="achievement-details">
+                                UP State Championship 2025, 65kg category runner-up
+                            </div>
+                        </div>
+                        <div class="achievement-card">
+                            <div class="achievement-icon">🏃</div>
+                            <h3 class="achievement-title">District Athletics Gold</h3>
+                            <div class="achievement-student">Mohd. Danish (B.A English)</div>
+                            <div class="achievement-details">
+                                100m sprint gold, Varanasi District Championship
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CULTURAL ACHIEVEMENTS -->
+                <div id="cultural" class="tab-content">
+                    <div class="achievements-grid">
+                        <div class="achievement-card">
+                            <div class="achievement-icon">🎤</div>
+                            <h3 class="achievement-title">All India Debate Champion</h3>
+                            <div class="achievement-student">Mohd. Danish (B.A English)</div>
+                            <div class="achievement-details">
+                                National Youth Parliament Competition, Delhi University
+                            </div>
+                        </div>
+                        <div class="achievement-card">
+                            <div class="achievement-icon">🎭</div>
+                            <h3 class="achievement-title">Drama Fest 1st Prize</h3>
+                            <div class="achievement-student">Cultural Team</div>
+                            <div class="achievement-details">
+                                Inter-college cultural fest, BHU Youth Festival 2025
+                            </div>
+                        </div>
+                        <div class="achievement-card">
+                            <div class="achievement-icon">🎵</div>
+                            <h3 class="achievement-title">Ghazal Competition Winner</h3>
+                            <div class="achievement-student">Zainab Fatima (B.Ed)</div>
+                            <div class="achievement-details">
+                                Varanasi Music Festival, organized by Sangeet Natak Academy
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RESEARCH ACHIEVEMENTS -->
+                <div id="research" class="tab-content">
+                    <div class="achievements-grid">
+                        <div class="achievement-card">
+                            <div class="achievement-icon">📚</div>
+                            <h3 class="achievement-title">DBT-JRF Fellowship</h3>
+                            <div class="achievement-student">Ayesha Rahman (M.Sc Physics)</div>
+                            <div class="achievement-details">
+                                Selected among top 0.5% candidates nationwide
+                            </div>
+                        </div>
+                        <div class="achievement-card">
+                            <div class="achievement-icon">🔬</div>
+                            <h3 class="achievement-title">CSIR-NET Qualified</h3>
+                            <div class="achievement-student">Faizan Ahmed (M.Sc Chemistry)</div>
+                            <div class="achievement-details">
+                                Lecture & JRF qualification, top 2% percentile
+                            </div>
+                        </div>
+                        <div class="achievement-card">
+                            <div class="achievement-icon">🎓</div>
+                            <h3 class="achievement-title">UGC-NET History</h3>
+                            <div class="achievement-student">Sana Parveen (M.A History)</div>
+                            <div class="achievement-details">
+                                Qualified for Assistant Professor eligibility
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer style="background: linear-gradient(135deg, #8B0000, #5C0000); color: white; padding: 3rem 0; text-align: center;">
+        <div class="container">
+            <p><strong>Anjuman Islam College</strong> | Est. 1985 | NAAC B++ Accredited</p>
+            <p>📍 Varanasi, UP | Students → Achievements | Proud of Our Stars</p>
+            <p style="margin-top: 1rem; opacity: 0.8;">&copy; 2026. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+
+        function showTab(tabName) {
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
