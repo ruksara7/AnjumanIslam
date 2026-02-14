@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Governing Body | Anjuman Islam College, Varanasi</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Poppins', 'Arial', sans-serif; 
+            line-height: 1.6; color: #2c3e50; 
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        
+        /* HEADER */
+        .header { 
+            background: linear-gradient(135deg, #8B0000 0%, #A52A2A 50%, #B22222 100%); 
+            color: white; padding: 1rem 0; position: fixed; width: 100%; 
+            top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(139,0,0,0.3);
+        }
+        .nav-container { 
+            max-width: 1200px; margin: 0 auto; padding: 0 20px; 
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .logo { 
+            font-size: 2rem; font-weight: 700; 
+            background: linear-gradient(45deg, #DAA520, #FFD700); 
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+        .nav-menu ul { list-style: none; display: flex; gap: 2rem; }
+        .nav-menu a { 
+            color: white; text-decoration: none; font-weight: 500; 
+            padding: 0.5rem 1rem; border-radius: 25px; transition: all 0.3s; 
+        }
+        .nav-menu a:hover { 
+            background: rgba(218,165,32,0.2); transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(218,165,32,0.4);
+        }
+        .mobile-menu-btn { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
+
+        /* HERO */
+        .hero { 
+            background: linear-gradient(135deg, rgba(139,0,0,0.9), rgba(178,34,34,0.8)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500"><rect fill="%238B0000" width="1200" height="500"/><circle fill="%23DAA520" opacity="0.4" cx="500" cy="200" r="100"/></svg>'); 
+            height: 60vh; display: flex; align-items: center; color: white; margin-top: 0;
+        }
+        .hero-content { text-align: center; max-width: 900px; margin: 0 auto; padding: 0 20px; }
+        .hero h1 { 
+            font-size: 4rem; margin-bottom: 1rem; text-shadow: 3px 3px 10px rgba(0,0,0,0.7);
+            background: linear-gradient(45deg, #FFD700, #DAA520); -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .section { padding: 5rem 0; }
+        .section-title { 
+            text-align: center; font-size: 2.8rem; margin-bottom: 3rem; color: #8B0000; 
+            position: relative; font-weight: 600;
+        }
+        .section-title::after { 
+            content: ''; width: 100px; height: 5px; background: linear-gradient(90deg, #DAA520, #FFD700); 
+            position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%);
+        }
+
+        /* ADMIN SUBMENU */
+        .admin-submenu { 
+            background: rgba(255,255,255,0.95); padding: 2rem; border-radius: 20px; margin: 3rem 0;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1); text-align: center;
+        }
+        .admin-submenu ul { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; list-style: none; }
+        .admin-submenu a { 
+            padding: 0.8rem 1.5rem; background: linear-gradient(135deg, #8B0000, #DC143C);
+            color: white; text-decoration: none; border-radius: 25px; font-weight: 500;
+            transition: all 0.3s;
+        }
+        .admin-submenu a:hover { 
+            background: linear-gradient(135deg, #DAA520, #FFD700); transform: translateY(-3px);
+        }
+
+        /* GOVERNING BODY STRUCTURE */
+        .gov-structure { 
+            background: rgba(255,255,255,0.95); padding: 3rem; border-radius: 25px; 
+            margin: 3rem 0; box-shadow: 0 20px 60px rgba(139,0,0,0.15);
+        }
+        .structure-grid { 
+            display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; align-items: start;
+        }
+        .chairman-card { 
+            background: linear-gradient(135deg, rgba(218,165,32,0.2), rgba(255,215,0,0.1));
+            border: 3px solid #DAA520; padding: 2.5rem; border-radius: 20px; text-align: center;
+            position: relative; height: 100%;
+        }
+        .chairman-photo { 
+            width: 200px; height: 250px; border-radius: 15px; 
+            background: linear-gradient(135deg, #DAA520, #FFD700); margin: 0 auto 1.5rem;
+            display: flex; align-items: center; justify-content: center; font-size: 1rem;
+            box-shadow: 0 15px 40px rgba(218,165,32,0.4);
+        }
+        .chairman-photo::before { content: 'CHAIRMAN PHOTO'; color: rgba(255,255,255,0.9); }
+        .chairman-title { 
+            font-size: 1.8rem; color: #8B0000; font-weight: 700; margin-bottom: 0.5rem;
+            background: linear-gradient(45deg, #DAA520, #FFD700); -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* MEMBERS GRID */
+        .members-grid { 
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+            gap: 2rem;
+        }
+        .member-card { 
+            background: rgba(255,255,255,0.9); padding: 2rem; border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(139,0,0,0.1); transition: all 0.4s;
+            border-left: 5px solid #DAA520;
+        }
+        .member-card:hover { 
+            transform: translateY(-10px); box-shadow: 0 25px 60px rgba(139,0,0,0.2);
+        }
+        .member-photo { 
+            width: 120px; height: 150px; border-radius: 12px; 
+            background: linear-gradient(135deg, #DAA520, #8B0000); margin: 0 auto 1rem;
+            display: flex; align-items: center; justify-content: center; font-size: 0.85rem;
+        }
+        .member-photo::before { content: 'PHOTO'; color: rgba(255,255,255,0.9); }
+        .member-name { font-size: 1.3rem; color: #8B0000; font-weight: 700; margin-bottom: 0.3rem; }
+        .member-position { 
+            color: #DC143C; font-weight: 600; font-size: 0.95rem; margin-bottom: 1rem;
+            background: rgba(220,20,60,0.1); padding: 0.2rem 0.8rem; border-radius: 15px;
+        }
+        .member-term { color: #666; font-size: 0.9rem; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.8rem; }
+            .structure-grid { grid-template-columns: 1fr; }
+            .members-grid { grid-template-columns: 1fr; }
+            .nav-menu { position: fixed; top: 80px; left: -100%; width: 100%; height: calc(100vh - 80px); 
+                background: #8B0000; flex-direction: column; padding-top: 2rem; }
+            .nav-menu.active { left: 0; }
+            .mobile-menu-btn { display: block; }
+            .admin-submenu ul { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">AIC Varanasi</a>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+            <nav class="nav-menu" id="navMenu">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../about/founder.html">About</a></li>
+                    <li><a href="governing-body.html">Administration</a></li>
+                    <li><a href="../faculties/arts.html">Faculties</a></li>
+                    <li><a href="../courses/index.html">Courses</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Governing Body</h1>
+            <p>Strategic leadership and policy-making authority of the institution</p>
+        </div>
+    </section>
+
+    <!-- ADMIN SUBMENU -->
+    <section class="section">
+        <div class="container">
+            <div class="admin-submenu">
+                <ul>
+                    <li><a href="governing-body.html">🏛️ Governing Body</a></li>
+                    <li><a href="chairperson-message.html">📜 Chairperson Message</a></li>
+                    <li><a href="principal-message.html">👨‍🏫 Principal Message</a></li>
+                    <li><a href="committees.html">📋 Committees</a></li>
+                    <li><a href="proctorial-board.html">🛡️ Proctorial Board</a></li>
+                    <li><a href="rules-and-regulations.html">📚 Rules & Regulations</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- GOVERNING BODY STRUCTURE -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Governing Body Composition</h2>
+            <div class="gov-structure">
+                <div class="structure-grid">
+                    <!-- CHAIRMAN -->
+                    <div class="chairman-card">
+                        <div class="chairman-photo">
+                            <!-- REPLACE: chairman.jpg (200x250px) -->
+                        </div>
+                        <h3 class="chairman-title">Janab Rahim Khan</h3>
+                        <div style="color: #DC143C; font-weight: 600; font-size: 1.1rem;">Honorary Chairman</div>
+                        <div style="margin-top: 1rem; color: #666; font-size: 0.95rem;">
+                            Ex-Officio | Term: 2023-2028
+                        </div>
+                    </div>
+
+                    <!-- STRUCTURE INFO -->
+                    <div>
+                        <h3 style="color: #8B0000; font-size: 1.8rem; margin-bottom: 1.5rem;">As per MGKVP & UGC Guidelines</h3>
+                        <div style="display: grid; gap: 1.5rem; font-size: 1.1rem;">
+                            <div><strong>📋 Total Members:</strong> 12</div>
+                            <div><strong>👨‍💼 Management:</strong> 5 (incl. Chairman)</div>
+                            <div><strong>👨‍🏫 Teachers:</strong> 2 (by rotation)</div>
+                            <div><strong>🎓 UGC Nominee:</strong> 1</div>
+                            <div><strong>🏛️ State Govt:</strong> 1</div>
+                            <div><strong>👨‍🏫 University Professor:</strong> 1</div>
+                            <div><strong>📚 Educationist:</strong> 1</div>
+                            <div><strong>🏫 Principal (Ex-Officio):</strong> 1</div>
+                        </div>
+                        <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(218,165,32,0.1); border-radius: 15px; border-left: 4px solid #DAA520;">
+                            <strong>📅 Meetings:</strong> Twice yearly | <strong>📄 Term:</strong> 3 years (UGC: 5 years)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MEMBERS GRID -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Current Members (2023-2026)</h2>
+            <div class="members-grid">
+                <!-- MEMBER 1 -->
+                <div class="member-card">
+                    <div class="member-photo"></div>
+                    <h4 class="member-name">Dr. Naseem Raza</h4>
+                    <div class="member-position">Principal (Ex-Officio)</div>
+                    <div class="member-term">Member Secretary | 2022-Present</div>
+                </div>
+
+                <!-- MEMBER 2 -->
+                <div class="member-card">
+                    <div class="member-photo"></div>
+                    <h4 class="member-name">Prof. Syed Hassan</h4>
+                    <div class="member-position">Teacher Representative</div>
+                    <div class="member-term">Senior Faculty | 2023-2026</div>
+                </div>
+
+                <!-- MEMBER 3 -->
+                <div class="member-card">
+                    <div class="member-photo"></div>
+                    <h4 class="member-name">Dr. Fatima Begum</h4>
+                    <div class="member-position">Teacher Representative</div>
+                    <div class="member-term">HOD Science | 2023-2026</div>
+                </div>
+
+                <!-- MEMBER 4 -->
+                <div class="member-card">
+                    <div class="member-photo"></div>
+                    <h4 class="member-name">Prof. Khalid Ahmed</h4>
+                    <div class="member-position">Educationist</div>
+                    <div class="member-term">MGKVP Nominee | 2023-2026</div>
+                </div>
+
+                <!-- MEMBER 5 -->
+                <div class="member-card">
+                    <div class="member-photo"></div>
+                    <h4 class="member-name">Janab Ahmed Raza</h4>
+                    <div class="member-position">Management Member</div>
+                    <div class="member-term">Trustee | 2023-2026</div>
+                </div>
+
+                <!-- MEMBER 6 -->
+                <div class="member-card">
+                    <div class="member-photo"></div>
+                    <h4 class="member-name">Dr. Rehman Khan</h4>
+                    <div class="member-position">UGC Nominee</div>
+                    <div class="member-term">2024-2029</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer style="background: linear-gradient(135deg, #8B0000, #5C0000); color: white; padding: 3rem 0; text-align: center;">
+        <div class="container">
+            <p><strong>Anjuman Islam College</strong> | Est. 1985 | NAAC B++ | Affiliated to MGKVP</p>
+            <p>📍 Varanasi, UP | Administration → Governing Body</p>
+            <p style="margin-top: 1rem; opacity: 0.8;">&copy; 2026. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
