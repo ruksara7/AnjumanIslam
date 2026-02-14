@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PG Programs | Anjuman Islam College, Varanasi</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Poppins', 'Arial', sans-serif; 
+            line-height: 1.6; color: #2c3e50; 
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        
+        /* HEADER */
+        .header { 
+            background: linear-gradient(135deg, #8B0000 0%, #A52A2A 50%, #B22222 100%); 
+            color: white; padding: 1rem 0; position: fixed; width: 100%; 
+            top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(139,0,0,0.3);
+        }
+        .nav-container { 
+            max-width: 1200px; margin: 0 auto; padding: 0 20px; 
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .logo { 
+            font-size: 2rem; font-weight: 700; 
+            background: linear-gradient(45deg, #DAA520, #FFD700); 
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+        .nav-menu ul { list-style: none; display: flex; gap: 2rem; }
+        .nav-menu a { 
+            color: white; text-decoration: none; font-weight: 500; 
+            padding: 0.5rem 1rem; border-radius: 25px; transition: all 0.3s; 
+        }
+        .nav-menu a:hover { 
+            background: rgba(218,165,32,0.2); transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(218,165,32,0.4);
+        }
+        .mobile-menu-btn { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
+
+        /* HERO */
+        .hero { 
+            background: linear-gradient(135deg, rgba(139,0,0,0.9), rgba(178,34,34,0.8)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500"><rect fill="%238B0000" width="1200" height="500"/><circle fill="%239C27B0" opacity="0.4" cx="600" cy="250" r="150"/></svg>'); 
+            height: 60vh; display: flex; align-items: center; color: white; margin-top: 0;
+        }
+        .hero-content { text-align: center; max-width: 900px; margin: 0 auto; padding: 0 20px; }
+        .hero h1 { 
+            font-size: 4rem; margin-bottom: 1rem; text-shadow: 3px 3px 10px rgba(0,0,0,0.7);
+            background: linear-gradient(45deg, #FFD700, #DAA520); -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .section { padding: 5rem 0; }
+        .section-title { 
+            text-align: center; font-size: 2.8rem; margin-bottom: 3rem; color: #8B0000; 
+            position: relative; font-weight: 600;
+        }
+        .section-title::after { 
+            content: ''; width: 100px; height: 5px; background: linear-gradient(90deg, #DAA520, #FFD700); 
+            position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%);
+        }
+
+        /* COURSES SUBMENU */
+        .courses-submenu { 
+            background: rgba(255,255,255,0.95); padding: 2rem; border-radius: 20px; margin: 3rem 0;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1); text-align: center;
+        }
+        .courses-submenu ul { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; list-style: none; }
+        .courses-submenu a { 
+            padding: 0.8rem 1.5rem; background: linear-gradient(135deg, #8B0000, #DC143C);
+            color: white; text-decoration: none; border-radius: 25px; font-weight: 500;
+            transition: all 0.3s;
+        }
+        .courses-submenu a:hover, .courses-submenu .active { 
+            background: linear-gradient(135deg, #9C27B0, #7B1FA2); transform: translateY(-3px);
+        }
+
+        /* PG STATS */
+        .stats-grid { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+            gap: 2rem; margin: 4rem 0; text-align: center;
+        }
+        .stat-card { 
+            background: rgba(255,255,255,0.95); padding: 2.5rem 1.5rem; border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(156,39,176,0.15);
+        }
+        .stat-number { 
+            font-size: 3.5rem; font-weight: 700; 
+            background: linear-gradient(45deg, #9C27B0, #7B1FA2); -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent; margin-bottom: 0.5rem;
+        }
+
+        /* PG PROGRAM TABS */
+        .tabs-container { 
+            background: rgba(255,255,255,0.95); padding: 3rem; border-radius: 25px; 
+            margin: 3rem 0; box-shadow: 0 20px 60px rgba(156,39,176,0.15);
+        }
+        .tab-buttons { 
+            display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem; justify-content: center;
+        }
+        .tab-btn { 
+            padding: 1rem 2rem; background: rgba(139,0,0,0.1); color: #8B0000; 
+            border: 2px solid #9C27B0; border-radius: 25px; cursor: pointer; 
+            font-weight: 600; transition: all 0.3s; white-space: nowrap;
+        }
+        .tab-btn.active { 
+            background: linear-gradient(135deg, #9C27B0, #7B1FA2); color: white;
+            box-shadow: 0 10px 30px rgba(156,39,176,0.4); transform: translateY(-2px);
+        }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
+        /* PG COURSES GRID */
+        .courses-grid { 
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
+            gap: 2rem; margin-top: 2rem;
+        }
+        .course-card { 
+            background: rgba(255,255,255,0.95); padding: 2rem; border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(139,0,0,0.1); transition: all 0.4s;
+            border-left: 5px solid #9C27B0;
+        }
+        .course-card:hover { transform: translateY(-10px); }
+        .course-icon { font-size: 3rem; margin-bottom: 1rem; }
+        .course-title { 
+            font-size: 1.5rem; color: #8B0000; font-weight: 700; margin-bottom: 0.8rem;
+        }
+        .course-duration { 
+            color: #9C27B0; font-weight: 600; margin-bottom: 1rem;
+        }
+        .course-fee { 
+            font-size: 1.2rem; font-weight: 700; color: #7B1FA2; margin-bottom: 1rem;
+        }
+        .course-subjects { 
+            color: #666; font-size: 0.95rem; line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.8rem; }
+            .courses-grid { grid-template-columns: 1fr; }
+            .tab-buttons { flex-direction: column; align-items: center; }
+            .nav-menu { position: fixed; top: 80px; left: -100%; width: 100%; height: calc(100vh - 80px); 
+                background: #8B0000; flex-direction: column; padding-top: 2rem; }
+            .nav-menu.active { left: 0; }
+            .mobile-menu-btn { display: block; }
+            .courses-submenu ul { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">AIC Varanasi</a>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+            <nav class="nav-menu" id="navMenu">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../about/founder.html">About</a></li>
+                    <li><a href="../administration/governing-body.html">Administration</a></li>
+                    <li><a href="../faculties/arts.html">Faculties</a></li>
+                    <li><a href="index.html">Courses</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Postgraduate Programs</h1>
+            <p>VBSPU Affiliated | Research-Oriented | 300 Seats Available</p>
+        </div>
+    </section>
+
+    <!-- COURSES SUBMENU -->
+    <section class="section">
+        <div class="container">
+            <div class="courses-submenu">
+                <ul>
+                    <li><a href="index.html">📚 All Courses</a></li>
+                    <li><a href="ug-programs.html">🎓 UG Programs</a></li>
+                    <li><a href="pg-programs.html" class="active">📖 PG Programs</a></li>
+                    <li><a href="bed-program.html">👩‍🏫 B.Ed</a></li>
+                    <li><a href="fee-structure.html">💰 Fee Structure</a></li>
+                    <li><a href="eligibility.html">✅ Eligibility</a></li>
+                    <li><a href="scholarships.html">🎁 Scholarships</a></li>
+                    <li><a href="placement-cell.html">💼 Placement Cell</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- PG STATISTICS -->
+    <section class="section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">300</div>
+                    <div style="color: #8B0000; font-weight: 600;">PG Seats</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">6</div>
+                    <div style="color: #8B0000; font-weight: 600;">Programs</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">85%</div>
+                    <div style="color: #8B0000; font-weight: 600;">Occupancy</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">₹20K-35K</div>
+                    <div style="color: #8B0000; font-weight: 600;">Avg Fees/Year</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PG PROGRAM TABS -->
+    <section class="section">
+        <div class="container">
+            <div class="tabs-container">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" onclick="showTab('arts-pg')">🎨 Arts (200)</button>
+                    <button class="tab-btn" onclick="showTab('science-pg')">🧪 Science (100)</button>
+                </div>
+
+                <!-- ARTS PG PROGRAMS -->
+                <div id="arts-pg" class="tab-content active">
+                    <div class="courses-grid">
+                        <div class="course-card">
+                            <div class="course-icon">📚</div>
+                            <h3 class="course-title">M.A. English</h3>
+                            <div class="course-duration">2 Years | 40 Seats</div>
+                            <div class="course-fee">₹20,000/Year</div>
+                            <div class="course-subjects">
+                                British Literature, American Literature, Indian Writing, 
+                                Literary Theory, Linguistics, ELT
+                            </div>
+                        </div>
+                        <div class="course-card">
+                            <div class="course-icon">📜</div>
+                            <h3 class="course-title">M.A. History</h3>
+                            <div class="course-duration">2 Years | 30 Seats</div>
+                            <div class="course-fee">₹20,000/Year</div>
+                            <div class="course-subjects">
+                                Ancient India, Medieval India, Modern India, 
+                                World History, Historiography, Research Methodology
+                            </div>
+                        </div>
+                        <div class="course-card">
+                            <div class="course-icon">⚖️</div>
+                            <h3 class="course-title">M.A. Political Science</h3>
+                            <div class="course-duration">2 Years | 40 Seats</div>
+                            <div class="course-fee">₹20,000/Year</div>
+                            <div class="course-subjects">
+                                Indian Polity, International Relations, 
+                                Political Theory, Public Administration, Comparative Politics
+                            </div>
+                        </div>
+                        <div class="course-card">
+                            <div class="course-icon">📈</div>
+                            <h3 class="course-title">M.A. Economics</h3>
+                            <div class="course-duration">2 Years | 30 Seats</div>
+                            <div class="course-fee">₹22,000/Year</div>
+                            <div class="course-subjects">
+                                Micro/Macro Economics, Development Economics, 
+                                Econometrics, Indian Economy, Research Methods
+                            </div>
+                        </div>
+                        <div class="course-card">
+                            <div class="course-icon">🗣️</div>
+                            <h3 class="course-title">M.A. Hindi</h3>
+                            <div class="course-duration">2 Years | 30 Seats</div>
+                            <div class="course-fee">₹18,000/Year</div>
+                            <div class="course-subjects">
+                                Hindi Sahitya, Kavya Shastra, Bhasha Vigyan, 
+                                Hindi Criticism, Functional Hindi
+                            </div>
+                        </div>
+                        <div class="course-card">
+                            <div class="course-icon">🏛️</div>
+                            <h3 class="course-title">M.A. Sociology</h3>
+                            <div class="course-duration">2 Years | 30 Seats</div>
+                            <div class="course-fee">₹20,000/Year</div>
+                            <div class="course-subjects">
+                                Sociological Theories, Indian Society, 
+                                Social Research, Rural Sociology, Urban Sociology
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SCIENCE PG PROGRAMS -->
+                <div id="science-pg" class="tab-content">
+                    <div class="courses-grid">
+                        <div class="course-card">
+                            <div class="course-icon">⚛️</div>
+                            <h3 class="course-title">M.Sc. Physics</h3>
+                            <div class="course-duration">2 Years | 25 Seats</div>
+                            <div class="course-fee">₹35,000/Year</div>
+                            <div class="course-subjects">
+                                Quantum Mechanics, Nuclear Physics, 
+                                Solid State Physics, Electronics, Computational Physics
+                            </div>
+                        </div>
+                        <div class="course-card">
+                            <div class="course-icon">🧪</div>
+                            <h3 class="course-title">M.Sc. Chemistry</h3>
+                            <div class="course-duration">2 Years | 25 Seats</div>
+                            <div class="course-fee">₹35,000/Year</div>
+                            <div class="course-subjects">
+                                Organic, Inorganic, Physical, Analytical Chemistry, 
+                                Spectroscopy, Research Project
+                            </div>
+                        </div>
+                        <div class="course-card">
+                            <div class="course-icon">📊</div>
+                            <h3 class="course-title">M.Sc. Mathematics</h3>
+                            <div class="course-duration">2 Years | 25 Seats</div>
+                            <div class="course-fee">₹30,000/Year</div>
+                            <div class="course-subjects">
+                                Real/Complex Analysis, Differential Equations, 
+                                Numerical Methods, Operations Research, Algebra
+                            </div>
+                        </div>
+                        <div class="course-card">
+                            <div class="course-icon">🔬</div>
+                            <h3 class="course-title">M.Sc. Zoology</h3>
+                            <div class="course-duration">2 Years | 25 Seats</div>
+                            <div class="course-fee">₹32,000/Year</div>
+                            <div class="course-subjects
