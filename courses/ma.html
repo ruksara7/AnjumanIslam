@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M.A. Programs | Anjuman Islam College, Varanasi</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Poppins', 'Arial', sans-serif; 
+            line-height: 1.6; color: #2c3e50; 
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        
+        /* HEADER */
+        .header { 
+            background: linear-gradient(135deg, #8B0000 0%, #A52A2A 50%, #B22222 100%); 
+            color: white; padding: 1rem 0; position: fixed; width: 100%; 
+            top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(139,0,0,0.3);
+        }
+        .nav-container { 
+            max-width: 1200px; margin: 0 auto; padding: 0 20px; 
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .logo { 
+            font-size: 2rem; font-weight: 700; 
+            background: linear-gradient(45deg, #DAA520, #FFD700); 
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+        .nav-menu ul { list-style: none; display: flex; gap: 2rem; }
+        .nav-menu a { 
+            color: white; text-decoration: none; font-weight: 500; 
+            padding: 0.5rem 1rem; border-radius: 25px; transition: all 0.3s; 
+        }
+        .nav-menu a:hover { 
+            background: rgba(218,165,32,0.2); transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(218,165,32,0.4);
+        }
+        .mobile-menu-btn { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
+
+        /* HERO */
+        .hero { 
+            background: linear-gradient(135deg, rgba(139,0,0,0.9), rgba(178,34,34,0.8)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500"><rect fill="%238B0000" width="1200" height="500"/><circle fill="%239C27B0" opacity="0.4" cx="600" cy="250" r="150"/></svg>'); 
+            height: 60vh; display: flex; align-items: center; color: white; margin-top: 80px;
+        }
+        .hero-content { text-align: center; max-width: 900px; margin: 0 auto; padding: 0 20px; }
+        .hero h1 { 
+            font-size: 4rem; margin-bottom: 1rem; text-shadow: 3px 3px 10px rgba(0,0,0,0.7);
+            background: linear-gradient(45deg, #FFD700, #DAA520); -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent;
+        }
+        .hero p { font-size: 1.2rem; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .section { padding: 5rem 0; }
+        .section-title { 
+            text-align: center; font-size: 2.8rem; margin-bottom: 3rem; color: #8B0000; 
+            position: relative; font-weight: 600;
+        }
+        .section-title::after { 
+            content: ''; width: 100px; height: 5px; background: linear-gradient(90deg, #DAA520, #FFD700); 
+            position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%);
+        }
+
+        /* COURSES SUBMENU */
+        .courses-submenu { 
+            background: rgba(255,255,255,0.95); padding: 2rem; border-radius: 20px; margin: 3rem 0;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1); text-align: center;
+        }
+        .courses-submenu ul { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; list-style: none; }
+        .courses-submenu a { 
+            padding: 0.8rem 1.5rem; background: linear-gradient(135deg, #8B0000, #DC143C);
+            color: white; text-decoration: none; border-radius: 25px; font-weight: 500;
+            transition: all 0.3s;
+        }
+        .courses-submenu a:hover, .courses-submenu .active { 
+            background: linear-gradient(135deg, #9C27B0, #7B1FA2); transform: translateY(-3px);
+        }
+
+        /* PROGRAM STATS */
+        .stats-grid { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+            gap: 2rem; margin: 4rem 0; text-align: center;
+        }
+        .stat-card { 
+            background: rgba(255,255,255,0.95); padding: 2.5rem 1.5rem; border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(156,39,176,0.15);
+        }
+        .stat-number { 
+            font-size: 3.5rem; font-weight: 700; 
+            background: linear-gradient(45deg, #9C27B0, #7B1FA2); -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent; margin-bottom: 0.5rem;
+        }
+
+        /* CURRICULUM GRID */
+        .curriculum-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 2rem; margin: 4rem 0;
+        }
+        .curriculum-card {
+            background: rgba(255,255,255,0.95); padding: 2rem; border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(139,0,0,0.1); transition: all 0.3s;
+            border-left: 5px solid #9C27B0;
+        }
+        .curriculum-card:hover { transform: translateY(-10px); }
+        .semester-title { 
+            font-size: 1.3rem; color: #8B0000; font-weight: 700; margin-bottom: 1rem;
+            display: flex; align-items: center; gap: 0.5rem;
+        }
+        .subjects-list { 
+            list-style: none; 
+        }
+        .subjects-list li { 
+            padding: 0.5rem 0; border-bottom: 1px solid rgba(139,0,0,0.1);
+            display: flex; justify-content: space-between;
+        }
+
+        /* FACULTY */
+        .faculty-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            gap: 2rem; margin: 4rem 0;
+        }
+        .faculty-card {
+            background: rgba(255,255,255,0.95); padding: 2rem; border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(139,0,0,0.1); text-align: center;
+            border-top: 4px solid #DAA520;
+        }
+        .faculty-photo {
+            width: 100px; height: 100px; background: linear-gradient(135deg, #8B0000, #DC143C);
+            border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center;
+            justify-content: center; color: white; font-size: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.8rem; }
+            .nav-menu { 
+                position: fixed; top: 80px; left: -100%; width: 100%; height: calc(100vh - 80px); 
+                background: #8B0000; flex-direction: column; padding-top: 2rem; 
+            }
+            .nav-menu.active { left: 0; }
+            .mobile-menu-btn { display: block; }
+            .courses-submenu ul { flex-direction: column; }
+            .curriculum-grid, .faculty-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">AIC Varanasi</a>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+            <nav class="nav-menu" id="navMenu">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../about/founder.html">About</a></li>
+                    <li><a href="../administration/governing-body.html">Administration</a></li>
+                    <li><a href="../faculties/arts.html">Faculties</a></li>
+                    <li><a href="index.html">Courses</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Master of Arts (M.A.)</h1>
+            <p>200 Seats | VBSPU Affiliated | Research-Oriented | Admission 2026 Open</p>
+        </div>
+    </section>
+
+    <!-- COURSES SUBMENU -->
+    <section class="section">
+        <div class="container">
+            <div class="courses-submenu">
+                <ul>
+                    <li><a href="index.html">📚 All Courses</a></li>
+                    <li><a href="ug.html">🎓 UG Programs</a></li>
+                    <li><a href="pg.html">📖 PG Programs</a></li>
+                    <li><a href="ma.html" class="active">📚 M.A. Programs</a></li>
+                    <li><a href="msc.html">🔬 M.Sc. Programs</a></li>
+                    <li><a href="../students/admission-procedure.html">✅ Admission</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROGRAM STATISTICS -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">M.A. Program Overview</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">200</div>
+                    <div style="color: #8B0000; font-weight: 600;">Total Seats</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">2</div>
+                    <div style="color: #8B0000; font-weight: 600;">Years Duration</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">₹20K</div>
+                    <div style="color: #8B0000; font-weight: 600;">Avg Annual Fee</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">6</div>
+                    <div style="color: #8B0000; font-weight: 600;">Specializations</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CURRICULUM -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Semester-Wise Curriculum</h2>
+            <div class="curriculum-grid">
+                <div class="curriculum-card">
+                    <h3 class="semester-title">📖 Semester I</h3>
+                    <ul class="subjects-list">
+                        <li>Research Methodology <span>4 Credits</span></li>
+                        <li>Contemporary Literary Theory <span>4 Credits</span></li>
+                        <li>Indian Writing in English <span>4 Credits</span></li>
+                        <li>Elective I <span>4 Credits</span></li>
+                    </ul>
+                </div>
+                <div class="curriculum-card">
+                    <h3 class="semester-title">📚 Semester II</h3>
+                    <ul class="subjects-list">
+                        <li>British Literature <span>4 Credits</span></li>
+                        <li>American Literature <span>4 Credits</span></li>
+                        <li>Linguistics <span>4 Credits</span></li>
+                        <li>Elective II <span>4 Credits</span></li>
+                    </ul>
+                </div>
+                <div class="curriculum-card">
+                    <h3 class="semester-title">📖 Semester III</h3>
+                    <ul class="subjects-list">
+                        <li>World Literature <span>4 Credits</span></li>
+                        <li>Postcolonial Studies <span>4 Credits</span></li>
+                        <li>Gender Studies <span>4 Credits</span></li>
+                        <li>Project Work <span>6 Credits</span></li>
+                    </ul>
+                </div>
+                <div class="curriculum-card">
+                    <h3 class="semester-title">🎓 Semester IV</h3>
+                    <ul class="subjects-list">
+                        <li>Dissertation <span>12 Credits</span></li>
+                        <li>Special Study <span>6 Credits</span></li>
+                        <li>Elective III <span>4 Credits</span></li>
+                        <li>Viva Voce <span>2 Credits</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FACULTY -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Distinguished Faculty</h2>
+            <div class="faculty-grid">
+                <div class="faculty-card">
+                    <div class="faculty-photo">Dr. A</div>
+                    <h4>Dr. Anjali Sharma</h4>
+                    <p>Professor & Head<br>PhD English, NET<br>22 Years Experience</p>
+                </div>
+                <div class="faculty-card">
+                    <div class="faculty-photo">Prof. R</div>
+                    <h4>Prof. Rakesh Mishra</h4>
+                    <p>Associate Professor<br>PhD Literature<br>18 Years Experience</p>
+                </div>
+                <div class="faculty-card">
+                    <div class="faculty-photo">Dr. P</div>
+                    <h4>Dr. Priya Singh</h4>
+                    <p>Assistant Professor<br>NET, M.Phil<br>12 Years Experience</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function toggleMobileMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
