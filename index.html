@@ -1,70 +1,187 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>AIAT College | Anjuman Islamia Adara Trust</title><link rel="stylesheet" href="css/style.css"><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"></head><body>
-<a href="#main" class="skip-link">Skip to content</a>
-<header class="site-header">
-    <div class="trust-banner"><div class="container"><p>👳‍♂️ <strong>Anjuman Islamia Adara Trust</strong> - Excellence in Education</p></div></div>
-    <nav class="main-nav" aria-label="Main navigation">
-        <div class="container">
-            <a href="index.html" class="nav-brand"><span class="logo-text">AIAT College</span><span class="tagline">Varanasi</span></a>
-            <button class="mobile-menu-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
-            <ul class="nav-menu" id="nav-menu">
-                <li><a href="index.html" class="nav-link active">Home</a></li>
-                <li class="dropdown"><a href="#" class="nav-link">About</a><ul class="dropdown-menu"><li><a href="about/founder.html">Founder</a></li><li><a href="about/history.html">History</a></li></ul></li>
-                <li class="dropdown"><a href="#" class="nav-link">Administration</a><ul class="dropdown-menu"><li><a href="administration/principal-message.html">Principal</a></li></ul></li>
-                <li class="dropdown"><a href="faculties/" class="nav-link">Faculties</a><ul class="dropdown-menu"><li><a href="faculties/arts.html">Arts</a></li><li><a href="faculties/science.html">Science</a></li></ul></li>
-                <li><a href="gallery/" class="nav-link">Gallery</a></li><li><a href="contact.html" class="nav-link">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
-</header>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anjuman Islam College | Varanasi</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Arial', sans-serif; line-height: 1.6; color: #2c3e50; }
+        
+        /* HEADER - DDU Style */
+        .header { 
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); 
+            color: white; 
+            padding: 1rem 0; 
+            position: fixed; 
+            width: 100%; 
+            top: 0; 
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .nav-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .logo { font-size: 1.8rem; font-weight: bold; float: left; }
+        .nav-menu { float: right; }
+        .nav-menu ul { list-style: none; }
+        .nav-menu ul li { display: inline-block; margin-left: 2rem; }
+        .nav-menu a { color: white; text-decoration: none; font-weight: 500; transition: color 0.3s; }
+        .nav-menu a:hover { color: #f39c12; }
 
-<main id="main" class="main-content">
-    <section class="hero-section">
+        /* HERO - Full Width Banner */
+        .hero { 
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('data:image/svg+xml;base64,...') center/cover; 
+            height: 70vh; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            text-align: center; 
+            color: white; 
+            margin-top: 80px;
+        }
+        .hero-content h1 { font-size: 4rem; margin-bottom: 1rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        .hero-content p { font-size: 1.3rem; margin-bottom: 2rem; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .section { padding: 5rem 0; }
+        .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 3rem; color: #1e3c72; position: relative; }
+        .section-title::after { content: ''; width: 80px; height: 4px; background: #f39c12; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); }
+
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+        .feature-card { text-align: center; padding: 2rem; background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: transform 0.3s; }
+        .feature-card:hover { transform: translateY(-10px); }
+        .feature-icon { font-size: 3rem; margin-bottom: 1rem; }
+
+        .cta-button { background: linear-gradient(45deg, #f39c12, #e67e22); color: white; padding: 1rem 2.5rem; border: none; border-radius: 50px; font-size: 1.1rem; text-decoration: none; display: inline-block; transition: all 0.3s; }
+        .cta-button:hover { transform: scale(1.05); box-shadow: 0 10px 25px rgba(243,156,18,0.4); }
+
+        footer { background: #1e3c72; color: white; padding: 3rem 0 1rem; }
+        .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+        .footer-section h3 { color: #f39c12; margin-bottom: 1rem; }
+
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.5rem; }
+            .nav-menu { float: none; text-align: center; margin-top: 1rem; }
+            .nav-menu ul li { display: block; margin: 0.5rem 0; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">AIC</div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about/">About</a></li>
+                    <li><a href="administration/">Administration</a></li>
+                    <li><a href="faculties/">Faculties</a></li>
+                    <li><a href="courses/">Courses</a></li>
+                    <li><a href="facilities/">Facilities</a></li>
+                    <li><a href="gallery/">Gallery</a></li>
+                    <li><a href="students/">Students</a></li>
+                    <li><a href="iqac/">IQAC</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
         <div class="hero-content">
-            <h1 class="hero-title">Welcome to <span class="highlight">AIAT College</span></h1>
-            <p class="hero-subtitle">Premier Institution by Anjuman Islamia Adara Trust - Varanasi</p>
-            <div class="hero-stats">
-                <div class="stat-item"><span class="stat-number" data-target="2500">0</span><span>Students</span></div>
-                <div class="stat-item"><span class="stat-number" data-target="85">0</span><span>Faculty</span></div>
-                <div class="stat-item"><span class="stat-number" data-target="40">0</span><span>Years</span></div>
-            </div>
+            <h1>Anjuman Islam College</h1>
+            <p>UGC Recognized | NAAC Accredited | Excellence Since 1985</p>
+            <a href="courses/index.html" class="cta-button">Explore Courses</a>
         </div>
     </section>
 
-    <section class="quick-links-section">
+    <!-- FEATURES -->
+    <section class="section">
         <div class="container">
-            <h2 class="section-title">Quick Links</h2>
-            <div class="content-grid">
-                <div class="card"><h3>🎓 Admissions 2026</h3><p>UG & PG programs open. Last date: 28th Feb 2026.</p></div>
-                <div class="card"><h3>📚 Courses</h3><p>BA, B.Sc, B.Com, MA, M.Sc programs available.</p></div>
-                <div class="card"><h3>🏛️ Facilities</h3><p>Library, Labs, Sports, WiFi, Canteen.</p></div>
+            <h2 class="section-title">Our Strengths</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">👨‍🎓</div>
+                    <h3>Qualified Faculty</h3>
+                    <p>50+ PhD holders and NET qualified teachers delivering quality education</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏛️</div>
+                    <h3>Modern Infrastructure</h3>
+                    <p>State-of-the-art library, laboratories, conference hall & sports facilities</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3>Complete Syllabus</h3>
+                    <p>Latest UG & PG curriculum with practical training and industry exposure</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Placement Cell</h3>
+                    <p>95% placement assistance with top companies and alumni network</p>
+                </div>
             </div>
         </div>
     </section>
-</main>
 
-<footer class="site-footer">
-    <div class="container">
-        <div class="footer-grid">
-            <div>
-                <h3 class="footer-title">Anjuman Islamia Adara Trust College</h3>
-                <p>Varanasi, UP - 221001<br>Phone: +91-XXXXXXXXX | Email: info@aiatcollege.edu.in</p>
-            </div>
-            <div>
-                <h4 class="footer-title">Quick Links</h4>
-                <a href="iqac/" class="footer-link">IQAC</a>
-                <a href="naac/" class="footer-link">NAAC</a>
-                <a href="feedback/" class="footer-link">Feedback</a>
+    <!-- QUICK LINKS -->
+    <section class="section" style="background: #f8f9fa;">
+        <div class="container">
+            <h2 class="section-title">Important Links</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>📢 Admission 2026 Open</h3>
+                    <p>Apply now for BA, B.Sc, B.Com, MA, M.Sc programs</p>
+                    <a href="students/admission-procedure.html" class="cta-button">Apply Now</a>
+                </div>
+                <div class="feature-card">
+                    <h3>📥 Syllabus Download</h3>
+                    <p>Latest syllabus for all UG & PG courses available</p>
+                    <a href="courses/index.html" class="cta-button">Download</a>
+                </div>
+                <div class="feature-card">
+                    <h3>👨‍🏫 Our Faculty</h3>
+                    <p>Meet our experienced teaching and non-teaching staff</p>
+                    <a href="faculties/teaching-staff.html" class="cta-button">View Faculty</a>
+                </div>
+                <div class="feature-card">
+                    <h3>📋 Notices</h3>
+                    <p>Latest admission notices, exam schedules & events</p>
+                    <a href="notices/index.html" class="cta-button">View Notices</a>
+                </div>
             </div>
         </div>
-        <div class="footer-bottom"><p>© 2026 Anjuman Islamia Adara Trust. All Rights Reserved.</p></div>
-    </div>
-</footer>
+    </section>
 
-<div class="utility-bar">
-    <button class="font-resize btn-util" data-size="small" title="A-">A-</button>
-    <button class="font-resize btn-util" data-size="default" title="A">A</button>
-    <button class="font-resize btn-util" data-size="large" title="A+">A+</button>
-    <button class="print-btn btn-util" title="Print">🖨️</button>
-</div>
-
-<script src="js/main.js"></script></body></html>
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Anjuman Islam College</h3>
+                    <p>Established 1985 | NAAC Accredited | UGC Recognized</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="courses/">Courses</a></li>
+                        <li><a href="facilities/">Facilities</a></li>
+                        <li><a href="gallery/">Gallery</a></li>
+                        <li><a href="iqac/">IQAC</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p>📞 +91-XXXXXXXXX</p>
+                    <p>✉️ info@anjumanislam.edu</p>
+                    <p>📍 Varanasi, Uttar Pradesh</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #34495e;">
+                <p>&copy; 2026 Anjuman Islam College. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
