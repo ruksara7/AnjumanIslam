@@ -5,19 +5,244 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Faculty of Arts | Anjuman Islam College</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- PASTE CSS ABOVE HERE -->
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            line-height: 1.6; color: #2c3e50; 
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            overflow-x: hidden;
+        }
+
+        /* HEADER - SAME AS INDEX */
+        .header { 
+            background: linear-gradient(135deg, #8B0000, #A52A2A, #B22222); 
+            color: white; padding: 1rem 0; position: fixed; width: 100%; 
+            top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(139,0,0,0.3);
+        }
+        .nav-container { 
+            max-width: 1200px; margin: 0 auto; padding: 0 20px; 
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .logo { 
+            font-size: clamp(1.5rem, 5vw, 2rem); font-weight: 700; 
+            background: linear-gradient(45deg, #DAA520, #FFD700); 
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text; text-decoration: none;
+        }
+        .mobile-menu-btn {
+            display: none; background: none; border: none; cursor: pointer;
+            width: 45px; height: 45px; border-radius: 8px; position: relative;
+            transition: all 0.3s ease;
+        }
+        .mobile-menu-btn span {
+            display: block; height: 3px; width: 28px; background: white;
+            border-radius: 2px; position: absolute; left: 50%; top: 50%;
+            transform: translate(-50%, -50%); transition: all 0.3s ease;
+        }
+        .mobile-menu-btn span::before, .mobile-menu-btn span::after {
+            content: ''; position: absolute; width: 28px; height: 3px;
+            background: white; border-radius: 2px; left: 50%; transition: all 0.3s ease;
+        }
+        .mobile-menu-btn span::before { top: -10px; transform: translateX(-50%); }
+        .mobile-menu-btn span::after { top: 10px; transform: translateX(-50%); }
+        .mobile-menu-btn.active span { background: transparent; }
+        .mobile-menu-btn.active span::before { 
+            transform: translateX(-50%) rotate(45deg) translate(3px, 3px);
+        }
+        .mobile-menu-btn.active span::after { 
+            transform: translateX(-50%) rotate(-45deg) translate(6px, -6px);
+        }
+        .nav-menu { display: flex; }
+        .nav-menu ul { list-style: none; display: flex; gap: 1.5rem; align-items: center; }
+        .nav-menu a { 
+            color: white; text-decoration: none; font-weight: 500; 
+            padding: 0.5rem 1.2rem; border-radius: 25px; transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+        .nav-menu a:hover { 
+            background: rgba(218,165,32,0.2); transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(218,165,32,0.4);
+        }
+        .dropdown { position: relative; }
+        .dropdown-menu {
+            position: absolute; top: 100%; left: 0; background: rgba(139,0,0,0.98);
+            min-width: 280px; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            opacity: 0; visibility: hidden; transform: translateY(-10px);
+            transition: all 0.3s ease; padding: 1rem 0; margin: 0; z-index: 1001;
+            backdrop-filter: blur(10px);
+        }
+        .dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+        .dropdown-menu li a { 
+            padding: 0.8rem 1.8rem !important; border-bottom: 1px solid rgba(255,255,255,0.1);
+            width: 100%; text-align: left; font-size: 0.9rem;
+        }
+
+        /* HERO SECTION */
+        .hero-section { 
+            height: 70vh; display: flex; align-items: center; justify-content: center;
+            text-align: center; color: white; position: relative; overflow: hidden;
+            background: linear-gradient(rgba(139,0,0,0.85), rgba(165,42,42,0.75)), 
+                        url('../assets/images/faculty/arts-bg.jpg') center/cover no-repeat;
+            margin-top: 80px; background-size: cover;
+        }
+        .hero-section::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.5); z-index: 1;
+        }
+        .hero-content { 
+            max-width: 900px; padding: 0 20px; position: relative; z-index: 2;
+        }
+        .hero-title { 
+            font-size: clamp(3rem, 8vw, 5rem); margin-bottom: 1rem; 
+            text-shadow: 0 4px 20px rgba(0,0,0,0.8); font-weight: 700; line-height: 1.2;
+            background: linear-gradient(45deg, #FFD700, #DAA520, white); 
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-content p { 
+            font-size: clamp(1.2rem, 4vw, 1.8rem); opacity: 0.95; font-weight: 300;
+        }
+
+        /* FACULTY SECTION */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .faculty-section { padding: 6rem 0 4rem; background: rgba(248,250,252,0.8); }
+        .section-title { 
+            text-align: center; font-size: clamp(2.2rem, 6vw, 3.8rem); margin-bottom: 4rem; 
+            color: #8B0000; position: relative; font-weight: 600;
+        }
+        .section-title::after { 
+            content: ''; width: 120px; height: 6px; 
+            background: linear-gradient(90deg, #DAA520, #FFD700); 
+            position: absolute; bottom: -20px; left: 50%; 
+            transform: translateX(-50%); border-radius: 3px;
+        }
+        .faculty-grid { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 2.5rem; 
+        }
+        .faculty-card { 
+            background: white; border-radius: 20px; padding: 2.5rem 2rem; 
+            text-align: center; box-shadow: 0 20px 60px rgba(139,0,0,0.12);
+            transition: all 0.4s ease; border: 1px solid rgba(218,165,32,0.15);
+            backdrop-filter: blur(10px);
+        }
+        .faculty-card:hover { 
+            transform: translateY(-15px); box-shadow: 0 35px 80px rgba(139,0,0,0.25);
+        }
+        .faculty-photo { 
+            width: 140px; height: 140px; border-radius: 50%; 
+            object-fit: cover; margin: 0 auto 1.5rem; border: 5px solid #FFD700;
+            box-shadow: 0 10px 30px rgba(218,165,32,0.3);
+        }
+        .faculty-name { 
+            color: #8B0000; font-size: 1.5rem; margin-bottom: 0.8rem; font-weight: 600;
+        }
+        .faculty-details { 
+            color: #5a6c7d; line-height: 1.7;
+        }
+        .faculty-details p { margin-bottom: 0.5rem; }
+
+        /* MOBILE RESPONSIVE */
+        @media (max-width: 768px) {
+            .mobile-menu-btn { display: block; }
+            .nav-menu { 
+                position: fixed; top: 80px; left: -100%; width: 100%; 
+                height: calc(100vh - 80px); background: rgba(139,0,0,0.98);
+                flex-direction: column; padding: 2.5rem 0; transition: left 0.4s ease;
+                box-shadow: -10px 0 50px rgba(0,0,0,0.5); z-index: 999;
+            }
+            .nav-menu.active { left: 0; }
+            .nav-menu ul { flex-direction: column; gap: 0; width: 90%; max-width: 400px; margin: 0 auto; }
+            .nav-menu a { font-size: 1.4rem; padding: 1.2rem 2.5rem; width: 100%; text-align: center; border-radius: 20px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+            .dropdown > a::after { content: '▼'; float: right; font-size: 0.8rem; transition: transform 0.3s ease; }
+            .dropdown.active > a::after { transform: rotate(180deg); }
+            .dropdown .dropdown-menu {
+                position: static !important; opacity: 1 !important; visibility: visible !important; 
+                transform: none !important; max-height: 0; overflow: hidden; 
+                transition: max-height 0.4s ease; background: rgba(50,0,0,0.9) !important;
+                margin-top: 0; box-shadow: none !important; width: 100%; border-radius: 0;
+            }
+            .dropdown.active .dropdown-menu { max-height: 800px; padding: 1.5rem 0; }
+            .dropdown-menu li a { padding: 1rem 3rem !important; font-size: 1.2rem !important; border-radius: 0 !important; }
+            
+            .hero-section { height: 60vh; margin-top: 80px; }
+            .faculty-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .faculty-section { padding: 4rem 0 3rem; }
+        }
+    </style>
 </head>
 <body>
-    <!-- HEADER -->
+    <!-- HEADER WITH FULL NAVIGATION -->
     <header class="header">
         <div class="nav-container">
             <a href="../index.html" class="logo">AIC Varanasi</a>
-            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+            <button class="mobile-menu-btn" aria-label="Toggle Menu">
                 <span></span>
             </button>
             <nav class="nav-menu" id="navMenu">
                 <ul>
-                    <!-- YOUR NAV LINKS WITH DROPDOWNS -->
+                    <li><a href="../index.html">Home</a></li>
+                    <li class="dropdown">
+                        <a href="../about/founder.html">About</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../about/founder.html">Founder</a></li>
+                            <li><a href="../about/history.html">History</a></li>
+                            <li><a href="../about/vision-mission.html">Vision & Mission</a></li>
+                            <li><a href="../about/past-president.html">Past Presidents</a></li>
+                            <li><a href="../about/past-principal.html">Past Principals</a></li>
+                            <li><a href="../about/retired-teachers.html">Retired Teachers</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="../administration/governing-body.html">Administration</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../administration/governing-body.html">Governing Body</a></li>
+                            <li><a href="../administration/chairperson-message.html">Chairperson</a></li>
+                            <li><a href="../administration/principal-message.html">Principal</a></li>
+                            <li><a href="../administration/committees.html">Committees</a></li>
+                            <li><a href="../administration/proctorial-board.html">Proctorial Board</a></li>
+                            <li><a href="../administration/rules-and-regulations.html">Rules</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="../faculties/arts.html">Faculties</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../faculties/arts.html">Arts</a></li>
+                            <li><a href="../faculties/science.html">Science</a></li>
+                            <li><a href="../faculties/commerce.html">Commerce</a></li>
+                            <li><a href="../faculties/bed.html">B.Ed</a></li>
+                            <li><a href="../faculties/teaching-staff.html">Teaching Staff</a></li>
+                            <li><a href="../faculties/non-teaching-staff.html">Non-Teaching</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../courses/index.html">Courses</a></li>
+                    <li class="dropdown">
+                        <a href="../students/admission-procedure.html">Students</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../students/admission-procedure.html">Admission Procedure</a></li>
+                            <li><a href="../students/student-profile.html">Student Profile</a></li>
+                            <li><a href="../students/student-achievements.html">Achievements</a></li>
+                            <li><a href="../students/student-union.html">Student Union</a></li>
+                            <li><a href="../students/student-strength.html">Student Strength</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../facilities/index.html">Facilities</a></li>
+                    <li><a href="../gallery/photo-gallery.html">Gallery</a></li>
+                    <li><a href="../feedback/index.html">Feedback</a></li>
+                    <li class="dropdown">
+                        <a href="../iqac/index.html">IQAC</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../iqac/index.html">IQAC Home</a></li>
+                            <li><a href="../iqac/members.html">Members</a></li>
+                            <li><a href="../iqac/aqar.html">AQAR</a></li>
+                            <li><a href="../iqac/minutes-of-meeting.html">Minutes</a></li>
+                            <li><a href="../iqac/best-practices.html">Best Practices</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../naac/ssr.html">NAAC</a></li>
+                    <li><a href="../notices/index.html">Notices</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
                 </ul>
             </nav>
         </div>
@@ -37,16 +262,93 @@
             <h2 class="section-title">Teaching Faculty</h2>
             <div class="faculty-grid">
                 <div class="faculty-card">
-                    <img src="../assets/images/staff/teaching/teacher1.jpg" alt="Dr. Name" class="faculty-photo" onerror="this.src='../assets/images/staff/teaching/placeholder.jpg'">
-                    <h3 class="faculty-name">Dr. First Last</h3>
+                    <img src="../assets/images/staff/teaching/teacher1.jpg" alt="Dr. A. Khan" class="faculty-photo" onerror="this.src='https://via.placeholder.com/140x140/8B0000/FFD700?text=Photo'">
+                    <h3 class="faculty-name">Dr. A. Khan</h3>
                     <div class="faculty-details">
                         <p><strong>M.A., PhD</strong> | Head of Department</p>
                         <p>20+ years experience | 15 publications</p>
                     </div>
                 </div>
-                <!-- ADD MORE FACULTY CARDS -->
+                <div class="faculty-card">
+                    <img src="../assets/images/staff/teaching/teacher2.jpg" alt="Prof. S. Sharma" class="faculty-photo" onerror="this.src='https://via.placeholder.com/140x140/8B0000/FFD700?text=Photo'">
+                    <h3 class="faculty-name">Prof. S. Sharma</h3>
+                    <div class="faculty-details">
+                        <p><strong>M.A., NET</strong> | Associate Professor</p>
+                        <p>12 years experience | 8 research papers</p>
+                    </div>
+                </div>
+                <div class="faculty-card">
+                    <img src="../assets/images/staff/teaching/teacher3.jpg" alt="Dr. R. Singh" class="faculty-photo" onerror="this.src='https://via.placeholder.com/140x140/8B0000/FFD700?text=Photo'">
+                    <h3 class="faculty-name">Dr. R. Singh</h3>
+                    <div class="faculty-details">
+                        <p><strong>M.A., PhD</strong> | Assistant Professor</p>
+                        <p>8 years experience | Subject Expert</p>
+                    </div>
+                </div>
+                <!-- Add more faculty cards as needed -->
             </div>
         </div>
     </section>
+
+    <!-- FIXED JAVASCRIPT (SAME AS INDEX) -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const navMenu = document.getElementById('navMenu');
+        const mobileBtn = document.querySelector('.mobile-menu-btn');
+
+        function toggleMainMenu() {
+            navMenu.classList.toggle('active');
+            mobileBtn.classList.toggle('active');
+            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+        }
+
+        mobileBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            toggleMainMenu();
+        });
+
+        document.addEventListener('click', function(e) {
+            if (!navMenu.contains(e.target) && !mobileBtn.contains(e.target) && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                mobileBtn.classList.remove('active');
+                document.body.style.overflow = '';
+                document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('active'));
+            }
+
+            if (window.innerWidth <= 768) {
+                const dropdown = e.target.closest('.dropdown > a');
+                if (dropdown) {
+                    e.stopPropagation();
+                    const parentDropdown = dropdown.parentElement;
+                    document.querySelectorAll('.dropdown').forEach(d => {
+                        if (d !== parentDropdown) d.classList.remove('active');
+                    });
+                    parentDropdown.classList.toggle('active');
+                    return false;
+                }
+            }
+        });
+
+        document.querySelectorAll('.nav-menu a[href]').forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 768) {
+                    navMenu.classList.remove('active');
+                    mobileBtn.classList.remove('active');
+                    document.body.style.overflow = '';
+                    document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('active'));
+                }
+            });
+        });
+
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                navMenu.classList.remove('active');
+                mobileBtn.classList.remove('active');
+                document.body.style.overflow = '';
+                document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('active'));
+            }
+        });
+    });
+    </script>
 </body>
 </html>
