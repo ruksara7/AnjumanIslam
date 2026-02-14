@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our History | Anjuman Islam College, Varanasi</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Poppins', 'Arial', sans-serif; 
+            line-height: 1.6; color: #2c3e50; 
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        
+        /* HEADER */
+        .header { 
+            background: linear-gradient(135deg, #8B0000 0%, #A52A2A 50%, #B22222 100%); 
+            color: white; padding: 1rem 0; position: fixed; width: 100%; 
+            top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(139,0,0,0.3);
+        }
+        .nav-container { 
+            max-width: 1200px; margin: 0 auto; padding: 0 20px; 
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .logo { 
+            font-size: 2rem; font-weight: 700; 
+            background: linear-gradient(45deg, #DAA520, #FFD700); 
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+        .nav-menu ul { list-style: none; display: flex; gap: 2rem; }
+        .nav-menu a { 
+            color: white; text-decoration: none; font-weight: 500; 
+            padding: 0.5rem 1rem; border-radius: 25px; transition: all 0.3s; 
+        }
+        .nav-menu a:hover { 
+            background: rgba(218,165,32,0.2); transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(218,165,32,0.4);
+        }
+        .mobile-menu-btn { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
+
+        /* HISTORY HERO */
+        .hero { 
+            background: linear-gradient(135deg, rgba(139,0,0,0.9), rgba(178,34,34,0.8)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%238B0000" width="1200" height="600"/><path fill="%23DAA520" opacity="0.3" d="M0 400 Q300 200 600 400 Q900 200 1200 400 L1200 600 L0 600 Z"/><circle fill="%23FFD700" opacity="0.2" cx="600" cy="300" r="80"/></svg>'); 
+            height: 70vh; display: flex; align-items: center; color: white; margin-top: 0;
+        }
+        .hero-content { text-align: center; max-width: 900px; margin: 0 auto; padding: 0 20px; }
+        .hero h1 { 
+            font-size: 4rem; margin-bottom: 1rem; text-shadow: 3px 3px 10px rgba(0,0,0,0.7);
+            background: linear-gradient(45deg, #FFD700, #DAA520); -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent;
+        }
+        .hero p { font-size: 1.3rem; opacity: 0.95; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .section { padding: 5rem 0; }
+        .section-title { 
+            text-align: center; font-size: 2.8rem; margin-bottom: 3rem; color: #8B0000; 
+            position: relative; font-weight: 600;
+        }
+        .section-title::after { 
+            content: ''; width: 100px; height: 5px; background: linear-gradient(90deg, #DAA520, #FFD700); 
+            position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%);
+        }
+
+        /* HISTORY TIMELINE */
+        .timeline-container { 
+            max-width: 1000px; margin: 0 auto; position: relative; padding: 2rem 0;
+        }
+        .timeline { 
+            position: relative; max-width: 900px; margin: 0 auto;
+        }
+        .timeline::before { 
+            content: ''; position: absolute; left: 50%; transform: translateX(-50%);
+            width: 4px; height: 100%; background: linear-gradient(to bottom, #DAA520, #FFD700, #8B0000);
+            border-radius: 2px;
+        }
+        .timeline-item { 
+            margin-bottom: 4rem; position: relative; opacity: 0; transform: translateX(-50px);
+            animation: slideInLeft 0.8s forwards;
+        }
+        .timeline-item:nth-child(even) { 
+            transform: translateX(50px); animation: slideInRight 0.8s forwards;
+        }
+        .timeline-item.animate { animation-delay: 0.2s; }
+        .timeline-content { 
+            position: relative; width: 45%; padding: 2rem; background: rgba(255,255,255,0.95);
+            border-radius: 20px; box-shadow: 0 15px 40px rgba(139,0,0,0.1);
+            backdrop-filter: blur(10px); border-top: 4px solid #DAA520;
+        }
+        .timeline-item:nth-child(even) .timeline-content { 
+            margin-left: 55%; border-top-color: #DC143C;
+        }
+        .timeline-year { 
+            font-size: 2rem; font-weight: 700; color: #8B0000;
+            background: linear-gradient(45deg, #DAA520, #FFD700); -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent; margin-bottom: 1rem;
+        }
+        .timeline-icon { 
+            position: absolute; left: 50%; transform: translateX(-50%);
+            width: 50px; height: 50px; background: linear-gradient(135deg, #DAA520, #FFD700);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; box-shadow: 0 8px 25px rgba(218,165,32,0.4); z-index: 2;
+        }
+
+        /* MILESTONES GRID */
+        .milestones-grid { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 2rem; margin: 4rem 0;
+        }
+        .milestone-card { 
+            background: rgba(255,255,255,0.9); padding: 2.5rem; border-radius: 20px;
+            text-align: center; box-shadow: 0 15px 40px rgba(139,0,0,0.1);
+            transition: all 0.4s; border-left: 5px solid #DAA520;
+            position: relative; overflow: hidden;
+        }
+        .milestone-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+            background: linear-gradient(90deg, #DAA520, #FFD700);
+        }
+        .milestone-card:hover { 
+            transform: translateY(-10px); box-shadow: 0 25px 60px rgba(139,0,0,0.2);
+        }
+        .milestone-year { font-size: 2.5rem; font-weight: 700; color: #8B0000; margin-bottom: 1rem; }
+
+        /* ABOUT SUBMENU */
+        .about-submenu { 
+            background: rgba(255,255,255,0.95); padding: 2rem; border-radius: 20px; margin: 3rem 0;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1); text-align: center;
+        }
+        .about-submenu ul { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; list-style: none; }
+        .about-submenu a { 
+            padding: 0.8rem 1.5rem; background: linear-gradient(135deg, #8B0000, #DC143C);
+            color: white; text-decoration: none; border-radius: 25px; font-weight: 500;
+            transition: all 0.3s;
+        }
+        .about-submenu a:hover { 
+            background: linear-gradient(135deg, #DAA520, #FFD700); transform: translateY(-3px);
+        }
+
+        @keyframes slideInLeft {
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes slideInRight {
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @media (max-width: 768px) {
+            .timeline::before { left: 30px; }
+            .timeline-content { width: calc(100% - 80px); margin-left: 50px !important; }
+            .timeline-item:nth-child(even) .timeline-content { margin-left: 50px !important; }
+            .hero h1 { font-size: 2.8rem; }
+            .nav-menu { position: fixed; top: 80px; left: -100%; width: 100%; height: calc(100vh - 80px); 
+                background: #8B0000; flex-direction: column; padding-top: 2rem; }
+            .nav-menu.active { left: 0; }
+            .mobile-menu-btn { display: block; }
+            .milestones-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">AIC Varanasi</a>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+            <nav class="nav-menu" id="navMenu">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="founder.html">Founder</a></li>
+                    <li><a href="history.html">History</a></li>
+                    <li><a href="vision-mission.html">Vision & Mission</a></li>
+                    <li><a href="past-president.html">Past Presidents</a></li>
+                    <li><a href="../administration/governing-body.html">Administration</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HISTORY HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Our Glorious History</h1>
+            <p>Journey of Excellence Since 1985 - From Humble Beginnings to NAAC Accredited Institution</p>
+        </div>
+    </section>
+
+    <!-- ABOUT SUBMENU -->
+    <section class="section">
+        <div class="container">
+            <div class="about-submenu">
+                <ul>
+                    <li><a href="founder.html">👨‍🏫 Founder</a></li>
+                    <li><a href="history.html">📜 History</a></li>
+                    <li><a href="vision-mission.html">🎯 Vision & Mission</a></li>
+                    <li><a href="past-president.html">👨‍💼 Past Presidents</a></li>
+                    <li><a href="past-principal.html">👨‍🏫 Past Principals</a></li>
+                    <li><a href="retired-teachers.html">👴 Retired Faculty</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN TIMELINE -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Milestones Timeline</h2>
+            <div class="timeline-container">
+                <div class="timeline">
+                    <!-- 1985 -->
+                    <div class="timeline-item">
+                        <div class="timeline-icon">🏛️</div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">1985</div>
+                            <h3>College Establishment</h3>
+                            <p>Anjuman Islam College founded by visionary educationist Dr. [Founder Name] with 120 students and 8 faculty members. Arts & Commerce courses introduced.</p>
+                        </div>
+                    </div>
+
+                    <!-- 1990 -->
+                    <div class="timeline-item">
+                        <div class="timeline-icon">🔬</div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">1990</div>
+                            <h3>Science Faculty Added</h3>
+                            <p>B.Sc programs launched. First science laboratories established. Student strength crosses 300.</p>
+                        </div>
+                    </div>
+
+                    <!-- 2000 -->
+                    <div class="timeline-item">
+                        <div class="timeline-icon">📚</div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">2000</div>
+                            <h3>Postgraduate Expansion</h3>
+                            <p>MA & M.Sc programs started. Library expanded to 20,000+ books. Permanent affiliation with MGKVP.</p>
+                        </div>
+                    </div>
+
+                    <!-- 2010 -->
+                    <div class="timeline-item">
+                        <div class="timeline-icon">🏆</div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">2010</div>
+                            <h3>Infrastructure Development</h3>
+                            <p>New academic block, computer lab, auditorium & sports complex inaugurated. WiFi campus introduced.</p>
+                        </div>
+                    </div>
+
+                    <!-- 2020 -->
+                    <div class="timeline-item">
+                        <div class="timeline-icon">⭐</div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">2020</div>
+                            <h3>NAAC Accreditation</h3>
+                            <p>NAAC 'B++' accreditation received. IQAC established. Digital learning platforms implemented.</p>
+                        </div>
+                    </div>
+
+                    <!-- 2026 -->
+                    <div class="timeline-item">
+                        <div class="timeline-icon">🎓</div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">2026</div>
+                            <h3>41 Years of Excellence</h3>
+                            <p>1000+ students | 50+ faculty | 95%+ placement | Continuing legacy of academic excellence</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MILESTONES -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Key Achievements</h2>
+            <div class="milestones-grid">
+                <div class="milestone-card">
+                    <div class="milestone-year">95%</div>
+                    <h4>Pass Percentage</h4>
+                    <p>Consistent academic excellence for 4 decades</p>
+                </div>
+                <div class="milestone-card">
+                    <div class="milestone-year">500+</div>
+                    <h4>Alumni Placed</h4>
+                    <p>Strong placement record with top companies</p>
+                </div>
+                <div class="milestone-card">
+                    <div class="milestone-year">50+</div>
+                    <h4>Faculty Members</h4>
+                    <p>PhD holders & experienced educators</p>
+                </div>
+                <div class="milestone-card">
+                    <div class="milestone-year">B++</div>
+                    <h4>NAAC Grade</h4>
+                    <p>Quality assured by national accreditation</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer style="background: linear-gradient(135deg, #8B0000, #5C0000); color: white; padding: 3rem 0; text-align: center;">
+        <div class="container">
+            <p><strong>Anjuman Islam College</strong> | Established 1985 | NAAC B++ Accredited</p>
+            <p>📍 Varanasi, Uttar Pradesh | About → History</p>
+            <p style="margin-top: 1rem; opacity: 0.8;">&copy; 2026. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+
+        // Animate timeline on scroll
+        window.addEventListener('scroll', () => {
+            const items = document.querySelectorAll('.timeline-item');
+            items.forEach((item, index) => {
+                const rect = item.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateX(0)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
