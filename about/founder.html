@@ -6,7 +6,7 @@
     <title>Founder | Anjuman Islam College, Varanasi</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* SAME EXACT CSS AS INDEX/CONTACT */
+        /* YOUR ORIGINAL PERFECT CSS - NO CHANGES */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
             font-family: 'Poppins', sans-serif; 
@@ -79,7 +79,7 @@
             width: 100%; text-align: left; font-size: 0.9rem;
         }
 
-        /* FOUNDER PAGE SPECIFIC */
+        /* FOUNDER PAGE SPECIFIC - YOUR ORIGINAL */
         .hero { 
             height: 70vh; display: flex; align-items: center; justify-content: center;
             text-align: center; color: white; position: relative; overflow: hidden;
@@ -113,7 +113,26 @@
             transform: translateX(-50%); border-radius: 3px;
         }
 
-        /* FOUNDER PROFILE */
+        /* ABOUT SUBMENU - NEW ADDITION */
+        .about-submenu { 
+            background: rgba(255,255,255,0.95); padding: 2rem; border-radius: 20px; 
+            margin: 3rem 0; box-shadow: 0 10px 40px rgba(0,0,0,0.1); text-align: center;
+        }
+        .about-submenu ul { 
+            display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; 
+            list-style: none; padding: 0; margin: 0;
+        }
+        .about-submenu a { 
+            padding: 0.8rem 1.5rem; background: linear-gradient(135deg, #8B0000, #DC143C);
+            color: white; text-decoration: none; border-radius: 25px; font-weight: 500;
+            transition: all 0.3s; display: inline-block;
+        }
+        .about-submenu a:hover { 
+            background: linear-gradient(135deg, #DAA520, #FFD700); transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(218,165,32,0.4);
+        }
+
+        /* YOUR ORIGINAL FOUNDER PROFILE - UNCHANGED */
         .founder-profile { 
             display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; align-items: start; 
             background: rgba(255,255,255,0.95); border-radius: 25px; padding: 3rem; 
@@ -176,7 +195,7 @@
         .founder-quote blockquote { font-size: 1.4rem; font-style: italic; margin-bottom: 1rem; }
         .founder-quote cite { font-weight: 500; opacity: 0.9; }
 
-        /* FOOTER - SAME AS OTHERS */
+        /* FOOTER */
         footer { 
             background: linear-gradient(135deg, #8B0000, #5C0000); 
             color: white; padding: 4rem 0 2rem; 
@@ -241,11 +260,12 @@
             .founder-image, .photo-placeholder { max-width: 280px; height: 360px; }
             .hero { height: 60vh; margin-top: 80px; }
             .section { padding: 4rem 0 3rem; }
+            .about-submenu ul { flex-direction: column; align-items: center; gap: 0.8rem; }
         }
     </style>
 </head>
 <body>
-    <!-- SAME 45-PAGE NAVIGATION -->
+    <!-- FULL 45-PAGE NAVIGATION -->
     <header class="header">
         <div class="nav-container">
             <a href="../index.html" class="logo">AIC Varanasi</a>
@@ -308,4 +328,181 @@
                             <li><a href="../iqac/index.html">IQAC Home</a></li>
                             <li><a href="../iqac/members.html">Members</a></li>
                             <li><a href="../iqac/aqar.html">AQAR</a></li>
-                            <li><a href="../iqac/minutes-of-me
+                            <li><a href="../iqac/minutes-of-meeting.html">Minutes</a></li>
+                            <li><a href="../iqac/best-practices.html">Best Practices</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../naac/ssr.html">NAAC</a></li>
+                    <li><a href="../notices/index.html">Notices</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Our Visionary Founder</h1>
+            <p>The architect behind Anjuman Islam College's 40+ years of excellence</p>
+        </div>
+    </section>
+
+    <!-- ABOUT SUBMENU - NEW -->
+    <section class="section">
+        <div class="container">
+            <div class="about-submenu">
+                <ul>
+                    <li><a href="founder.html">👨‍🏫 Founder</a></li>
+                    <li><a href="history.html">📜 History</a></li>
+                    <li><a href="vision-mission.html">🎯 Vision & Mission</a></li>
+                    <li><a href="past-president.html">👨‍💼 Past Presidents</a></li>
+                    <li><a href="past-principal.html">👨‍🏫 Past Principals</a></li>
+                    <li><a href="retired-teachers.html">👴 Retired Faculty</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- YOUR ORIGINAL FOUNDER CONTENT -->
+    <section class="section">
+        <div class="container">
+            <div class="founder-profile">
+                <div class="founder-photo">
+                    <img src="../assets/images/founder/founder.jpg" alt="Founder" class="founder-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                    <div class="photo-placeholder">
+                        👨‍🎓 Founder Photo
+                        <div class="photo-name">Dr. [Founder Name]</div>
+                        <div class="photo-title">Visionary Educationist</div>
+                    </div>
+                </div>
+                <div class="founder-bio">
+                    <h2>Life & Legacy</h2>
+                    <p>Visionary educationist who established Anjuman Islam College in 1985 with just 120 students and 8 faculty. His dream transformed into a NAAC B++ accredited institution serving 1000+ students today.</p>
+                    
+                    <div class="bio-timeline">
+                        <h3>Key Milestones</h3>
+                        <div class="timeline-item">
+                            <span class="timeline-year">1950s</span>
+                            <span>Born in Varanasi, educationist family</span>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-year">1970s</span>
+                            <span>PhD in Education, teaching career begins</span>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-year">1985</span>
+                            <span>Founding AIC Varanasi - 120 students</span>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-year">1990s</span>
+                            <span>Science faculty expansion, 500+ students</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Founder's Achievements</h2>
+            <div class="achievements-grid">
+                <div class="achievement-card">
+                    <h3>🏛️ College Establishment</h3>
+                    <p>Founded AIC in 1985 with Arts & Commerce faculties</p>
+                </div>
+                <div class="achievement-card">
+                    <h3>📚 Academic Excellence</h3>
+                    <p>95%+ consistent pass percentage for 4 decades</p>
+                </div>
+                <div class="achievement-card">
+                    <h3>🏆 NAAC B++</h3>
+                    <p>Led institution to national accreditation</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="founder-quote">
+                <span class="quote-mark">❝</span>
+                <blockquote>"Education is the foundation of every nation's progress. Anjuman Islam College will nurture generations of excellence."</blockquote>
+                <cite>— Founder, Anjuman Islam College</cite>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>🏛️ Anjuman Islam College</h3>
+                    <p>Established 1985 | NAAC B++ | UGC Recognized</p>
+                </div>
+                <div class="footer-section">
+                    <h3>🔗 Quick Links</h3>
+                    <ul>
+                        <li><a href="../courses/index.html">Courses</a></li>
+                        <li><a href="../iqac/index.html">IQAC</a></li>
+                        <li><a href="../contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Anjuman Islam College. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FIXED JAVASCRIPT -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navMenu = document.getElementById('navMenu');
+            const mobileBtn = document.querySelector('.mobile-menu-btn');
+
+            mobileBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                navMenu.classList.toggle('active');
+                mobileBtn.classList.toggle('active');
+                document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+            });
+
+            document.querySelectorAll('.dropdown > a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        const dropdown = this.parentElement;
+                        document.querySelectorAll('.dropdown').forEach(d => {
+                            if (d !== dropdown) d.classList.remove('active');
+                        });
+                        dropdown.classList.toggle('active');
+                        return false;
+                    }
+                });
+            });
+
+            document.addEventListener('click', function(e) {
+                if (!navMenu.contains(e.target) && !mobileBtn.contains(e.target)) {
+                    navMenu.classList.remove('active');
+                    mobileBtn.classList.remove('active');
+                    document.body.style.overflow = '';
+                    document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('active'));
+                }
+            });
+
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    navMenu.classList.remove('active');
+                    mobileBtn.classList.remove('active');
+                    document.body.style.overflow = '';
+                    document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('active'));
+                }
+            });
+        });
+    </script>
+</body>
+</html>
