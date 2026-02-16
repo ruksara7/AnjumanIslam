@@ -29,17 +29,18 @@ document.addEventListener('DOMContentLoaded', function () {
         dropdownParents.forEach(d => d.classList.remove('active'));
     }
 
-    dropdownParents.forEach(drop => {
-        const link = drop.querySelector(':scope > a');
-
+    // ✅ FIXED: Replace :scope with universal selector
+    document.querySelectorAll('.dropdown > a').forEach(link => {
+        const dropdown = link.parentElement;
+        
         link.addEventListener('click', function(e){
             if(window.innerWidth <= 768){
                 e.preventDefault();
                 e.stopPropagation();
 
-                const isOpen = drop.classList.contains('active');
+                const isOpen = dropdown.classList.contains('active');
                 closeAllDropdowns();
-                if(!isOpen) drop.classList.add('active');
+                if(!isOpen) dropdown.classList.add('active');
             }
         });
     });
@@ -59,10 +60,14 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     /* ========= ROTATION / DESKTOP ========= */
+    let resizeTimer;
     window.addEventListener('resize', function(){
-        if(window.innerWidth > 992){
-            closeMenu();
-        }
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function(){
+            if(window.innerWidth > 992){
+                closeMenu();
+            }
+        }, 250);
     });
 
 });
