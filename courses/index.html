@@ -1,1 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Courses | Anjuman Islam College</title>
 
+<link rel="stylesheet" href="../css/style.css">
+
+<style>
+body{font-family:Arial,Helvetica,sans-serif;background:#f4f6f9;margin:0}
+
+.page-hero{
+background:linear-gradient(rgba(139,0,0,.9),rgba(139,0,0,.85));
+color:white;text-align:center;padding:120px 20px 60px
+}
+
+.page-hero h1{font-size:40px;margin:0}
+
+.course-grid{
+max-width:1100px;margin:50px auto;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:25px;padding:0 20px
+}
+
+.course-card{
+background:white;border-radius:12px;
+box-shadow:0 8px 20px rgba(0,0,0,.1);
+padding:30px;text-align:center;
+transition:.25s
+}
+
+.course-card:hover{
+transform:translateY(-6px);
+box-shadow:0 15px 35px rgba(0,0,0,.15)
+}
+
+.course-card h2{color:#8B0000;margin-bottom:10px}
+.course-card p{color:#555;font-size:14px}
+.course-card a{
+display:inline-block;margin-top:15px;
+padding:10px 18px;border-radius:20px;
+background:#8B0000;color:white;text-decoration:none
+}
+
+footer{margin-top:60px;background:#8B0000;color:white;text-align:center;padding:25px}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="header">
+<div class="nav-container">
+<a href="../index.html" class="logo">AIC Varanasi</a>
+<button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+
+<nav class="nav-menu" id="navMenu">
+<ul>
+<li><a href="../index.html">Home</a></li>
+<li><a href="../about/founder.html">About</a></li>
+<li><a href="../administration/governing-body.html">Administration</a></li>
+<li><a href="../faculties/arts.html">Faculties</a></li>
+<li><a href="../contact.html">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<!-- HERO -->
+<section class="page-hero">
+<h1>Courses Offered</h1>
+<p>Undergraduate and Postgraduate Programs</p>
+</section>
+
+<!-- COURSE LINKS -->
+<div class="course-grid">
+
+<div class="course-card">
+<h2>UG Programs</h2>
+<p>B.A / B.Sc / B.Com Courses</p>
+<a href="ug-programs.html">View Details</a>
+</div>
+
+<div class="course-card">
+<h2>PG Programs</h2>
+<p>All Postgraduate Courses</p>
+<a href="pg-programs.html">View Details</a>
+</div>
+
+<div class="course-card">
+<h2>M.A Programs</h2>
+<p>Master of Arts Subjects</p>
+<a href="ma.html">View Details</a>
+</div>
+
+<div class="course-card">
+<h2>M.Sc Programs</h2>
+<p>Master of Science Subjects</p>
+<a href="msc.html">View Details</a>
+</div>
+
+</div>
+
+<footer>
+<p>Anjuman Islam College, Varanasi</p>
+<p>© 2026 All Rights Reserved</p>
+</footer>
+
+<script>
+function toggleMobileMenu(){
+document.getElementById("navMenu").classList.toggle("active");
+}
+</script>
+
+</body>
+</html>
