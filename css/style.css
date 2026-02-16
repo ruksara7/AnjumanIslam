@@ -1,6 +1,5 @@
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-
     const navMenu  = document.getElementById('navMenu');
     const mobileBtn = document.querySelector('.mobile-menu-btn');
     const dropdownParents = document.querySelectorAll('.dropdown');
@@ -24,23 +23,28 @@ document.addEventListener('DOMContentLoaded', function () {
         navMenu.classList.contains('active') ? closeMenu() : openMenu();
     });
 
-    /* ========= DROPDOWN ========= */
+    /* ========= DROPDOWN - FIXED ========= */
     function closeAllDropdowns(){
         dropdownParents.forEach(d => d.classList.remove('active'));
     }
 
-    // ✅ FIXED: Replace :scope with universal selector
     document.querySelectorAll('.dropdown > a').forEach(link => {
         const dropdown = link.parentElement;
         
         link.addEventListener('click', function(e){
             if(window.innerWidth <= 768){
+                const isOpen = dropdown.classList.contains('active');
+                
+                // 🔥 FIX #1: 2nd tap navigates to parent link
+                if(isOpen){
+                    return; // Let normal link navigation happen
+                }
+                
                 e.preventDefault();
                 e.stopPropagation();
-
-                const isOpen = dropdown.classList.contains('active');
+                
                 closeAllDropdowns();
-                if(!isOpen) dropdown.classList.add('active');
+                dropdown.classList.add('active'); // 🔥 FIX #2: Open after closeAll
             }
         });
     });
@@ -52,23 +56,24 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    /* ========= SUBMENU LINK NAVIGATION ========= */
+    /* ========= SUBMENU LINKS ========= */
     document.querySelectorAll('.dropdown-menu a').forEach(link=>{
         link.addEventListener('click', ()=>{
-            if(window.innerWidth <= 768) closeMenu();
+            if(window.innerWidth <= 768) {
+                setTimeout(closeMenu, 100); // Small delay for smooth UX
+            }
         });
     });
 
-    /* ========= ROTATION / DESKTOP ========= */
+    /* ========= RESIZE - FIXED BREAKPOINT ========= */
     let resizeTimer;
     window.addEventListener('resize', function(){
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(function(){
-            if(window.innerWidth > 992){
+            if(window.innerWidth > 768){ // 🔥 FIX #3: Match CSS breakpoint
                 closeMenu();
             }
         }, 250);
     });
-
 });
 </script>
