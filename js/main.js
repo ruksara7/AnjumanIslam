@@ -6,6 +6,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const navMenu      = document.getElementById("nav-menu");
     const mobileToggle = document.querySelector(".mobile-menu-toggle");
     const dropdownHeaders = document.querySelectorAll(".nav-section-header");
+    const MOBILE_BREAKPOINT = 992;
+
+    /* ===============================
+       DEVICE CHECK
+    =============================== */
+    const isMobile = () => window.innerWidth < MOBILE_BREAKPOINT;
 
     /* ===============================
        MOBILE MAIN MENU
@@ -37,8 +43,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     dropdownHeaders.forEach(header => {
         header.addEventListener("click", (e)=>{
-            e.preventDefault();
-            e.stopPropagation();
 
             const section  = header.closest(".nav-section");
             const dropdown = section?.querySelector(".dropdown");
@@ -46,20 +50,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if(!dropdown) return;
 
-            const alreadyOpen = dropdown.classList.contains("active");
+            /* ===== MOBILE BEHAVIOR ===== */
+            if(isMobile()){
+                e.preventDefault();      // STOP PAGE REDIRECT
+                e.stopPropagation();
 
-            closeAllDropdowns();
+                const alreadyOpen = dropdown.classList.contains("active");
+                closeAllDropdowns();
 
-            if(!alreadyOpen){
-                dropdown.classList.add("active");
-                header.classList.add("active");
-                if(icon) icon.style.transform = "rotate(180deg)";
+                if(!alreadyOpen){
+                    dropdown.classList.add("active");
+                    header.classList.add("active");
+                    if(icon) icon.style.transform = "rotate(180deg)";
+                }
             }
         });
     });
 
     /* ===============================
-       CLICK OUTSIDE (REAL MOBILE FIX)
+       CLICK OUTSIDE
     =============================== */
     document.addEventListener("click", (e)=>{
         if(!e.target.closest("#nav-menu") && !e.target.closest(".mobile-menu-toggle")){
@@ -68,17 +77,27 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     /* ===============================
-       CLOSE AFTER CLICKING LINK
+       CLOSE AFTER CLICKING REAL LINK ONLY
     =============================== */
     document.querySelectorAll("#nav-menu a").forEach(link=>{
-        link.addEventListener("click", ()=> closeMenu());
+        link.addEventListener("click", (e)=>{
+
+            const header = link.closest(".nav-section-header");
+
+            // If it's a parent menu (Academics/About etc)
+            if(header && isMobile()){
+                return; // DO NOT CLOSE, DO NOT NAVIGATE
+            }
+
+            closeMenu(); // child links only
+        });
     });
 
     /* ===============================
-       SAFE RESIZE (ROTATE PHONE FIX)
+       SAFE RESIZE
     =============================== */
     window.addEventListener("resize", ()=>{
-        if(window.innerWidth >= 992){
+        if(window.innerWidth >= MOBILE_BREAKPOINT){
             closeMenu();
         }
     });
